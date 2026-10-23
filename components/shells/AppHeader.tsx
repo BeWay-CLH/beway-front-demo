@@ -40,6 +40,11 @@ export function AppHeader({
   /* "Mi espacio" solo hace falta si la cabecera no trae ya el "Inicio" del espacio (acceso, registro). */
   const spaceLink = Boolean(session) && space === 'public' && !items.some((i) => i.href === talentHome);
   const username = session?.username;
+  /* Con más de cuatro enlaces (Talent tiene seis) la fila no cabe a 768 px: el menú plegable sube hasta lg. */
+  const bp =
+    items.length > 4
+      ? { bar: 'max-lg:px-4! max-lg:[&>form]:hidden max-lg:[&>nav]:hidden!', account: 'max-lg:hidden', menu: 'lg:hidden' }
+      : { bar: 'max-md:px-4! max-md:[&>form]:hidden max-md:[&>nav]:hidden!', account: 'max-md:hidden', menu: 'md:hidden' };
 
   const desktopAccount = session ? (
     <>
@@ -77,7 +82,7 @@ export function AppHeader({
     <div className="sticky top-0 z-40">
       {demoBarEnabled ? <DemoBar space={space} /> : null}
       <NavBar
-        className="max-md:px-4! max-md:[&>form]:hidden max-md:[&>nav]:hidden!"
+        className={bp.bar}
         showSearch={search}
         onSearch={(q) => router.push('/companies' + (q ? `?q=${encodeURIComponent(q)}` : ''))}
         logo={
@@ -92,9 +97,9 @@ export function AppHeader({
         actions={
           <>
             <ThemeToggle />
-            {desktopAccount ? <div className="flex items-center gap-2 max-md:hidden">{desktopAccount}</div> : null}
+            {desktopAccount ? <div className={`flex items-center gap-2 ${bp.account}`}>{desktopAccount}</div> : null}
             {items.length > 0 || mobileAccount ? (
-              <div className="md:hidden">
+              <div className={bp.menu}>
                 <MobileMenu label="Abrir menú">
                   <div className="flex flex-col gap-4">
                     {items.length > 0 ? <ShellNav items={items} label="Navegación" orientation="vertical" username={username} /> : null}

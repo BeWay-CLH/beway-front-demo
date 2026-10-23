@@ -1,5 +1,48 @@
 # Changelog
 
+## 2026-10-23 (2) · Bloque E: encuestas, cursos y credenciales (demo)
+
+### Añadido
+- **E-01 y E-04:** `lib/models/survey.ts` y `lib/models/course.ts`; servicios `surveys`, `courses` y `credentials`; acciones `surveys` y `courses`; fixtures
+  `surveys.ts` (6 encuestas), `courses.ts` (7 cursos) y `credentials.ts` (2 para Lucía, ninguna para Marcos); `getCompanyRefs` en el servicio de empresas.
+- **E-02 `/talent/surveys`:** pestañas Disponibles y Completadas con contador, filas de dos líneas con "por qué la ves", una sola acción `primary`, vacíos, y
+  "No son para ti por ahora" con las no elegibles. Una encuesta enviada en la sesión pasa a Completadas y una con borrador sale "En curso".
+- **E-03 `/talent/surveys/[slug]`:** introducción con "Quién verá tus respuestas", consentimiento obligatorio y "Qué te preguntaremos"; una pantalla por sección con
+  los cinco tipos de pregunta (controles del DS); validación con foco en la primera pregunta sin responder; revisión con "Editar"; envío simulado; borrador del
+  navegador y del servidor. Si no se puede responder (no elegible, próxima, cerrada o enviada) muestra el resumen sin preguntas y el motivo.
+- **E-05 `/talent/courses`** (filtros `?format=&status=` en servidor), **E-06 `/talent/courses/[slug]`** ("Me interesa" simulado, cerrado con su motivo) y **E-07
+  `/talent/credentials`** (solo lista; vacío con cursos que otorgan credencial).
+- **E-08:** `/programas` redirige a `/companies` y se borra `ProgramasView.tsx` (DEC-035).
+- **E-09:** "Encuestas por responder" y "Cursos abiertos" en el inicio, con su vacío; el inicio pasa a filas 6 + 6.
+- Componentes: `components/survey/`, `components/course/`, `tabs/KeyboardTabs`, `StatusBadge`, `demo-store`. Documentación: DEC-034…DEC-036, OI-022…OI-024, LQ-10, L-30…L-33,
+  punto 18 de DS_REQUESTS, BE-010…BE-015 con "Frontend hoy", fichas E-02…E-09 en SCREENS.
+
+### Cambiado
+- Las rutas Encuestas, Cursos y Credenciales pasan a `live` en `talentNav`. Con seis enlaces, `AppHeader` pliega la navegación en el menú por debajo de `lg` (antes
+  `md`) cuando hay más de cuatro (DEC-036).
+- X-04: `Radio`, `RadioGroup` y `Checkbox` del DS ya no bloquean E-03 (resueltos en v1.1).
+
+### Corregido
+- **La cabecera desbordaba a 768 px** (196 px) con los seis enlaces de Talent. Lo detectó el `inspect` del skill de estilo, no la revisión visual a 1280 y 390.
+
+### Verificado
+- `npm run typecheck` y `npm run build` sin errores (25 rutas).
+- `lint.mjs --app` del skill `taste-skill`: 0 fallos y 0 avisos sobre los 72 archivos del bloque (y 0 fallos en los 128 de `app`, `components`, `lib` y `data`; sus dos avisos
+  `eyebrow` son los de la landing y el Styleguide, ya aceptados en DEC-026). `inspect.mjs --app` sobre `next start`: 0 fallos en las seis pantallas (encuestas,
+  introducción de encuesta, cursos, curso, credenciales, inicio). Avisos que quedan y se defienden en DEC-036: `icon-tiles` (logos), `panel-void` en el inicio y en
+  credenciales, `hero-void` en credenciales.
+- Chrome headless sobre producción: 38 escenarios (11 pantallas × 1280, 768 y 390 px, claro y oscuro) sin desbordes, errores de consola ni páginas de error; menú de la
+  cabecera a 768 px con las seis rutas; `/programas` → `/companies`; cabeceras pública y Admin a 768 px sin cambios.
+- Flujo completo de encuesta con teclado y clic: sin consentimiento no empieza, error por pregunta y foco, máximo de tres opciones, progreso 0 → 100 %, revisión,
+  envío simulado, lista actualizada (Disponibles 4 → 3, Completadas 1 → 2, el inicio deja de mostrarla), reanudar desde el borrador del servidor.
+
+### Pendiente
+- Backend: BE-010…BE-015. Legal: L-30…L-33 y LQ-10. Producto: OI-022…OI-024 (y OI-016, OI-017 abiertas).
+- Petición al DS: `Badge` sin mayúsculas (punto 18).
+- Los controles locales de `components/forms/` pueden sustituirse ya por los del DS (DEC-029); sigue siendo un paso aparte.
+- No hay otro estado de carga que el del servidor: las encuestas y cursos salen de fixtures.
+- Verificado solo en Chrome headless: falta Safari y un dispositivo táctil real.
+
 ## 2026-10-23 · Bloque D: dashboard Talent (demo)
 
 ### Añadido
@@ -35,8 +78,15 @@
 - Backend: BE-021 (con BE-005, BE-008, BE-025). Producto: OI-021. Legal: LQ-09.
 - E-09 añade encuestas y cursos al inicio cuando existan E-02 y E-05.
 - Petición al design system: `Button` fija `margin: 0` en línea (punto 17); los botones `ghost` no se alinean con el texto.
-- No se ha regenerado `graphify-out/` (se hace con `/graphify`); tampoco tras el bloque C.
 - Verificado solo en Chrome headless: falta Safari y un dispositivo táctil real.
+
+### Grafo (graphify)
+- `graphify-out/` regenerado el 2026-10-23 con `/graphify` (954 nodos, 2.363 aristas, 47 comunidades). El grafo anterior tenía 1.026
+  nodos: la reducción es intencionada, porque `.graphifyignore` deja fuera CHANGELOG, EXISTING_UI_AUDIT, DS_UPDATE_1.1, MIGRACION,
+  AGENTS, `public/`, `package.json` y `design-system/*`, y los documentos re-extraídos cambian de ids. Se forzó el guard de reducción (#479)
+  tras guardar una copia del grafo anterior. D-01, DEC-033, BE-021 y la barra de cinco apartados ya están en la comunidad "Dashboard Talent y perfil".
+- Aviso de salud: 170 aristas apuntan a nodos que no existen (73 son referencias externas a `next` y `react`, 163 extremos son de `@ds`, que el
+  `.graphifyignore` excluye salvo `index.d.ts`); el build las descartó. No afectan a los nodos.
 
 ## 2026-10-22 (5) · Navegación coherente y bloque C: catálogo y ficha de empresa (demo)
 

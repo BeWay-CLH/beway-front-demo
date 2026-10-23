@@ -2,10 +2,12 @@ import { completionOf } from '@/lib/completion';
 import type { CompletionStepVM, NextStepVM, TalentDashboardVM } from '@/lib/models/dashboard';
 import type { CompletionItem } from '@/lib/models/profile';
 import { getCompaniesByInterests, getFollowedCompanies } from './companies';
+import { getCourses } from './courses';
 import { getAccountSettings, getProfileForm } from './profiles';
+import { getSurveys } from './surveys';
 
-/* Resumen del dashboard Talent (BE-021). El frontend lo compone con perfil (BE-005), empresas (BE-008) y seguidas
-   (BE-025); si el backend ofrece un agregado, solo cambia el cuerpo de esta función (ARCHITECTURE §4). */
+/* Resumen del dashboard Talent (BE-021). El frontend lo compone con perfil (BE-005), empresas (BE-008), seguidas
+   (BE-025), encuestas (BE-010) y cursos (BE-013); si el backend ofrece un agregado, solo cambia el cuerpo de esta función (ARCHITECTURE §4). */
 
 const EDIT = '/talent/profile/edit';
 
@@ -77,7 +79,11 @@ export async function getTalentDashboard(userId: string): Promise<TalentDashboar
       ? { label: stepCopy[first].cta, href: stepCopy[first].href }
       : undefined;
 
-  const matches = await getCompaniesByInterests(form.interests);
+  const [matches, surveys, courses] = await Promise.all([
+    getCompaniesByInterests(form.interests),
+    getSurveys(userId),
+    getCourses({ status: 'open' }),
+  ]);
 
   return {
     greetingName: form.displayName.split(' ')[0],
@@ -90,5 +96,10 @@ export async function getTalentDashboard(userId: string): Promise<TalentDashboar
     interests: form.interests,
     interestCompanies: matches.map(({ id, slug, name, category, logo }) => ({ id, slug, name, category, logo })),
     followedIds: followed.map((c) => c.id),
+    surveys: surveys
+      .filter((x) => x.status === 'open' && x.eligibility !== 'not-eligible' && x.participation !== 'completed')
+      .sort((a, b) => (a.closesAt ?? '').localeCompare(b.closesAt ?? ''))
+      .map(({ id, slug, title, publisher, estimatedMinutes, closesAt, participation }) => ({ id, slug, title, publisher, estimatedMinutes, closesAt, participation })),
+    courses: courses.map(({ id, slug, title, provider, format, durationLabel, startsAt, grantsCredential }) => ({ id, slug, title, provider, format, durationLabel, startsAt, grantsCredential })),
   };
 }

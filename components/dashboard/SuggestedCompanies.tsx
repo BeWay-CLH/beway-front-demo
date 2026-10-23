@@ -41,7 +41,7 @@ export function SuggestedCompanies({
   }
 
   return (
-    <div className="flex flex-col gap-3">
+    <div className="flex flex-1 flex-col gap-3">
       <ul className="flex flex-col">
         {suggestions.slice(0, SHOWN).map((c) => (
           <li key={c.id} className="border-t border-line-subtle first:border-t-0">
@@ -49,7 +49,7 @@ export function SuggestedCompanies({
           </li>
         ))}
       </ul>
-      <NavButton href="/companies" variant="ghost" iconAfter="arrow-right" className="-ml-4 self-start">
+      <NavButton href="/companies" variant="ghost" iconAfter="arrow-right" className="-ml-4 mt-auto self-start">
         Ver todas las empresas
       </NavButton>
     </div>

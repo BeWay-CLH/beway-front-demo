@@ -87,6 +87,11 @@ El logo está siempre en el mismo sitio y enlaza al inicio del espacio.
 | Registro | `/signup` | `app/(auth)/signup/SignupFlow.tsx` | "¿Qué pasa después?" · tu perfil empieza en privado | Dos pasos; el segundo dice que no hay cuenta nueva |
 | Recuperar acceso | `/forgot-password` | `app/(auth)/forgot-password/` | Respuesta única | Aviso "Simulación" |
 | Inicio Talent | `/talent/dashboard` | `app/talent/dashboard/page.tsx` | "¿Qué me falta?" · "Lo siguiente: …" | Ninguna (lectura) |
+| Encuestas | `/talent/surveys` | `app/talent/surveys/page.tsx` | "¿Cuál cierra antes?" · "La que antes cierra es la de Datalia…" | Enviadas y borradores solo en `sessionStorage` |
+| Encuesta | `/talent/surveys/[slug]` | `app/talent/surveys/[slug]/page.tsx` | "¿Quién verá mis respuestas?" · el resumen | Envío simulado ("No hemos guardado tus respuestas") |
+| Cursos | `/talent/courses` | `app/talent/courses/page.tsx` | "¿Qué puedo cursar ahora?" · "Hay 3 cursos abiertos…" | Ninguna (lectura) |
+| Curso | `/talent/courses/[slug]` | `app/talent/courses/[slug]/page.tsx` | "¿Me interesa?" · el resumen | "Me interesa" simulado |
+| Credenciales | `/talent/credentials` | `app/talent/credentials/page.tsx` | "¿Qué logros tengo?" · "La última es…" | Ninguna (nunca emite) |
 | Onboarding | `/talent/onboarding` | `app/talent/onboarding/OnboardingFlow.tsx` | "¿Qué necesito para empezar?" · solo el nombre | Borrador en sessionStorage; "Terminar" simulado |
 | Editar perfil | `/talent/profile/edit` | `app/talent/profile/edit/ProfileEditor.tsx` | "¿Qué ven los demás?" · lo que más falta | "Guardar cambios" simulado |
 | Ajustes | `/talent/settings` | `app/talent/settings/AccountSettingsForm.tsx` | "¿Quién puede ver mi perfil?" · empieza en privado | Guardar, contraseña y eliminar, todos simulados |
@@ -211,29 +216,92 @@ Para el tratamiento visual de estas pantallas (estilo, hoja, criterios) ver [DES
 - **Captura:** verificado en Chrome headless a 1280, 768 y 390 px en claro y oscuro (2026-10-23); sin desbordes ni errores de consola.
 
 ### E-02 · Encuestas · `/talent/surveys`
-- **Pestañas (`Tabs`):** Disponibles · Completadas, con contador.
-- **Tarjeta:** título, empresa que la publica (logo + nombre; CLH aparece como una empresa más), minutos estimados, nº de preguntas, `Badge` de estado (Abierta/Próxima/Cerrada/Completada), cierre, CTA "Responder" / "Continuar" / "Ver resumen".
-- **Por qué la ves:** "Sigues a <empresa>" o "Por tus intereses" (DEC-016, OI-017).
-- **Estados:** sin encuestas (vacío con "Explorar empresas" para seguir alguna) · no elegible (tarjeta atenuada con motivo).
+- **Archivo:** `app/talent/surveys/page.tsx` · **Actor:** Talent · **Bloque/ticket:** E-02 (hecho el 2026-10-23).
+- **Pregunta y hallazgo:** "¿Qué encuestas me esperan y cuál cierra antes?" · "Tienes 2 encuestas para responder. La que antes cierra es la de Datalia, el 30 oct 2026."
+- **Componentes:** `KeyboardTabs` (envoltorio de `Tabs` del DS con flechas, Inicio, Fin y panel nombrado), `NavButton`, `StatusBadge`, propios
+  `SurveyList` y `SurveyRow` (`components/survey/`). Filas de dos líneas, no tarjetas (patrón *inbox* del skill de estilo).
+- **Datos:** `getSurveys(userId)` (`lib/services/surveys.ts`) → `SurveySummaryVM[]` con `participation` y `eligibility` de la persona. Fixture
+  `data/fixtures/surveys.ts`. La elegibilidad se calcula: `follows` si sigue a la empresa, `interested` si su categoría está entre los intereses,
+  `not-eligible` en otro caso (OI-017).
+- **Pestañas:** Disponibles (con contador) · Completadas (con contador). Orden de Disponibles: abiertas por cierre más próximo, próximas, cerradas.
+  Las no elegibles van aparte, en "No son para ti por ahora" (máx. 3 filas y "Y N más"), con su motivo y un botón que lleva a la ficha de la empresa.
+- **Fila:** logo en chip blanco, título con sello (En curso, Próxima, Cerrada, Completada; las abiertas sin empezar no llevan sello), "Datalia,
+  4 preguntas y 4 min", **por qué la ves** ("Sigues a Datalia" / "Te interesa Movilidad"), la fecha que importa y la acción
+  (Responder, Continuar, Ver resumen, Ver empresa). Una sola fila lleva el botón `primary`: la primera que se puede responder.
+- **Estados:** sin encuestas disponibles (vacío con "Explorar empresas") · sin completadas (vacío con "Ver encuestas disponibles") · cerrada ·
+  próxima · no elegible. Con la cuenta de Marcos solo hay una disponible y cinco no elegibles.
+- **Interacciones / simulación:** una encuesta enviada en la sesión pasa a Completadas y una con borrador local sale "En curso" (ambos en
+  `sessionStorage`, `components/survey/survey-store.ts`). Nada sale del navegador.
+- **BE:** BE-010.
+- **Autorización:** solo la propia persona.
+- **A11y / mobile:** las filas se apilan; acción de ancho fijo en escritorio (9,5 rem); el hallazgo es `aria-live="polite"`; el botón de
+  cada fila lleva `aria-label` con el título.
+- **Captura:** verificado en Chrome a 1280, 768 y 390 px, claro y oscuro.
 
 ### E-03 · Encuesta · `/talent/surveys/[slug]`
-- **Flujo:** Intro (propósito, tiempo, privacidad, consentimiento obligatorio) → Secciones con progreso (`StepNav` en escritorio, "Sección 2 de 4" en móvil) → Revisión → Envío simulado → Gracias.
-- **Tipos de pregunta → componente:** single → `RadioGroup` · multiple → `Checkbox` · scale → `RadioGroup direction="row"` con etiquetas de extremos · short-text → `Input` · long-text → `Textarea` con contador.
-- **Estados:** sin empezar · en curso (reanuda borrador) · obligatoria sin responder (error en `Field`) · cerrada · próxima · completada · no elegible · 404.
-- **A11y:** cada pregunta en `fieldset`/`legend`; progreso en `aria-live="polite"`; foco al primer error.
+- **Archivo:** `app/talent/surveys/[slug]/page.tsx` · **Actor:** Talent · **Bloque/ticket:** E-03 (hecho el 2026-10-23).
+- **Pregunta y hallazgo:** "¿Qué me preguntan y quién verá mis respuestas?" · el resumen de la encuesta bajo el título.
+- **Componentes:** `Breadcrumbs`, `StepNav` (escritorio, con `percent` y `meta` sobre las secciones reales), `Checkbox`, `RadioGroup`, `Input`,
+  `Textarea`, `Alert`, `Button`, propios `SurveyRunner`, `QuestionField`, `SurveyFacts` y `SurveyInfo`. Controles del DS (en v1.1 son nativos).
+- **Datos:** `getSurveyPage(slug, userId)` → `SurveyPageVM`: `{ kind: 'answer', survey }` si se puede responder, o `{ kind: 'info', survey, reason }`
+  con el resumen **sin preguntas** si no (BE-011). Borrador del servidor (`savedDraft`) y del navegador; el del navegador manda.
+- **Flujo (`answer`):** introducción (qué es, quién la publica, cuánto dura, cuántas preguntas, cuándo cierra; "Quién verá tus respuestas";
+  casilla de consentimiento obligatoria; "Qué te preguntaremos" con las secciones) → una pantalla por sección → revisión (respuestas por
+  sección con "Editar") → envío → pantalla de envío simulado.
+- **Tipos de pregunta → componente:** single → `RadioGroup` · multiple → `Checkbox` (con `max`: las demás se deshabilitan y se dice "Elige hasta N")
+  · scale → `RadioGroup` en fila con los extremos escritos ("1 = Nada", "5 = Mucho") · short-text → `Input` · long-text → `Textarea` con contador.
+- **Validación:** sin consentimiento no se empieza ("Acepta para empezar…"); una obligatoria sin responder bloquea "Siguiente" con el error bajo
+  la pregunta (`aria-describedby`), un resumen "Falta una respuesta" y el foco en la primera. Al enviar se revisa todo otra vez.
+- **Estados:** sin empezar · en curso (el borrador del servidor o del navegador sitúa a la persona en la primera sección incompleta; "Continuar") ·
+  enviada · y, como resumen sin preguntas: **no elegible** (con botón a la ficha de la empresa), **próxima**, **cerrada**, **completada** · 404 dentro del espacio.
+- **Interacciones:** progreso como dato ("1 de 3 secciones completadas", sin "Paso 1 de 3", DEC-028), `aria-live="polite"` en móvil, `StepNav` clicable
+  hasta lo ya visitado. El borrador se guarda en `sessionStorage` dentro de try/catch.
+- **Simulación:** enviar llama a `submitSurveyAnswers` (acción de servidor) que devuelve `{ simulated: true }`. La pantalla de envío dice
+  "Simulación: no hemos guardado tus respuestas" y la encuesta figura como completada solo mientras no se cierre la pestaña.
+- **BE:** BE-011, BE-012.
+- **Autorización:** sesión Talent y elegibilidad por empresa; el servidor repite la comprobación (BE-012).
+- **A11y / mobile:** cada pregunta es un `fieldset` con `legend`; teclado completo; foco visible; en móvil la barra de progreso sustituye al `StepNav`
+  y los botones se apilan con "Atrás" debajo.
+- **Captura:** verificado a 1280, 768 y 390 px, claro y oscuro; flujo completo probado en Chrome (consentimiento, errores, máximo de opciones,
+  revisión, envío y lista actualizada).
 
 ### E-05 · Cursos · `/talent/courses`
-- **Filtros:** `Tag variant="filter"` por formato (una sola fila cyan) y `Select` por estado.
-- **Tarjeta:** título, proveedor, formato, duración, inicio, `Badge` de estado, indicador "Otorga credencial".
-- **Estados:** sin resultados con "Limpiar filtros".
+- **Archivo:** `app/talent/courses/page.tsx` · **Actor:** Talent · **Bloque/ticket:** E-05 (hecho el 2026-10-23).
+- **Pregunta y hallazgo:** "¿Qué puedo cursar ahora?" · "Hay 3 cursos abiertos. El primero en empezar es SQL para análisis de datos, el 3 nov 2026."
+- **Componentes:** `Tag variant="filter"` (formato, una sola fila cyan), `Select` con `Field` (estado), `StatusBadge`, `NavButton`, propios `CourseFilters`
+  y `CourseRow` (`components/course/`).
+- **Datos:** `getCourses({ format, status })` → `CourseSummaryVM[]`. Fixture `data/fixtures/courses.ts` (7 cursos: los tres formatos, abiertos,
+  próximos y cerrados, con y sin credencial). Filtros en la URL (`?format=online&status=open`), resueltos en servidor; un valor desconocido se ignora.
+- **Fila:** título con estado, "Datalia, en línea y 8 semanas", una frase, cuándo empieza y, si aplica, "Otorga credencial".
+- **Estados:** sin resultados ("No hay cursos con estos filtros." con "Limpiar filtros") · contador "Mostrando N de M cursos" (`aria-live`).
+- **BE:** BE-013. **Autorización:** sesión Talent.
+- **A11y / mobile:** los `Tag` son botones con foco y `aria-pressed`; la fila se apila; no hay primary (el único cyan es el filtro activo).
 
 ### E-06 · Curso · `/talent/courses/[slug]`
-- Resumen, qué aprenderás, requisitos, temario, proveedor, credencial asociada, CTA "Me interesa" (simulado) o enlace externo real.
-- Estados: abierto · próximo · cerrado (CTA deshabilitado con motivo) · 404.
+- **Archivo:** `app/talent/courses/[slug]/page.tsx` · **Actor:** Talent · **Bloque/ticket:** E-06 (hecho el 2026-10-23).
+- **Componentes:** `Breadcrumbs`, `StatusBadge`, `Icon`, propio `CourseInterest`. A la izquierda el contenido (de qué va, qué aprenderás,
+  requisitos, temario como `ol`); a la derecha, el panel de datos fijo con el único `primary`. En móvil el panel va primero.
+- **Datos:** `getCourseBySlug(slug)` → `CourseDetailVM`; `null` → 404 en el espacio. Todos los cursos usan `enrollment: interest-only`: sin URLs inventadas.
+- **Estados:** abierto · próximo · cerrado (botón deshabilitado y la razón escrita al lado) · 404.
+- **Simulación:** "Me interesa" llama a `setInterest` (acción de servidor, `{ simulated: true }`), muestra un `Toast` "Simulación" y recuerda el interés
+  solo en `sessionStorage`; el botón pasa a "Te interesa" (secundario) y se puede quitar. Texto de credencial provisional (L-33).
+- **BE:** BE-014.
 
 ### E-07 · Credenciales · `/talent/credentials`
-- Lista de `Card`: título, emisor, fecha, curso de origen si existe. Sin sellos de verificación (DEC-021).
-- Vacío: "Aún no tienes credenciales" + "Ver cursos".
+- **Archivo:** `app/talent/credentials/page.tsx` · **Actor:** Talent · **Bloque/ticket:** E-07 (hecho el 2026-10-23).
+- **Pregunta y hallazgo:** "¿Qué logros tengo y quién los emitió?" · "Tienes 2 credenciales. La última es Visualización de datos, de Orbital Labs, el 8 may 2026."
+- **Datos:** `getCredentials(userId)` (`lib/services/credentials.ts`) → `CredentialVM[]`, más recientes primero, con el título del curso de origen si lo hay.
+  Solo se listan: la pantalla nunca emite una (DEC-010) y no hay sello de "verificada" (DEC-021). Lucía tiene 2; Marcos, ninguna.
+- **Composición:** a la izquierda "Tus logros"; a la derecha "Cursos que otorgan credencial" (los abiertos), que da el camino a la siguiente y llena la pantalla
+  también cuando no hay ninguna.
+- **Estados:** con credenciales · sin ninguna (explicación, botón "Ver cursos" y la lista de cursos de la derecha).
+- **BE:** BE-015. **Autorización:** solo la propia persona. **L-33** (texto provisional): "BeWay no las emite desde esta pantalla".
+
+### E-09 · Encuestas y cursos en el inicio · `/talent/dashboard`
+Ficha completa de la pantalla en [D-01](#d-01--dashboard-talent--talentdashboard). E-09 añade dos módulos en una fila 6 + 6 entre "Qué falta" y
+"Empresas de tus intereses": **Encuestas por responder** (`PendingSurveys`, cliente: quita las enviadas en la sesión) y **Cursos abiertos**
+(`OpenCourses`). Cada módulo tiene su vacío ("No tienes encuestas por responder…", "No hay cursos abiertos ahora…"), muestra hasta tres filas y
+fija su acción ("Ver todas…") al pie de la tarjeta.
 
 ### F-02 · Fichas (Admin) · `/admin/companies`
 - `Table` (escritorio) / lista de `Card` (móvil): nombre, categoría, `Badge` de estado editorial, última revisión, editor.

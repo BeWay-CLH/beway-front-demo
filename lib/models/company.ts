@@ -45,6 +45,9 @@ export type CompanyDetailVM = CompanyCardVM & {
   isStale: boolean;
 };
 
+/* Lo mínimo para citar una empresa desde otro dominio (quién publica una encuesta, por ejemplo). Solo publicadas. */
+export type CompanyRefVM = Pick<CompanyCardVM, 'category' | 'id' | 'logo' | 'name' | 'slug'>;
+
 export type CompanyCategoryVM = { slug: string; label: string };
 
 export type CompanyFilter = {

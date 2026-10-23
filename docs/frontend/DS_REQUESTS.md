@@ -82,6 +82,16 @@ Detalle en [DS_UPDATE_1.1.md](DS_UPDATE_1.1.md), sección 5.
 |---|---|---|---|---|
 | 17 | `Button` | Fija `margin: 0` en el `style` en línea (`Button.jsx` línea 87), que gana a cualquier clase de margen. Los botones `ghost` llevan 16 px de relleno y su etiqueta queda 16 px a la derecha del texto de arriba; `-ml-4` no hace nada. | Quitar `margin: 0` del estilo en línea (el navegador ya parte de 0 en un `button`) o aceptar `style` con prioridad sobre él. | Se mantiene `-ml-4` en las pantallas (inoperante hoy) para que se alinee si el DS lo corrige. `self-start` sí funciona. |
 
+## Petición nueva del bloque E (2026-10-23)
+
+| # | Componente | Problema | Qué pedir | Workaround en el proyecto |
+|---|---|---|---|---|
+| 18 | `Badge` | Pinta siempre en mayúsculas con tracking (`textTransform: 'uppercase'`). En una lista de filas con tres o cuatro sellos ("En curso", "Próxima", "Cerrada") se lee como una franja de etiquetas y el `inspect` del skill de estilo la marca como `micro-label`. | Una prop (por ejemplo `textCase="sentence"`) o un tono sin mayúsculas para estados dentro de filas. | `components/StatusBadge.tsx`: el `Badge` con `style={{ textTransform: 'none', letterSpacing: 'normal' }}`. |
+
+Usos del bloque E de los que ya existían: el punto 13 (`Tabs`) lo suple `components/tabs/KeyboardTabs.tsx`; `Radio`, `RadioGroup` y `Checkbox` ya son
+nativos (puntos 3 y 4 resueltos en v1.1) y la encuesta los usa tal cual. `StepNav` cuenta como "sección" cada paso: en la encuesta se sobrescriben
+`percent` y `meta` para no contar "Revisar y enviar".
+
 ## Prioridad ya cubierta (no pedir)
 
 - `NavBar` no es responsive ni marca el enlace activo: ya está en X-04 de ROADMAP. El proyecto usa `AppHeader`.

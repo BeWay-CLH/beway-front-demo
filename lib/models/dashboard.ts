@@ -1,8 +1,9 @@
-/* View Models del dashboard Talent (D-01). Cuando exista BE-021, un adapter traduce su respuesta a estos tipos (ARCHITECTURE §4).
-   E-09 añadirá aquí `surveys` y `courses`; hasta que existan sus modelos no se declaran. */
+/* View Models del dashboard Talent (D-01, E-09). Cuando exista BE-021, un adapter traduce su respuesta a estos tipos (ARCHITECTURE §4). */
 
 import type { CompanyCardVM } from './company';
+import type { CourseSummaryVM } from './course';
 import type { CompletionItem, ProfileCompletionVM, ProfileVisibility } from './profile';
+import type { SurveySummaryVM } from './survey';
 
 /* Un apartado del perfil, listo o pendiente. Los cinco cuentan para el porcentaje (`completionOf`). */
 export type CompletionStepVM = {
@@ -22,6 +23,10 @@ export type NextStepVM = { label: string; href: string };
 
 export type SuggestedCompanyVM = Pick<CompanyCardVM, 'id' | 'slug' | 'name' | 'category' | 'logo'>;
 
+/* Lo que pinta una fila del inicio (E-09). */
+export type DashboardSurveyVM = Pick<SurveySummaryVM, 'id' | 'slug' | 'title' | 'publisher' | 'estimatedMinutes' | 'closesAt' | 'participation'>;
+export type DashboardCourseVM = Pick<CourseSummaryVM, 'id' | 'slug' | 'title' | 'provider' | 'format' | 'durationLabel' | 'startsAt' | 'grantsCredential'>;
+
 export type TalentDashboardVM = {
   greetingName: string;
   username: string;
@@ -38,4 +43,8 @@ export type TalentDashboardVM = {
   interestCompanies: SuggestedCompanyVM[];
   /* Ids que ya sigue según el servidor; el navegador aplica encima los cambios simulados de la sesión (C-05). */
   followedIds: string[];
+  /* Abiertas, para esta persona y sin completar, las que cierran antes primero. El navegador quita las enviadas en la sesión. */
+  surveys: DashboardSurveyVM[];
+  /* Cursos abiertos, los que empiezan antes primero. */
+  courses: DashboardCourseVM[];
 };

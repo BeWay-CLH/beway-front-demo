@@ -39,11 +39,11 @@ Para presentar la demo, la `DemoBar` enlaza el inicio de cada espacio: `/`, `/ta
 | `/talent/profile/edit` | Editor de perfil y CV | NOW | Hecha | B-05 | Owner |
 | `/talent/settings` | Cuenta y privacidad | NOW | Hecha | B-07 | Owner |
 | `/talent/companies` | Redirección a `/companies` | NOW | Redirección | A-04 | Sesión Talent |
-| `/talent/surveys` | Listado de encuestas | NEXT · alta | — | E-02 | Sesión Talent |
-| `/talent/surveys/[slug]` | Encuesta | NEXT · alta | — | E-03 | Sesión Talent + elegibilidad |
-| `/talent/courses` | Catálogo de cursos | NEXT · alta | — | E-05 | Sesión Talent |
-| `/talent/courses/[slug]` | Detalle de curso | NEXT · alta | — | E-06 | Sesión Talent |
-| `/talent/credentials` | Credenciales obtenidas | NEXT | — | E-07 | Owner |
+| `/talent/surveys` | Listado de encuestas | NEXT · alta | Hecha | E-02 | Sesión Talent |
+| `/talent/surveys/[slug]` | Encuesta | NEXT · alta | Hecha (responder, o resumen si no es elegible, próxima, cerrada o enviada) | E-03 | Sesión Talent + elegibilidad |
+| `/talent/courses` | Catálogo de cursos | NEXT · alta | Hecha (`?format=&status=`) | E-05 | Sesión Talent |
+| `/talent/courses/[slug]` | Detalle de curso | NEXT · alta | Hecha | E-06 | Sesión Talent |
+| `/talent/credentials` | Credenciales obtenidas | NEXT | Hecha | E-07 | Owner |
 | `/talent/opportunities` | Oportunidades | LATER | — | G | Sesión Talent |
 | `/talent/opportunities/[slug]` | Oportunidad | LATER | — | G | Sesión Talent |
 | `/talent/challenges` | Retos | LATER | — | G | Sesión Talent |
@@ -114,8 +114,8 @@ Cuentas: Lucía (Talent y Admin CLH) y Marcos (solo Talent, perfil privado). Un 
 | `/talent` | `/talent/dashboard` | 307 | `app/talent/page.tsx` | Entrada del espacio | Permanente |
 | `/talent/companies` | `/companies` | 307 | `app/talent/companies/page.tsx` | Ficha única (DEC-001, decisión 3) | Si hay exploración personalizada |
 | `/admin` | `/admin/dashboard` | 307 | `app/admin/page.tsx` | Entrada del espacio | Permanente |
-| `/talent/certifications` | `/talent/credentials` | 307 | Pendiente (E-07) | Ruta del demo antiguo (DEC-021) | Si no hay enlaces que proteger, no se crea |
-| `/programas` | — | Sigue viva | `app/(public)/programas` | Legado, sin enlaces | E-08 (DEC-009) |
+| `/talent/certifications` | `/talent/credentials` | — | No se crea | Ruta del demo antiguo (DEC-021) | No hay enlaces que proteger (E-07) |
+| `/programas` | `/companies` | 307 | `app/(public)/programas/page.tsx` | Legado del starter: mentorías, retos y prácticas, no cursos (E-08, DEC-035) | Cuando existan retos y oportunidades (G) |
 
 Rutas demo antiguas que **no** se deben recrear: `/talent/empresa/santander`, `/talent/perfil/...`, `/beta`.
 

@@ -326,3 +326,46 @@ empresas del catálogo, que no eran sugerencias.
 **Consecuencias.** Una persona con el perfil vacío y una que terminó el onboarding con solo su nombre se ven igual: hasta que BE-005
 diga si hizo el onboarding, ambas ven "Empezar mi perfil". `Button` del DS fija `margin: 0` en línea, así que ninguna clase de margen
 (`-ml-4`) funciona en los botones `ghost`: sus etiquetas quedan 16 px a la derecha del texto (DS_REQUESTS, punto 17).
+
+
+### DEC-034 · Encuestas, cursos y credenciales: filas de trabajo, controles del DS y estado de sesión
+
+**Contexto.** El bloque E son pantallas de trabajo con listas (encuestas, cursos, credenciales) y un flujo (responder). DEC-024 había dejado
+controles locales con input nativo porque `Radio`, `Checkbox` y `Switch` del DS no recibían foco; la v1.1 (DEC-029) los corrigió.
+**Decisión.**
+- Cada lista es una sola tarjeta con filas de dos líneas (patrón *inbox* del skill de estilo), no una rejilla de tarjetas: logo en chip blanco,
+  título con un solo sello de estado, una línea de apoyo, **por qué la ves** (encuestas), la fecha que importa y la acción. Las acciones tienen ancho
+  fijo y solo una fila por pantalla lleva el `primary` cyan (la encuesta que antes cierra); los cursos no llevan ninguno (el cyan es el filtro activo).
+- La encuesta usa `RadioGroup`, `Checkbox`, `Input` y `Textarea` del DS directamente, cada pregunta como `fieldset` con `legend`. Los controles locales
+  de `components/forms/` siguen en B hasta un paso aparte (DEC-029).
+- La elegibilidad (`follows` / `interested` / `not-eligible`) se calcula en el servicio con a quién sigue la persona y sus intereses (OI-017); no
+  vive en el fixture. Lo no elegible se lista aparte, con motivo y camino a la ficha de la empresa (máx. 3).
+- El estado de sesión (borrador, "completada", "me interesa") vive en `sessionStorage` con try/catch (`components/demo-store.ts`), por cuenta; nunca
+  en un fixture. Los listados parten de lo que dice el servidor y le aplican ese estado, como "Empresas que sigues" (DEC-032).
+- Enviar una encuesta o marcar interés llama a una acción de servidor que devuelve `{ simulated: true }` y se avisa como "Simulación" (DEC-006).
+- Pestañas con `KeyboardTabs`, que añade a `Tabs` del DS las flechas y el panel nombrado (DS_REQUESTS, punto 13).
+**Consecuencias.** Al llegar BE-010…BE-015 se sustituyen los cuerpos de los servicios y desaparecen `demo-store.ts` y `survey-store.ts`. Las pantallas
+no cambian.
+
+### DEC-035 · `/programas` redirige a `/companies` (E-08)
+
+**Contexto.** DEC-009 dejó `/programas` como legado: mezcla mentorías, retos y prácticas, no es un catálogo de cursos y su URL está en español.
+**Decisión.** `app/(public)/programas/page.tsx` redirige (307) a `/companies`, donde cada ficha ya tiene el módulo "Programas" (DEC-020), y se borra
+`ProgramasView.tsx`. El modelo `Program` de `data/mock.ts` se conserva solo porque el inicio de Admin cuenta con él (F-01).
+**Consecuencias.** Un enlace compartido sigue funcionando. Cuando existan retos y oportunidades (G), esa URL puede apuntar a ellos. Mentorías y
+cursos siguen siendo dominios distintos (OI-010).
+
+### DEC-036 · Cabecera plegable hasta `lg` y sellos de estado en frase
+
+**Contexto.** Con Encuestas, Cursos y Credenciales activos, la cabecera de Talent tiene seis enlaces. A 768 px la fila desbordaba 196 px y el
+último enlace tocaba el borde. El `inspect` del skill de estilo lo detectó; la revisión a 1280 y 390 px no.
+**Decisión.**
+- `AppHeader` pliega la navegación en el menú desplegable por debajo de `lg` (1024 px) cuando hay más de cuatro enlaces; con cuatro o menos
+  (público y Admin) mantiene `md`. Las clases son literales para que Tailwind las vea.
+- `StatusBadge` (`components/StatusBadge.tsx`) es el `Badge` del DS con el texto en frase y sin tracking, para los sellos de estado de las filas
+  ("En curso", "Cerrada"). El DS los pinta en mayúsculas con tracking y tres o cuatro seguidos leen como una franja de etiquetas. Color e icono
+  siguen siendo del DS; el `Badge` de la cabecera ("Admin CLH") no cambia.
+**Consecuencias.** Petición al DS (punto 18): una prop para el caso del texto. Los avisos del `inspect` que se defienden: `icon-tiles` (son logos
+de empresa en chip blanco, regla de marca), `panel-void` en el inicio y en credenciales (tarjetas hermanas con distinto número de filas, que comparten el borde
+inferior y llevan la acción fijada al pie; lo que el propio skill prevé en §4.2) y `hero-void` en credenciales, una pantalla que cabe entera en el primer pantallazo
+con solo dos logros y sin contenido que inventar.

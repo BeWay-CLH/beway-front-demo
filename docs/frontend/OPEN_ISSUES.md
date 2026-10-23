@@ -17,6 +17,16 @@ en [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md).
 | OI-019 | Ficha de CLH: nombre completo, descripción y qué publica (hoy "Equipo que impulsa BeWay. Publica encuestas como una empresa más") | C-02, E-01 | Texto provisional en el fixture `cmp-clh`; categoría "Ecosistema" | Producto |
 | OI-020 | Dominio de producción para la URL canónica (`metadataBase`) y compartir fichas | C-02 | Sin canónica ni imágenes sociales; solo título y descripción | Producto / infraestructura |
 | OI-021 | ¿Cómo sabe el frontend que alguien es nuevo y debe pasar por el onboarding? Hoy se deduce de que no tiene ningún apartado del perfil | D-01, B-04, BE-005 | Perfil al 0 % → "Empezar mi perfil" lleva al onboarding. Quien terminó el onboarding con solo su nombre ve lo mismo | Producto / backend |
+| OI-022 | Encuestas: ¿puede la persona ver sus respuestas después de enviarlas? | E-03, BE-011 | No: una encuesta completada muestra el resumen sin preguntas ni respuestas ("No se puede editar después de enviarla") | Producto / legal (LQ-05) |
+| OI-023 | Cursos: ¿qué significa "Me interesa"? ¿Lo ve el proveedor, abre una lista de espera, o hay inscripción real con enlace? | E-06, BE-014 | Solo interés interno, sin que lo vea nadie; ningún curso trae URL externa | Producto / legal (LQ-10) |
+| OI-024 | Encuestas de empresas que la persona no sigue y que no le interesan: ¿se listan con su motivo o solo se llega por enlace? | E-02, BE-010 | Se listan aparte, "No son para ti por ahora", máximo 3 y con camino a la ficha de la empresa para animar a seguirla. Si producto prefiere ocultarlas, se quita esa sección | Producto |
+
+## Estado tras el bloque E (2026-10-23)
+
+- OI-022, OI-023 y OI-024 son nuevas. OI-016 (anónimas, seudónimas o nominales; editables tras enviar) y OI-017 (audiencia) se aplican tal cual: la
+  encuesta es nominal para BeWay y agregada para la empresa, y no se edita tras enviar. Los textos que lo dicen están en LEGAL_REQUESTS (L-30, L-31).
+- LQ-10 pregunta qué recibe el proveedor al marcar "Me interesa". LQ-07 sigue abierta: el texto de credenciales es provisional (L-33).
+- El resto sigue igual que tras el bloque D.
 
 ## Estado tras el bloque D (2026-10-23)
 

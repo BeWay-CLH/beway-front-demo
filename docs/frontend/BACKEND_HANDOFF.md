@@ -105,10 +105,18 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
 - **Audiencia (DEC-016):** encuestas de empresas que el usuario sigue (BE-025) o en las que está interesado (OI-017).
   CLH publica como una empresa más.
 - Filtros: disponibles / completadas.
+- **Frontend hoy (E-02):** `getSurveys(userId)` devuelve **todas** las encuestas de empresas publicadas y el frontend las reparte: Disponibles
+  (abiertas, próximas, cerradas), Completadas y "No son para ti por ahora". La elegibilidad (`follows`, `interested`, `not-eligible`) se calcula
+  en el servicio con BE-025 y los intereses del perfil. Para listar las no elegibles el backend debe devolverlas también, solo con
+  título, empresa y fechas, o decirlo y el frontend deja de pintar esa sección. `questionCount` se deriva de las secciones: si el listado no
+  trae preguntas, hay que enviarlo.
 
 ### BE-011 · Detalle de encuesta
 - **Necesita:** `SurveyDetailVM`. Si no es elegible, cerrada o próxima: el resumen, sin preguntas.
 - **Privacidad:** texto de quién verá las respuestas y consentimiento con versión (OI-008).
+- **Frontend hoy (E-03):** el servicio devuelve `SurveyPageVM`, con `kind: 'info'` y un `reason` (`not-eligible`, `upcoming`, `closed`,
+  `completed`) cuando no se puede responder y **sin** preguntas. Una encuesta ya completada no devuelve las respuestas de la persona: es
+  una pregunta abierta (OI-022).
 
 ### BE-012 · Respuestas de encuesta
 - **Guardar borrador** (reanudar en otro dispositivo) y **enviar** (definitivo).
@@ -116,17 +124,27 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
 - **Idempotencia:** un envío por usuario y encuesta; reintentos no duplican.
 - **Errores:** encuesta cerrada durante la respuesta · ya enviada · validación por pregunta.
 - **Auditoría:** envío con versión de la encuesta y del consentimiento.
+- **Frontend hoy (E-03):** el borrador vive solo en `sessionStorage`; el servidor puede aportar `savedDraft` y el del navegador manda. Enviar
+  llama a `submitSurveyAnswers(surveyId, answers)` y recibe `{ simulated: true }`. Respuestas: `Record<questionId, string | string[] | number>`
+  (número en `scale`). Reglas que el frontend ya aplica y el servidor debe repetir: obligatorias, `max` en `multiple`, `maxLength` en texto,
+  consentimiento aceptado (`consent.required`) y que la encuesta esté abierta para esa persona.
 
 ### BE-013 · Catálogo de cursos
 - **Necesita:** `CourseSummaryVM[]`. Filtros: formato, estado, tema.
+- **Frontend hoy (E-05):** `getCourses({ format, status })`, ordenado por estado (abiertos, próximos, cerrados) y fecha de inicio. El filtro por
+  tema (`topics`) no tiene pantalla todavía.
 
 ### BE-014 · Detalle de curso
 - **Necesita:** `CourseDetailVM`. Inscripción: "me interesa" interno o URL externa **real**.
 - **Errores:** curso cerrado, sin plazas.
+- **Frontend hoy (E-06):** todos los cursos son `enrollment: { kind: 'interest-only' }`. "Me interesa" llama a `setInterest(courseId, interested)` y
+  recibe `{ simulated: true }`; si más adelante hay URL real se usa `kind: 'external'` (LQ-10: qué recibe el proveedor).
 
 ### BE-015 · Credenciales
 - **Necesita:** `CredentialVM[]` del usuario; solo las emitidas por un emisor identificado.
 - La UI no emite credenciales. Modelo de verificación pendiente (OI-009).
+- **Frontend hoy (E-07):** `getCredentials(userId)`, más recientes primero; `courseSlug` solo si viene de un curso de BeWay (la pantalla lo
+  enlaza). Sin sello de verificación (DEC-021). Solo la propia persona la ve; si el perfil público las muestra será otra decisión (LQ-04, LQ-07).
 
 ### BE-016 · Fichas en backoffice
 - Listar con estado editorial, buscar y filtrar · leer por `id` · guardar borrador por módulo · enviar a revisión · archivar.
@@ -162,7 +180,8 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
   en el editor a la vez.
 - **Pendiente:** cómo saber que alguien es nuevo y debe pasar por el onboarding (OI-021). Hoy se deduce de que no tiene ningún apartado.
 - **Permisos:** solo la propia persona. No devuelve datos de otras personas.
-- **E-09:** añadirá encuestas pendientes (BE-010) y cursos abiertos (BE-013).
+- **E-09 (hecho):** `TalentDashboardVM` incluye `surveys` (abiertas, para esta persona y sin completar, las que cierran antes primero) y
+  `courses` (abiertos), compuestos con BE-010 y BE-013. Si el backend ofrece el agregado, solo debe respetar esas reglas.
 
 ### BE-022 · Contacto
 - Nombre, correo, motivo, mensaje (≤ 2.000), consentimiento. Anti-spam en servidor.

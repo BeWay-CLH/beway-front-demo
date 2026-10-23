@@ -8,6 +8,7 @@ import type {
   CompanyFilter,
   CompanyPageVM,
   CompanyRecord,
+  CompanyRefVM,
 } from '@/lib/models/company';
 
 /* Única puerta a los datos de empresa. Hoy lee fixtures; con la API cambia el cuerpo, no la firma (ARCHITECTURE §4).
@@ -117,6 +118,13 @@ export async function getCompaniesByInterests(interests: string[]): Promise<Comp
   return published()
     .filter((r) => wanted.has(normalize(r.category)))
     .map(toCard);
+}
+
+/* Datos mínimos de las empresas publicadas por id, para citarlas desde encuestas y otros dominios. */
+export async function getCompanyRefs(): Promise<Record<string, CompanyRefVM>> {
+  return Object.fromEntries(
+    published().map(({ id, slug, name, category, logo }) => [id, { id, slug, name, category, logo }]),
+  );
 }
 
 /* Todas las publicadas en versión corta, para que el navegador recompose "Empresas que sigues" con los cambios

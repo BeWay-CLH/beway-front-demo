@@ -17,6 +17,7 @@ Lista de todo lo que el producto necesita de legal. Mientras no llegue, cada tex
 | LQ-07 | Credenciales: ¿qué responsabilidad asume BeWay sobre una credencial emitida por terceros? | Texto junto a cada credencial | E |
 | LQ-08 | ¿Cookies o analítica en el lanzamiento? ¿Hace falta banner de consentimiento? | Define si existe el banner | B |
 | LQ-09 | Sugerir empresas según los intereses que la persona eligió en su perfil: ¿es personalización que necesita aviso o consentimiento aparte? ¿Basta con decirlo en la propia lista ("Por los temas de tu perfil: …") y en la política de privacidad? | "Empresas de tus intereses" del inicio y la audiencia de encuestas (OI-017) | D, E |
+| LQ-10 | "Me interesa" en un curso: ¿qué datos recibe el proveedor (nombre, correo, perfil)? ¿Hace falta consentimiento aparte o un aviso junto al botón? ¿Y si luego se enlaza una inscripción externa? | Texto junto al botón de `/talent/courses/[slug]` (OI-023) | E |
 
 ## 2. Documentos legales
 
@@ -53,6 +54,18 @@ Lista de todo lo que el producto necesita de legal. Mientras no llegue, cada tex
 | L-21 | Pie de `/companies/[slug]` | "Si sigues a una empresa, verás sus encuestas en tu espacio" |
 
 Ambos llevan debajo "Textos provisionales, pendientes de revisión legal". No afirman qué ve la empresa de quien la sigue (LQ-03, LQ-05).
+
+## 5. Textos provisionales ya en la demo (bloque E)
+
+| ID | Dónde | Texto actual |
+|---|---|---|
+| L-30 | Introducción de cada encuesta | Casilla: "Entiendo quién verá mis respuestas y acepto contestar esta encuesta." Antes, "Quién verá tus respuestas": "BeWay y la empresa que la publica verán tus respuestas junto a tu nombre. Las demás empresas solo verán resultados agregados." (el supuesto de OI-016) |
+| L-31 | Revisión y resumen de una encuesta enviada | "Al enviar no podrás cambiarlas." · "No se puede editar después de enviarla." (OI-016) |
+| L-32 | Cursos con enlace de terceros | No aplica todavía: ningún curso trae URL externa. Se necesitará si se añade una (LQ-10) |
+| L-33 | `/talent/credentials` y detalle de curso | "Cada credencial dice quién la emitió y cuándo. BeWay no las emite desde esta pantalla." · "Otorga una credencial que emite {proveedor}. Cuando la tengas, aparecerá en Credenciales." (LQ-07) |
+
+Todos llevan "Textos provisionales, pendientes de revisión legal" en esta lista, no en pantalla. Ninguno promete que se haya guardado nada: las
+pantallas dicen "Simulación" cuando una acción no tiene backend.
 
 ## Formato de entrega que nos sirve
 

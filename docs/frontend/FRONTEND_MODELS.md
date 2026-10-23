@@ -174,6 +174,21 @@ módulos, Kairos Edu sin Cultura. Formatos: `formatDate` ("12 feb 2026") y `form
 
 ## Encuestas
 
+Hecho en E-01. Los tipos viven en `lib/models/survey.ts`; el servicio en `lib/services/surveys.ts` (`getSurveys`, `getSurveyPage`,
+`submitSurvey` simulado); la acción de servidor en `lib/actions/surveys.ts` (`submitSurveyAnswers`); el fixture en `data/fixtures/surveys.ts`.
+Cambios respecto a la propuesta de abajo:
+
+- `Eligibility` pierde `unknown`: `'follows' | 'interested' | 'not-eligible'`. Se calcula en el servicio con a quién sigue la persona y sus
+  intereses (OI-017); no está en el fixture.
+- `SurveyPublisherVM` lleva también `category` (para "Te interesa Movilidad") y `slug`; `questionCount` lo calcula el servicio con las secciones.
+- La lectura de detalle es `SurveyPageVM = { kind: 'answer'; survey: SurveyDetailVM } | { kind: 'info'; survey: SurveyInfoVM; reason }`, con
+  `reason: 'not-eligible' | 'upcoming' | 'closed' | 'completed'`. `SurveyInfoVM` es el resumen **sin preguntas** (BE-011). `SurveyDetailVM`
+  añade `savedDraft?` (borrador del servidor, BE-012).
+- `scale` ya no lleva `min` (siempre 1) y `Option` pasa a `OptionVM`.
+- `SurveyRecord` (fixture) = detalle sin lo que depende de la persona, más `publisherId`, `participationByUser` y `savedDraftByUser?`.
+- Estado de sesión **solo en el navegador** (`components/survey/survey-store.ts`): `beway-demo-survey-draft:<userId>:<surveyId>` (borrador y
+  consentimiento) y `beway-demo-surveys-completed:<userId>` (ids enviados en la sesión). Nunca en el fixture.
+
 ```ts
 type SurveyStatus = 'open' | 'upcoming' | 'closed';
 type SurveyParticipation = 'not-started' | 'in-progress' | 'completed';
@@ -210,6 +225,12 @@ type SurveyAnswersVM = Record<string, string | string[] | number>;  // por id de
 ```
 
 ## Cursos y credenciales
+
+Hecho en E-04. Tipos en `lib/models/course.ts` (cursos y credenciales, solo tipos); servicios en `lib/services/courses.ts` (`getCourses`,
+`getCourseBySlug`, `setCourseInterest` simulado) y `lib/services/credentials.ts` (`getCredentials`); acción `setInterest` en
+`lib/actions/courses.ts`; fixtures `data/fixtures/courses.ts` (7 cursos) y `credentials.ts`. Cambios respecto a la propuesta de abajo:
+`CourseFilter = { format?, status? }`; `CredentialVM` lleva `courseTitle?` (lo resuelve el servicio); `CredentialRecord` (fixture) añade
+`userId`. El interés en un curso vive solo en `sessionStorage` (`beway-demo-course-interest:<userId>`).
 
 ```ts
 type CourseFormat = 'online' | 'hybrid' | 'in-person';
@@ -276,8 +297,13 @@ type TalentDashboardVM = {
   interests: string[];
   interestCompanies: SuggestedCompanyVM[];   // publicadas y de una categoría que le interesa; sin puntuación
   followedIds: string[];           // los que ya sigue según el servidor
-  // E-09: surveys: SurveySummaryVM[]; courses: CourseSummaryVM[];
+  surveys: DashboardSurveyVM[];    // E-09: abiertas, para esta persona y sin completar; cierran antes primero
+  courses: DashboardCourseVM[];    // E-09: abiertos; empiezan antes primero
 };
+
+/* Lo que pinta una fila del inicio: un Pick de SurveySummaryVM y de CourseSummaryVM. */
+type DashboardSurveyVM = Pick<SurveySummaryVM, 'id' | 'slug' | 'title' | 'publisher' | 'estimatedMinutes' | 'closesAt' | 'participation'>;
+type DashboardCourseVM = Pick<CourseSummaryVM, 'id' | 'slug' | 'title' | 'provider' | 'format' | 'durationLabel' | 'startsAt' | 'grantsCredential'>;
 ```
 
 `getCompaniesByInterests(interests)` (en `lib/services/companies.ts`) devuelve las fichas publicadas cuya categoría coincide con algún
@@ -295,10 +321,10 @@ Un solo universo coherente. Los IDs y slugs no cambian entre tickets.
 | Usuarios / perfiles | `data/fixtures/profiles.ts` (B-03) | `lucia-martin` público y completo · `marcos-gil` privado · `ana-ruiz` público a medias |
 | Empresas | `data/fixtures/companies.ts` (C-01, hecho) | Las 9 de `mock.ts` con `id: 'cmp-<slug>'` · `cmp-clh` (CLH como empresa) · 1 en `draft` (para el 404) · 1 con `lastReviewedAt` antiguo (desactualizada) |
 | Seguimientos | `data/fixtures/follows.ts` (C-05, hecho) | `lucia-martin` sigue a 3 empresas, incluida `cmp-clh`; `marcos-gil` a ninguna |
-| Encuestas | `data/fixtures/surveys.ts` (E-01) | 1 abierta sin empezar · 1 en curso · 1 completada · 1 próxima · 1 cerrada · 1 no elegible; los 5 tipos de pregunta; al menos 1 publicada por `cmp-clh` |
+| Encuestas | `data/fixtures/surveys.ts` (E-01, hecho) | 6: `primer-paso-profesional` (CLH, abierta, los 5 tipos de pregunta) · `herramientas-de-datos` (Datalia, en curso con borrador del servidor para Lucía) · `movilidad-en-tu-dia-a-dia` (Metrovía, cerrada y completada por Lucía) · `ia-y-empleo-joven` (Orbital, próxima) · `transporte-compartido` (Vialink, cerrada) · `autoconsumo-en-viviendas` (Nexora, abierta: no elegible para Lucía, elegible para Marcos por su interés en Energía) |
 | Cifras públicas | `data/fixtures/stats.ts` (A-08) | Las 4 de la landing, marcadas como ejemplo |
-| Cursos | `data/fixtures/courses.ts` (E-04) | 6 cursos: los 3 formatos, abiertos/próximos/cerrados, con y sin credencial |
-| Credenciales | `data/fixtures/credentials.ts` (E-04) | 2 para `lucia-martin`, 0 para `ana-ruiz` (estado vacío) |
+| Cursos | `data/fixtures/courses.ts` (E-04, hecho) | 7 cursos: los 3 formatos, 3 abiertos / 2 próximos / 2 cerrados, con y sin credencial; todos `interest-only` |
+| Credenciales | `data/fixtures/credentials.ts` (E-04, hecho) | 2 para `usr-lucia-martin` (una de un curso de BeWay, otra externa), ninguna para `usr-marcos-gil` (estado vacío) |
 | Cola editorial | `data/fixtures/reviews.ts` (F-04) | 3 envíos de fichas existentes |
 
 Reglas:

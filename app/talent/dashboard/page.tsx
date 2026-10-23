@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { Icon } from '@ds';
 import { NavButton } from '@/components/NavButton';
 import { CompletionRail } from '@/components/dashboard/CompletionRail';
+import { OpenCourses } from '@/components/dashboard/OpenCourses';
+import { PendingSurveys } from '@/components/dashboard/PendingSurveys';
 import { SuggestedCompanies } from '@/components/dashboard/SuggestedCompanies';
 import { formatList } from '@/lib/format';
 import type { TalentDashboardVM } from '@/lib/models/dashboard';
@@ -114,8 +116,32 @@ export default async function TalentDashboard() {
 
       <div className="grid gap-4 md:grid-cols-12">
         <section
+          aria-labelledby="surveys-title"
+          className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6 md:col-span-6"
+        >
+          <div className="flex flex-col gap-1">
+            <h2 id="surveys-title" className="text-h3 font-heading text-fg-heading">Encuestas por responder</h2>
+            <p className="text-sm text-fg-muted">De las empresas que sigues o que te interesan.</p>
+          </div>
+          <PendingSurveys userId={session.userId} surveys={dashboard.surveys} />
+        </section>
+
+        <section
+          aria-labelledby="courses-title"
+          className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6 md:col-span-6"
+        >
+          <div className="flex flex-col gap-1">
+            <h2 id="courses-title" className="text-h3 font-heading text-fg-heading">Cursos abiertos</h2>
+            <p className="text-sm text-fg-muted">Con plazo para mostrar tu interés.</p>
+          </div>
+          <OpenCourses courses={dashboard.courses} />
+        </section>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-12">
+        <section
           aria-labelledby="companies-title"
-          className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6 md:col-span-7"
+          className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6 md:col-span-6"
         >
           <div className="flex flex-col gap-1">
             <h2 id="companies-title" className="text-h3 font-heading text-fg-heading">Empresas de tus intereses</h2>
@@ -142,7 +168,7 @@ export default async function TalentDashboard() {
 
         <section
           aria-labelledby="quick-title"
-          className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6 md:col-span-5"
+          className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6 md:col-span-6"
         >
           <h2 id="quick-title" className="text-h3 font-heading text-fg-heading">Accesos rápidos</h2>
           <ul className="flex flex-col">

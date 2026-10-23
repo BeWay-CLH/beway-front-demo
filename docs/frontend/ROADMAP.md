@@ -140,17 +140,22 @@ Criterios: cada módulo tiene estado vacío propio; sin puntuaciones ni "score" 
 
 ## E · Encuestas y cursos — prioridad de negocio alta
 
-| ID | Ticket | Depende | BE |
-|---|---|---|---|
-| E-01 | Modelos y fixtures de encuestas (abierta, próxima, cerrada, completada, no elegible), publicadas por empresas y por CLH (`cmp-clh`) | A | BE-010, BE-011 |
-| E-02 | `/talent/surveys`: pestañas Disponibles / Completadas, vacíos, cerradas | E-01 | BE-010 |
-| E-03 | `/talent/surveys/[slug]`: intro + consentimiento, secciones con progreso, tipos de pregunta, borrador local, revisión, envío simulado, estados cerrada / completada / no elegible / 404 | E-01 | BE-011, BE-012 |
-| E-04 | Modelos y fixtures de cursos y credenciales | A | BE-013, BE-015 |
-| E-05 | `/talent/courses`: filtros por formato y estado, vacío | E-04 | BE-013 |
-| E-06 | `/talent/courses/[slug]`: temario, requisitos, si otorga credencial, interés de inscripción simulado | E-04 | BE-014 |
-| E-07 | `/talent/credentials`: logros obtenidos, vacío con enlace a cursos | E-04 | BE-015 |
-| E-08 | Decidir `/programas` (DEC-009): redirigir o retirar | E-05 | — |
-| E-09 | Módulos de encuestas y cursos en el dashboard | D-01, E-02, E-05 | BE-021 |
+**Estado (2026-10-23): hecho en modo demo.** E-01…E-09 construidos y verificados en Chrome (1280, 768 y 390 px, claro y oscuro) y en
+el build de producción; `lint` e `inspect` del skill `taste-skill` sin fallos. Todas las escrituras son simulaciones. Pendiente de
+backend: BE-010…BE-015 (y BE-021). Pendiente de legal: L-30…L-33 (textos provisionales), LQ-05, LQ-07, LQ-10. Pendiente de producto:
+OI-016, OI-017, OI-022. Decisiones: DEC-034, DEC-035, DEC-036.
+
+| ID | Ticket | Depende | BE | Estado |
+|---|---|---|---|---|
+| E-01 | Modelos y fixtures de encuestas (abierta, próxima, cerrada, completada, no elegible), publicadas por empresas y por CLH (`cmp-clh`) | A | BE-010, BE-011 | Hecho |
+| E-02 | `/talent/surveys`: pestañas Disponibles / Completadas, vacíos, cerradas | E-01 | BE-010 | Hecho |
+| E-03 | `/talent/surveys/[slug]`: intro + consentimiento, secciones con progreso, tipos de pregunta, borrador local, revisión, envío simulado, estados cerrada / completada / no elegible / 404 | E-01 | BE-011, BE-012 | Hecho |
+| E-04 | Modelos y fixtures de cursos y credenciales | A | BE-013, BE-015 | Hecho |
+| E-05 | `/talent/courses`: filtros por formato y estado, vacío | E-04 | BE-013 | Hecho |
+| E-06 | `/talent/courses/[slug]`: temario, requisitos, si otorga credencial, interés de inscripción simulado | E-04 | BE-014 | Hecho |
+| E-07 | `/talent/credentials`: logros obtenidos, vacío con enlace a cursos | E-04 | BE-015 | Hecho |
+| E-08 | Decidir `/programas` (DEC-009): redirigir o retirar | E-05 | — | Hecho: redirige a `/companies` (DEC-035) |
+| E-09 | Módulos de encuestas y cursos en el dashboard | D-01, E-02, E-05 | BE-021 | Hecho |
 
 Criterios:
 - **E-03:** navegable solo con teclado; progreso anunciado (`aria-live`); preguntas obligatorias validadas antes de
@@ -158,7 +163,11 @@ Criterios:
   guardado tus respuestas"; al volver, la encuesta aparece como completada solo en esa sesión.
 - **E-06:** sin URLs externas inventadas; si el curso no tiene enlace real, el CTA queda en "Me interesa" simulado.
 - **E-07:** una credencial nunca se "emite" desde la UI; solo se listan las del fixture.
-- Encuestas y cursos activan su ítem en `talentNav` al cerrar E-02 y E-05.
+- Encuestas y cursos activan su ítem en `talentNav` al cerrar E-02 y E-05 (hecho; también Credenciales con E-07).
+- Desviaciones respecto al plan: se usan `RadioGroup` y `Checkbox` del DS (en v1.1 ya son inputs nativos accesibles, X-04 resuelto
+  para E-03); `Eligibility` pierde `unknown`; el catálogo tiene 7 cursos y no 6; la cabecera de Talent, con seis enlaces, pasa al
+  menú plegable por debajo de `lg` (DEC-036); `/talent/certifications` no se crea; las encuestas no elegibles se listan aparte
+  ("No son para ti por ahora") y no mezcladas con las disponibles.
 
 ---
 
@@ -202,7 +211,7 @@ Solo documentación hasta que se prioricen. No crear archivos.
 | Componente | Problema | Propuesta |
 |---|---|---|
 | `Button` | La variante `outline` define `border` (shorthand) y en hover añade `borderColor`. Al salir del hover React quita `borderColor` y avisa en desarrollo: *"Removing a style property during rerender (borderColor) when a conflicting property is set (border)"*. Además el borde puede quedarse con el color del texto | En `VARIANTS` usar `borderWidth`, `borderStyle` y `borderColor` por separado (también en `onInverse`), o que `HOVER.outline` use `border: '1px solid var(--brand-gray-400)'` |
-| `Radio`, `RadioGroup` | No usan `input` nativo ni `role="radio"`: no se pueden enfocar ni usar con teclado | `input type="radio"` visualmente oculto + `label`; `RadioGroup` con `role="radiogroup"` y flechas. Bloquea la accesibilidad de E-03 |
+| `Radio`, `RadioGroup` | **Resuelto en v1.1:** input nativo y `role="radiogroup"` con flechas. E-03 los usa tal cual | — |
 | `NavBar` | No es responsive (estilos inline, altura fija) y no tiene estado activo para enlaces | Menú móvil, ocultar búsqueda en móvil, enlaces con `aria-current` |
 | `StatStrip` | Desborda en móvil con 4 elementos | Rejilla 2×2 o apilado por debajo de `sm` |
 | — | No hay barra de navegación de demo/entorno | Valorar si `DemoBar` pasa al DS o se queda local |

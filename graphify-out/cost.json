@@ -12,6 +12,12 @@
       "output_tokens": 0,
       "files": 142,
       "note": "total reportado por los subagentes; no separa entrada y salida"
+    },
+    {
+      "date": "2026-10-23T14:19:23.149027+00:00",
+      "input_tokens": 0,
+      "output_tokens": 0,
+      "files": 114
     }
   ],
   "total_input_tokens": 931479,

@@ -97,7 +97,14 @@ components/
 │                             ShellNav/NavList, MobileMenu
 ├─ company/                   CompanyProfile, CompanyTabs, CompanyModules, FollowButton, FollowedCompanies, follow-store
 ├─ profile/ · forms/          perfil público y controles de formulario (bloque B)
-└─ <dominio>/                 (al crecer) survey/, course/, admin/
+├─ dashboard/                 CompletionRail, SuggestedCompanies, PendingSurveys, OpenCourses (inicio de Talent)
+├─ survey/                    SurveyList, SurveyRow, SurveyRunner, QuestionField, SurveyFacts, SurveyInfo, survey-store, survey-labels
+│                             (el editor de F-05 vivirá aquí también, DEC-016)
+├─ course/                    CourseFilters, CourseRow, CourseInterest, course-labels
+├─ tabs/                      KeyboardTabs (Tabs del DS con teclado y panel nombrado)
+├─ demo-store.ts              sessionStorage simulado y con try/catch (borradores, "completada", "me interesa")
+├─ StatusBadge.tsx            Badge del DS con el texto en frase (DEC-036)
+└─ <dominio>/                 (al crecer) admin/
 
 lib/
 ├─ routes.ts                  navegación por espacio con estado live/planned; homeFor()
@@ -113,7 +120,7 @@ data/
 ```
 
 `lib/models` y `lib/services` existen desde B y C (`profile`, `session`, `company`; `profiles`, `companies`) y D añade `dashboard`
-en ambos: un servicio puede componer otros servicios (`getTalentDashboard` usa `profiles` y `companies`) y sigue siendo la única
+en ambos (E añade `surveys`, `courses` y `credentials` en servicios, sus modelos y las acciones `surveys` y `courses`): un servicio puede componer otros servicios (`getTalentDashboard` usa `profiles` y `companies`) y sigue siendo la única
 puerta de esa pantalla. `components/dashboard/` guarda lo propio del inicio de Talent. `lib/adapters` se crea con la API.
 
 ## 4. Flujo de datos

@@ -39,6 +39,13 @@ La hoja completa se guardó en `.taste-skill/direction.json` (carpeta de trabajo
   Un segmento por apartado: relleno `fg-heading` si está listo, solo borde `line-control` si falta. Sin degradado, sin animación y
   sin números extra: el porcentaje vive en el título. Es la única pieza "memorable" de la pantalla; el resto es lista con línea fina.
 
+- **Elemento propio de encuestas y cursos (bloque E):** **"por qué la ves"** en cada fila ("Sigues a Datalia", "Te interesa Movilidad"). Dice de dónde
+  viene cada encuesta y es lo que hace de BeWay un espacio de empresas que sigues. Las listas son una tarjeta con filas de dos líneas (patrón *inbox*
+  del skill), con un solo sello de estado por fila (`StatusBadge`, texto en frase) y un solo botón `primary`: la encuesta que antes cierra.
+- **Control de calidad con el skill (bloque E):** `lint.mjs --app` y `inspect.mjs --app` a 1440, 768 y 390 px. Las páginas privadas se miden desde un
+  HTML guardado con la cookie de demo, **sin los `<script>`** y servido por `next start` (con el servidor de desarrollo sale sin CSS, y con scripts
+  el inspector hidrata sin sesión y cae en el límite de error). Resultado: 0 fallos en las seis pantallas.
+
 ## Pregunta y hallazgo de cada pantalla
 
 Cada pantalla responde una pregunta con su bloque más grande y dice un hallazgo en una línea debajo del título.
@@ -52,6 +59,11 @@ Cada pantalla responde una pregunta con su bloque más grande y dice un hallazgo
 | Perfil `/u/[username]` | ¿Quién es esta persona y qué ha hecho? | Titular del perfil |
 | Acceso | ¿Cómo entro? | "En la demo, cualquier correo y contraseña entran como Lucía Martín." |
 | Registro | ¿Qué pasa después de crear la cuenta? | "Tu perfil empieza en privado: solo lo ves tú." |
+| Encuestas | ¿Qué encuestas me esperan y cuál cierra antes? | "La que antes cierra es la de Datalia, el 30 oct 2026." |
+| Encuesta | ¿Qué me preguntan y quién verá mis respuestas? | El resumen de la encuesta |
+| Cursos | ¿Qué puedo cursar ahora? | "El primero en empezar es SQL para análisis de datos, el 3 nov 2026." |
+| Curso | ¿Me interesa? | El resumen del curso |
+| Credenciales | ¿Qué logros tengo y quién los emitió? | "La última es Visualización de datos, de Orbital Labs, el 8 may 2026." |
 
 ## Composición
 
@@ -87,7 +99,8 @@ Cada pantalla responde una pregunta con su bloque más grande y dice un hallazgo
 ## Qué comprobar antes de dar algo por hecho
 
 1. `npm run typecheck` y `npm run build`.
-2. `node <skill>/scripts/lint.mjs --app app components lib` sin fallos.
+2. `node <skill>/scripts/lint.mjs --app app components lib` sin fallos. `<skill>` es `~/.claude/plugins/marketplaces/taste-skill/skills/taste-skill`
+   (está en la carpeta del marketplace aunque no figure como plugin instalado). Sus scripts no instalan nada y necesitan Node 22 y Chrome.
 3. `node <skill>/scripts/inspect.mjs --app <url>` a 1440, 768 y 390 px. Las páginas privadas se inspeccionan desde un HTML
    guardado con la cookie de demo (`curl -b bw_demo=lucia`), porque el inspector no admite cookies.
 4. Mirar cada captura en claro y en oscuro.

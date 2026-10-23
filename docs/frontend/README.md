@@ -23,8 +23,8 @@ y [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md) (textos y preguntas para legal).
 | B · Auth, onboarding, perfil, settings | **Hecho en modo demo** (B-01…B-09; ver CHANGELOG) |
 | C · Catálogo y ficha de empresa | **Hecho en modo demo** (C-01…C-05; ver CHANGELOG) |
 | D · Dashboard Talent | **Hecho en modo demo** (D-01, 2026-10-23; ver CHANGELOG). Los módulos de encuestas y cursos llegan con E-09 |
-| E · Encuestas y cursos (**prioridad alta**) | **Siguiente** (E-01 y E-04, modelos y fixtures; DEC-014) |
-| F · Admin mínimo | Shell hecho; pantallas planificadas |
+| E · Encuestas y cursos (**prioridad alta**) | **Hecho en modo demo** (E-01…E-09, 2026-10-23; ver CHANGELOG). Encuestas, cursos, credenciales y sus módulos en el inicio |
+| F · Admin mínimo | **Siguiente** (F-02, `/admin/companies`; F-05 y F-06 ya tienen modelos). Shell hecho; pantallas planificadas |
 | G · Oportunidades, retos, Company, comunidad | Solo en documentación |
 
 ## Cómo trabajar un ticket
@@ -101,7 +101,16 @@ Inicio Talent (`/talent/dashboard`) cambia según la cuenta: Lucía está al 80 
 intereses" no muestra las que ya sigues, y se actualiza al seguir una desde su ficha. Un perfil vacío (0 %) y uno sin
 intereses se prueban vaciando esos campos en `data/fixtures/profiles.ts`.
 
-No hay lint ni tests todavía (ver X-01 y X-02 en ROADMAP).
+Encuestas, cursos y credenciales (bloque E) también dependen de la cuenta. **Lucía** sigue a Metrovía, Datalia y CLH: tiene una encuesta en curso
+(Datalia, con respuestas guardadas), una abierta sin empezar (CLH, con las cinco clases de pregunta), una próxima, una cerrada, una completada y una
+que no es para ella (Nexora); además dos credenciales. **Marcos** (interés en Energía, sin seguidas) solo puede responder la de Nexora, ve las
+demás como "No son para ti por ahora" y no tiene credenciales (estado vacío). Para probar el envío: responde `primer-paso-profesional`; al enviar
+(simulado) pasa a Completadas y desaparece de "Encuestas por responder" en el inicio mientras no cierres la pestaña. "Me interesa" en un curso
+también solo dura la sesión. Cursos: prueba `/talent/courses?format=online&status=open` y un curso cerrado (`logistica-y-ultima-milla`). `/programas`
+redirige a `/companies`.
+
+No hay lint de proyecto ni tests todavía (ver X-01 y X-02 en ROADMAP). Para pantallas de trabajo se usa el `lint` y el `inspect` del skill de estilo
+(ver [DESIGN.md](DESIGN.md)).
 
 ## Versión documental (graphify)
 
