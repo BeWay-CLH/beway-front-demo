@@ -87,7 +87,7 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
       </header>
 
       <div className="mt-8 flex flex-col">
-        <FormSection title="Datos básicos" description="Así te encuentran cuando ven tu perfil.">
+        <FormSection id="datos-basicos" title="Datos básicos" description="Así te encuentran cuando ven tu perfil.">
           <Field label="Nombre" htmlFor="pe-name" required error={nameError}>
             <Input
               id="pe-name"
@@ -105,7 +105,7 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
           </Field>
         </FormSection>
 
-        <FormSection title="Sobre ti" description="Unas frases: qué estudias o haces y qué buscas.">
+        <FormSection id="sobre-ti" title="Sobre ti" description="Unas frases: qué estudias o haces y qué buscas.">
           <Field label="Presentación" htmlFor="pe-about" hint={`${(form.about ?? '').length} / ${ABOUT_MAX}`}>
             <Textarea
               id="pe-about"
@@ -117,7 +117,7 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
           </Field>
         </FormSection>
 
-        <FormSection title="Experiencia" description="Empieza por tu puesto actual o por el último.">
+        <FormSection id="experiencia" title="Experiencia" description="Empieza por tu puesto actual o por el último.">
           {form.experience.map((e) => (
             <div key={e.id} className="grid gap-4 border-t border-line-subtle pt-5 first:border-t-0 first:pt-0 md:grid-cols-2">
               <Field label="Cargo" htmlFor={`exp-role-${e.id}`}>
@@ -166,7 +166,7 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
           </Button>
         </FormSection>
 
-        <FormSection title="Formación" description="Tu grado, máster o curso más relevante.">
+        <FormSection id="formacion" title="Formación" description="Tu grado, máster o curso más relevante.">
           {form.education.map((e) => (
             <div key={e.id} className="grid gap-4 border-t border-line-subtle pt-5 first:border-t-0 first:pt-0 md:grid-cols-2">
               <Field label="Título" htmlFor={`edu-title-${e.id}`}>
@@ -199,7 +199,7 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
           </Button>
         </FormSection>
 
-        <FormSection title="Intereses" description="Los temas que te interesan. Se ven en tu perfil.">
+        <FormSection id="intereses" title="Intereses" description="Los temas que te interesan. Se ven en tu perfil.">
           <div role="group" aria-label="Intereses" className="flex flex-wrap gap-2">
             {interestOptions.map((name) => (
               <Tag key={name} selected={form.interests.includes(name)} onClick={() => toggleInterest(name)}>

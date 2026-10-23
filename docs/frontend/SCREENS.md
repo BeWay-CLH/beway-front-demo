@@ -33,12 +33,8 @@ tener que redecidir. Plantilla al final. Modelos en [FRONTEND_MODELS.md](FRONTEN
 - **Pendiente:** validación, pasos, contraseña, verificación (B-01). "Cancelar" no hace nada.
 - **BE:** BE-002.
 
-### Inicio Talent (shell) · `/talent/dashboard`
-- **Archivo:** `app/talent/dashboard/page.tsx` · **Actor:** Talent · **Bloque:** A → D-01.
-- **Componentes:** `SectionLabel`, `Alert info`, `Card`, `Icon`, `NavButton` (único primary).
-- **Datos:** perfil y ajustes (`lib/services/profiles.ts`) y tres empresas de `getCompanies({ pageSize: 3 })`, cada una enlaza a su ficha.
-- **Estados:** sin sesión → `PageState signed-out`; sin rol → `forbidden` (desde el layout).
-- **A11y/mobile:** una columna en móvil, dos desde `md`.
+### Inicio Talent · `/talent/dashboard`
+Ficha completa en [D-01](#d-01--dashboard-talent--talentdashboard) (más abajo).
 
 ### Inicio Admin (shell) · `/admin/dashboard`
 - **Archivo:** `app/admin/dashboard/page.tsx` · **Actor:** Admin CLH · **Bloque:** A → F-01.
@@ -184,8 +180,35 @@ Para el tratamiento visual de estas pantallas (estilo, hoja, criterios) ver [DES
 - **Meta:** `generateMetadata` con nombre y descripción; canónica en `/companies/[slug]`.
 
 ### D-01 · Dashboard Talent · `/talent/dashboard`
-- **Módulos:** Completa tu perfil (porcentaje + qué falta; primary) · Empresas según tus intereses · (E-09) Encuestas pendientes · (E-09) Cursos abiertos.
-- **Estados:** perfil completo (oculta el módulo) · sin intereses (vacío con enlace a editar) · nuevos usuarios → onboarding.
+- **Archivo:** `app/talent/dashboard/page.tsx` · **Actor:** Talent · **Bloque/ticket:** A → D-01 (hecho el 2026-10-23).
+- **Pregunta y hallazgo:** "¿Qué me falta para que mi perfil sirva?" · "Lo siguiente: añade tu formación." (ver [DESIGN.md](DESIGN.md)).
+- **Módulos (plan):** Completa tu perfil (porcentaje + qué falta; primary) · Empresas según tus intereses · (E-09) Encuestas pendientes · (E-09) Cursos abiertos.
+- **Módulos (hoy):** cabecera con saludo, hallazgo y el único `primary` · "Qué falta en tu perfil" (barra de cinco apartados y una fila
+  por apartado pendiente) · "Empresas de tus intereses" · "Accesos rápidos" (Editar mi perfil, Ver mi perfil, Explorar empresas, Ajustes).
+  Encuestas y cursos no se pintan hasta E-09; los accesos a rutas `planned` no existen.
+- **Componentes:** `NavButton` (único `primary`), `Icon`, propios `CompletionRail`, `SuggestedCompanies` y `CompanyRow`
+  (`components/dashboard/`, `components/company/`). Tarjetas con borde, sin sombra (DESIGN.md).
+- **Datos:** `TalentDashboardVM` de `getTalentDashboard(userId)` (`lib/services/dashboard.ts`), compuesto con `getProfileForm`,
+  `getAccountSettings`, `getFollowedCompanies` y `getCompaniesByInterests`. Ver [FRONTEND_MODELS.md](FRONTEND_MODELS.md#dashboard-talent).
+- **Estados:**
+  - **Perfil a medias** (Lucía, 80 %): título con el porcentaje, `primary` con el paso siguiente, módulo "Qué falta".
+  - **Perfil completo** (Marcos, 100 %): título "Tu perfil está completo", el módulo "Qué falta" se oculta y no hay `primary`.
+    El hallazgo cambia con la visibilidad (privado: "Ahora solo lo ves tú. Puedes hacerlo visible en Ajustes.").
+  - **Perfil vacío** (0 %, nueva persona): "Vamos a montar tu perfil", `primary` "Empezar mi perfil" → `/talent/onboarding` (OI-021).
+  - **Sin intereses:** "Empresas de tus intereses" muestra el vacío con "Elegir intereses" → `/talent/profile/edit#intereses`.
+  - **Sin fichas de esos temas:** "Todavía no hay fichas publicadas de <temas>." con "Ver todas las empresas".
+  - **Ya sigues a todas:** "Ya sigues a todas las empresas de tus intereses." (también tras seguir en la sesión).
+  - Sin sesión → `/login?next=…` (proxy); sin rol → `forbidden` (layout); sin perfil → 404.
+- **Interacciones:** el `primary` y cada "Completar" enlazan al apartado del editor (`#datos-basicos`, `#sobre-ti`, `#experiencia`,
+  `#formacion`, `#intereses`). Las sugerencias aplican los seguimientos simulados de la sesión (`follow-store`, C-05).
+- **Simulación:** no escribe nada. Seguir se hace en la ficha y sigue siendo simulado (DEC-032).
+- **BE:** BE-021 (agregado), con BE-005, BE-008 y BE-025.
+- **Autorización:** solo la propia persona; no hay datos de terceros. Ningún dato privado sale a otra pantalla.
+- **A11y / mobile:** una columna en móvil, rejilla de 12 desde `md` (7 + 5). Un `h1`, `h2` por módulo. La barra es una `ol` con nombre
+  "Apartados de tu perfil"; cada segmento dice "listo" o "falta" a lectores de pantalla y se distingue por forma (relleno o borde),
+  no solo por color. En móvil los nombres de la barra pasan a texto ("Ya tienes listo: …"). El `%` va con espacio duro para no
+  quedarse solo en una línea. Foco visible heredado de `NavButton` y de los enlaces.
+- **Captura:** verificado en Chrome headless a 1280, 768 y 390 px en claro y oscuro (2026-10-23); sin desbordes ni errores de consola.
 
 ### E-02 · Encuestas · `/talent/surveys`
 - **Pestañas (`Tabs`):** Disponibles · Completadas, con contador.

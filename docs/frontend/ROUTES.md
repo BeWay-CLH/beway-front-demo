@@ -33,7 +33,7 @@ Para presentar la demo, la `DemoBar` enlaza el inicio de cada espacio: `/`, `/ta
 | URL | Pantalla | Producto | Real | Ticket | Acceso |
 |---|---|---|---|---|---|
 | `/talent` | Redirección a dashboard | NOW | Redirección | A-04 | Sesión Talent |
-| `/talent/dashboard` | Inicio Talent | NOW | Hecha (básico) | D-01 | Sesión Talent |
+| `/talent/dashboard` | Inicio Talent | NOW | Hecha (D-01; encuestas y cursos llegan con E-09) | D-01 | Sesión Talent |
 | `/talent/onboarding` | Primer perfil / alta | NOW | Hecha | B-04 | Sesión Talent |
 | `/talent/profile` | Redirección a `/u/[username]` propio | NOW | Redirección | B-06 | Sesión Talent |
 | `/talent/profile/edit` | Editor de perfil y CV | NOW | Hecha | B-05 | Owner |

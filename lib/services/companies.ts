@@ -110,6 +110,15 @@ export async function getFollowedCompanies(userId: string): Promise<CompanyCardV
     .map(toCard);
 }
 
+/* Fichas publicadas cuyas categorías coinciden con los intereses de una persona (BE-021). Los intereses son las
+   categorías del catálogo. Coincide o no: sin puntuación ni orden por afinidad (decisión 11 del brief). */
+export async function getCompaniesByInterests(interests: string[]): Promise<CompanyCardVM[]> {
+  const wanted = new Set(interests.map(normalize));
+  return published()
+    .filter((r) => wanted.has(normalize(r.category)))
+    .map(toCard);
+}
+
 /* Todas las publicadas en versión corta, para que el navegador recompose "Empresas que sigues" con los cambios
    simulados de la sesión (C-05). */
 export async function getCompanyDirectory(): Promise<CompanyCardVM[]> {

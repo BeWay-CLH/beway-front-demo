@@ -1,5 +1,43 @@
 # Changelog
 
+## 2026-10-23 · Bloque D: dashboard Talent (demo)
+
+### Añadido
+- **D-01:** `/talent/dashboard` compuesto. Cabecera con saludo, hallazgo y el único botón `primary`, que nombra el paso siguiente
+  ("Añadir formación") y enlaza al apartado del editor; "Qué falta en tu perfil" con una barra de cinco apartados y una fila por
+  apartado pendiente; "Empresas de tus intereses"; "Accesos rápidos" (Editar mi perfil, Ver mi perfil, Explorar empresas, Ajustes).
+- Estados: perfil a medias, perfil completo (el módulo "Qué falta" se oculta y no hay `primary`), perfil vacío ("Empezar mi perfil" →
+  onboarding), sin intereses, sin fichas de esos temas y "ya sigues a todas".
+- `lib/models/dashboard.ts` y `lib/services/dashboard.ts` (`getTalentDashboard`), `getCompaniesByInterests` en el servicio de empresas
+  y `formatList` en `lib/format.ts`.
+- `components/dashboard/CompletionRail.tsx` y `SuggestedCompanies.tsx`; `components/company/CompanyRow.tsx`, compartido con
+  "Empresas que sigues".
+- Documentación: DEC-033, OI-021, LQ-09, punto 17 de DS_REQUESTS; BE-021 detallado; ficha D-01 completa en SCREENS.
+
+### Cambiado
+- Se retiran de Inicio las cuatro tarjetas de cifras y "Tu cuenta" (no responden a la pregunta de la pantalla). Las empresas dejan de
+  ser las tres primeras del catálogo y pasan a ser las de los intereses de la persona, sin las que ya sigue.
+- Las secciones de `/talent/profile/edit` tienen `id` (`datos-basicos`, `sobre-ti`, `experiencia`, `formacion`, `intereses`) y
+  `scroll-mt-32`, para enlazarlas desde el inicio sin que las tape la cabecera fija.
+- `FollowedCompanies` usa `CompanyRow`; mismo aspecto que antes.
+
+### Verificado
+- `npm run typecheck` y `npm run build` sin errores (22 rutas).
+- Chrome headless sobre `next start` y `next dev`: 1280, 768 y 390 px en claro y oscuro, sin scroll horizontal ni errores de consola.
+- Cuentas: Lucía (80 %) y Marcos (100 %, privado). Perfil vacío, sin intereses y con interés sin fichas publicadas, probados vaciando
+  esos campos de Lucía en el fixture (restaurado después).
+- Flujos: el botón principal abre el editor en `#formacion`; seguir Orbital en su ficha la quita de las sugerencias al volver; al seguir
+  también Vialink aparece "Ya sigues a todas las empresas de tus intereses". Regresión: "Empresas que sigues" del perfil, `/companies`,
+  `/talent/profile` y `/talent/dashboard` sin sesión (→ `/login?next=…`).
+- Sin literales de color, paleta de Tailwind ni emoji en el código nuevo (búsqueda manual: `taste-skill` no está instalado aquí).
+
+### Pendiente
+- Backend: BE-021 (con BE-005, BE-008, BE-025). Producto: OI-021. Legal: LQ-09.
+- E-09 añade encuestas y cursos al inicio cuando existan E-02 y E-05.
+- Petición al design system: `Button` fija `margin: 0` en línea (punto 17); los botones `ghost` no se alinean con el texto.
+- No se ha regenerado `graphify-out/` (se hace con `/graphify`); tampoco tras el bloque C.
+- Verificado solo en Chrome headless: falta Safari y un dispositivo táctil real.
+
 ## 2026-10-22 (5) · Navegación coherente y bloque C: catálogo y ficha de empresa (demo)
 
 ### Corregido

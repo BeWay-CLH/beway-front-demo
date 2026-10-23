@@ -15,7 +15,7 @@ export function FormSection({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="grid gap-4 border-t border-line-subtle py-8 first:border-t-0 first:pt-0 md:grid-cols-12">
+    <section id={id} className="scroll-mt-32 grid gap-4 border-t border-line-subtle py-8 first:border-t-0 first:pt-0 md:grid-cols-12">
       <div className="flex flex-col gap-2 md:col-span-4">
         <h2 className="text-h3 font-heading text-fg-heading">{title}</h2>
         {description ? <p className="text-sm text-fg-muted">{description}</p> : null}

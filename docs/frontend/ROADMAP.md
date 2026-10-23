@@ -118,11 +118,23 @@ Criterios:
 
 ## D · Dashboard Talent
 
-| ID | Ticket | Depende | BE |
-|---|---|---|---|
-| D-01 | Dashboard compuesto: completitud de perfil, empresas sugeridas (sin "matching"), accesos rápidos | B-03, C-01 | BE-021 |
+**Estado (2026-10-23): hecho en modo demo.** D-01 construido y verificado en Chrome (1280, 768 y 390 px, claro y oscuro) y en
+el build de producción. Todo se lee de fixtures a través de `lib/services/dashboard.ts`. Pendiente de backend: BE-021 (y
+BE-005, BE-008 y BE-025 de los que se compone). Pendiente de producto: OI-021. Decisión: DEC-033.
+
+| ID | Ticket | Depende | BE | Estado |
+|---|---|---|---|---|
+| D-01 | Dashboard compuesto: completitud de perfil, empresas sugeridas (sin "matching"), accesos rápidos | B-03, C-01 | BE-021 | Hecho |
 
 Criterios: cada módulo tiene estado vacío propio; sin puntuaciones ni "score" (brief); el único `primary` es el siguiente paso del onboarding.
+- El botón `primary` nombra el paso concreto ("Añadir formación") y lleva al apartado del editor (`/talent/profile/edit#formacion`).
+  Con el perfil vacío (0 %) es "Empezar mi perfil" y lleva a `/talent/onboarding`. Con el perfil completo no hay `primary`.
+- "Qué falta en tu perfil" desaparece con el perfil completo. "Empresas de tus intereses" tiene tres vacíos: sin intereses
+  (enlaza al editor), sin fichas publicadas de esos temas y "ya sigues a todas".
+- Las empresas salen de las fichas publicadas cuya categoría coincide con un interés, sin las que ya sigues. Sin puntuación ni orden
+  por afinidad (decisión 11 del brief).
+- Desviaciones respecto al plan: se retiran las cuatro tarjetas de cifras y "Tu cuenta" de la versión básica (no pertenecen a D-01);
+  la barra de apartados es un elemento propio (DEC-033). Las secciones del editor ganan `id` para poder enlazarlas.
 
 ---
 

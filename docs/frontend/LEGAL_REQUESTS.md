@@ -16,6 +16,7 @@ Lista de todo lo que el producto necesita de legal. Mientras no llegue, cada tex
 | LQ-06 | Fichas de empresa creadas por CLH con datos públicos: ¿hace falta aviso a la empresa o derecho de rectificación / reclamación de la ficha? | Aviso en la ficha y futura solicitud de "claiming" | C, G |
 | LQ-07 | Credenciales: ¿qué responsabilidad asume BeWay sobre una credencial emitida por terceros? | Texto junto a cada credencial | E |
 | LQ-08 | ¿Cookies o analítica en el lanzamiento? ¿Hace falta banner de consentimiento? | Define si existe el banner | B |
+| LQ-09 | Sugerir empresas según los intereses que la persona eligió en su perfil: ¿es personalización que necesita aviso o consentimiento aparte? ¿Basta con decirlo en la propia lista ("Por los temas de tu perfil: …") y en la política de privacidad? | "Empresas de tus intereses" del inicio y la audiencia de encuestas (OI-017) | D, E |
 
 ## 2. Documentos legales
 

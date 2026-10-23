@@ -300,3 +300,29 @@ Una pantalla nueva que sirva a visitantes y a miembros con la misma URL va en `(
 - Esa lista solo se carga y se pinta para su titular: ni en el HTML de un perfil ajeno.
 - Sin sesión, "Seguir" lleva a `/signup`.
 **Consecuencias.** Al llegar BE-008 y BE-025 desaparece `components/company/follow-store.ts` y el servicio lee de la API.
+
+
+### DEC-033 · Dashboard Talent: un paso, cinco apartados y sugerencias por categoría
+
+**Contexto.** D-01 pide componer el inicio de Talent con completitud de perfil, empresas sugeridas (sin "matching") y accesos rápidos.
+La versión básica traía cuatro tarjetas de cifras (visibilidad, intereses, habilidades, experiencia), "Tu cuenta" y las tres primeras
+empresas del catálogo, que no eran sugerencias.
+**Decisión.**
+- Módulos: cabecera con saludo, hallazgo y el único `primary`; "Qué falta en tu perfil" (se oculta con el perfil completo);
+  "Empresas de tus intereses"; "Accesos rápidos" (solo rutas `live`). Se retiran las cifras y "Tu cuenta": no responden la pregunta
+  de la pantalla (DESIGN.md) y los ajustes ya tienen su ruta. Encuestas y cursos entran con E-09.
+- El `primary` es el paso siguiente con nombre propio ("Añadir formación") y enlaza al apartado del editor por ancla. Con el perfil
+  vacío es "Empezar mi perfil" (onboarding); con el perfil completo no hay `primary` (OI-021).
+- Elemento propio de la pantalla: una barra de cinco segmentos, uno por apartado del porcentaje (relleno = listo, borde = falta). Es
+  información real, no una puntuación: no hay degradado, animación ni número que no esté en el título. Usa `fg-heading` y
+  `line-control` para mantener contraste en los dos temas.
+- Sugerencias: fichas publicadas cuya categoría coincide con un interés, sin las que ya sigue. Sin orden por afinidad ni "match"
+  (decisión 11 del brief). Es el mismo supuesto que OI-017 para la audiencia de encuestas. Se aplican encima los seguimientos
+  simulados de la sesión (C-05), para que seguir una empresa la quite de la lista al volver.
+- El frontend compone el resumen en `getTalentDashboard` con perfil, ajustes, empresas seguidas y empresas por intereses; BE-021
+  puede ser un agregado o tres lecturas sin tocar la pantalla.
+- `CompanyRow` pasa a ser un componente compartido con "Empresas que sigues". Las secciones del editor ganan `id`
+  (`datos-basicos`, `sobre-ti`, `experiencia`, `formacion`, `intereses`) y `scroll-mt-32` para enlazarlas bajo la cabecera fija.
+**Consecuencias.** Una persona con el perfil vacío y una que terminó el onboarding con solo su nombre se ven igual: hasta que BE-005
+diga si hizo el onboarding, ambas ven "Empezar mi perfil". `Button` del DS fija `margin: 0` en línea, así que ninguna clase de margen
+(`-ml-4`) funciona en los botones `ghost`: sus etiquetas quedan 16 px a la derecha del texto (DS_REQUESTS, punto 17).

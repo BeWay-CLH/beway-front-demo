@@ -18,6 +18,13 @@ export function formatCount(value: number): string {
   return String(value).replace(/\B(?=(\d{3})+(?!\d))/g, '.');
 }
 
+/* ["a", "b", "c"] → "a, b y c". "e" en lugar de "y" delante de una palabra que empieza por i. */
+export function formatList(items: string[]): string {
+  if (items.length <= 1) return items.join('');
+  const last = items[items.length - 1];
+  return `${items.slice(0, -1).join(', ')} ${/^[iI]/.test(last) ? 'e' : 'y'} ${last}`;
+}
+
 /* Periodo de una experiencia o de una formación. Sin fin = en curso. */
 export function formatPeriod(start?: string, end?: string): string {
   const to = end ? formatMonth(end) : 'actualidad';

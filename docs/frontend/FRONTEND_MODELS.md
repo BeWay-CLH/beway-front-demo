@@ -247,16 +247,41 @@ type PublicStatsVM = { value: number; label: string }[];   // A-08; si una cifra
 
 ## Dashboard Talent
 
+Hecho en D-01 (`lib/models/dashboard.ts`, servicio `lib/services/dashboard.ts`, `getTalentDashboard(userId)`). Cambió respecto al plan:
+las empresas no son `CompanyCardVM[]` completas sino `SuggestedCompanyVM[]` (lo que pinta una fila) más los ids que ya sigue, para que
+el navegador aplique los seguimientos simulados de la sesión (C-05). `surveys` y `courses` se añaden en E-09, cuando existan sus modelos.
+
 ```ts
+type CompletionStepVM = {
+  item: CompletionItem;            // 'headline' | 'about' | 'experience' | 'education' | 'interests'
+  done: boolean;
+  label: string;                   // "formación": nombre corto, para la barra
+  title: string;                   // "Añade tu formación": lo que falta, como acción
+  description: string;
+  href: string;                    // apartado del editor: /talent/profile/edit#formacion
+};
+
+type NextStepVM = { label: string; href: string };           // el único botón primary
+
+type SuggestedCompanyVM = Pick<CompanyCardVM, 'id' | 'slug' | 'name' | 'category' | 'logo'>;
+
 type TalentDashboardVM = {
   greetingName: string;
+  username: string;
+  visibility: ProfileVisibility;
   completion: ProfileCompletionVM;
-  nextStep?: { label: string; href: string };     // el único botón primary
-  surveys: SurveySummaryVM[];                     // E-09
-  courses: CourseSummaryVM[];                     // E-09
-  companies: CompanyCardVM[];                     // por intereses, sin "matching"
+  steps: CompletionStepVM[];       // los cinco, en el orden del porcentaje
+  nextStep?: NextStepVM;           // sin él (perfil completo) no hay primary
+  isNew: boolean;                  // ningún apartado hecho → el siguiente paso es el onboarding (OI-021)
+  interests: string[];
+  interestCompanies: SuggestedCompanyVM[];   // publicadas y de una categoría que le interesa; sin puntuación
+  followedIds: string[];           // los que ya sigue según el servidor
+  // E-09: surveys: SurveySummaryVM[]; courses: CourseSummaryVM[];
 };
 ```
+
+`getCompaniesByInterests(interests)` (en `lib/services/companies.ts`) devuelve las fichas publicadas cuya categoría coincide con algún
+interés (los intereses son las categorías del catálogo). `formatList` (en `lib/format.ts`) escribe listas en castellano ("a, b e i").
 
 ---
 

@@ -76,6 +76,12 @@ Detalle en [DS_UPDATE_1.1.md](DS_UPDATE_1.1.md), sección 5.
 | 15 | `CompanyCard` | Solo el botón navega, y es un `<button>` con `onClick`: no se puede abrir en otra pestaña ni copiar el enlace. El título no es un enlace. | `href` (y `as`) en la tarjeta; el botón pasa a ser un enlace y el título también. | `onView` con `router.push` hacia `/companies/[slug]`. |
 | 16 | `CompanyCard` y `Photo` (pregunta de marca) | Sin `cover`, cada tarjeta pinta el degradado de marca. En el catálogo son seis por pantalla, y CLAUDE.md pide como máximo un elemento con degradado por pantalla. | Decidir si las tarjetas sin foto usan una superficie neutra con el logo, o si la regla admite el degradado en tarjetas. | Se deja el comportamiento del DS. Resuelto de raíz cuando haya fotos reales (`cover`). |
 
+## Petición nueva del bloque D (2026-10-23)
+
+| # | Componente | Problema | Qué pedir | Workaround en el proyecto |
+|---|---|---|---|---|
+| 17 | `Button` | Fija `margin: 0` en el `style` en línea (`Button.jsx` línea 87), que gana a cualquier clase de margen. Los botones `ghost` llevan 16 px de relleno y su etiqueta queda 16 px a la derecha del texto de arriba; `-ml-4` no hace nada. | Quitar `margin: 0` del estilo en línea (el navegador ya parte de 0 en un `button`) o aceptar `style` con prioridad sobre él. | Se mantiene `-ml-4` en las pantallas (inoperante hoy) para que se alinee si el DS lo corrige. `self-start` sí funciona. |
+
 ## Prioridad ya cubierta (no pedir)
 
 - `NavBar` no es responsive ni marca el enlace activo: ya está en X-04 de ROADMAP. El proyecto usa `AppHeader`.

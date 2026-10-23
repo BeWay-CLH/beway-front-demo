@@ -35,13 +35,17 @@ La hoja completa se guardó en `.taste-skill/direction.json` (carpeta de trabajo
   paso de privacidad del onboarding y cambia en vivo al cambiar el interruptor. Es la decisión que BeWay hace
   por defecto (perfil privado) hecha visible.
 
+- **Elemento propio del inicio (D-01):** la **barra de cinco apartados** (titular, presentación, experiencia, formación, intereses).
+  Un segmento por apartado: relleno `fg-heading` si está listo, solo borde `line-control` si falta. Sin degradado, sin animación y
+  sin números extra: el porcentaje vive en el título. Es la única pieza "memorable" de la pantalla; el resto es lista con línea fina.
+
 ## Pregunta y hallazgo de cada pantalla
 
 Cada pantalla responde una pregunta con su bloque más grande y dice un hallazgo en una línea debajo del título.
 
 | Pantalla | Pregunta | Hallazgo (línea gris) |
 |---|---|---|
-| Inicio Talent | ¿Qué me falta para que mi perfil sirva? | "Lo siguiente: añade tu formación." |
+| Inicio Talent | ¿Qué me falta para que mi perfil sirva? | "Lo siguiente: añade tu formación." (perfil vacío: "Son cuatro pasos y puedes dejarlo cuando quieras."; completo: "Revísalo como lo ve otra persona.") |
 | Onboarding | ¿Qué necesito para empezar y qué verá alguien? | "Solo hace falta tu nombre. Lo demás puedes completarlo después." |
 | Editar perfil | ¿Qué ven los demás y qué les falta? | "Lo que más le falta: formación." |
 | Ajustes | ¿Quién puede ver mi perfil? | "Tu perfil empieza en privado: solo lo ves tú." |

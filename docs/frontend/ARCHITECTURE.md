@@ -112,8 +112,9 @@ data/
 └─ mock.ts                    lo que aún no tiene fixture propio: programas, cifras de la landing, retos
 ```
 
-`lib/models` y `lib/services` existen desde B y C (`profile`, `session`, `company`; `profiles`, `companies`). `lib/adapters`
-se crea con la API.
+`lib/models` y `lib/services` existen desde B y C (`profile`, `session`, `company`; `profiles`, `companies`) y D añade `dashboard`
+en ambos: un servicio puede componer otros servicios (`getTalentDashboard` usa `profiles` y `companies`) y sigue siendo la única
+puerta de esa pantalla. `components/dashboard/` guarda lo propio del inicio de Talent. `lib/adapters` se crea con la API.
 
 ## 4. Flujo de datos
 

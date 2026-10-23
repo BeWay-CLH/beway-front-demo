@@ -16,6 +16,13 @@ en [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md).
 | OI-018 | Edad mínima y menores de edad | B-01, B-04 | Sin control de edad en la demo | Legal (LQ-02) |
 | OI-019 | Ficha de CLH: nombre completo, descripción y qué publica (hoy "Equipo que impulsa BeWay. Publica encuestas como una empresa más") | C-02, E-01 | Texto provisional en el fixture `cmp-clh`; categoría "Ecosistema" | Producto |
 | OI-020 | Dominio de producción para la URL canónica (`metadataBase`) y compartir fichas | C-02 | Sin canónica ni imágenes sociales; solo título y descripción | Producto / infraestructura |
+| OI-021 | ¿Cómo sabe el frontend que alguien es nuevo y debe pasar por el onboarding? Hoy se deduce de que no tiene ningún apartado del perfil | D-01, B-04, BE-005 | Perfil al 0 % → "Empezar mi perfil" lleva al onboarding. Quien terminó el onboarding con solo su nombre ve lo mismo | Producto / backend |
+
+## Estado tras el bloque D (2026-10-23)
+
+- OI-021 es nueva. OI-017 se aplica también al dashboard: "Empresas de tus intereses" usa el mismo supuesto (categoría entre sus
+  intereses, y no la sigue ya). LQ-09 pregunta si sugerir por intereses necesita aviso.
+- El resto sigue igual que tras el bloque C.
 
 ## Estado tras el bloque C (2026-10-22)
 

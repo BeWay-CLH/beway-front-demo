@@ -15,15 +15,15 @@ Punto de entrada para cualquier persona o agente que vaya a tocar el frontend. L
 Referencia: [EXISTING_UI_AUDIT.md](EXISTING_UI_AUDIT.md) (estado del repo el 2026-10-22), [CHANGELOG.md](CHANGELOG.md)
 y [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md) (textos y preguntas para legal).
 
-## Estado actual (2026-10-22)
+## Estado actual (2026-10-23)
 
 | Bloque | Estado |
 |---|---|
 | A · Shells, navegación, 404, cabecera única y barra de demo | **Hecho** (salvo A-07 y A-08, ver ROADMAP) |
 | B · Auth, onboarding, perfil, settings | **Hecho en modo demo** (B-01…B-09; ver CHANGELOG) |
 | C · Catálogo y ficha de empresa | **Hecho en modo demo** (C-01…C-05; ver CHANGELOG) |
-| D · Dashboard Talent | **Siguiente** (D-01); depende de B y C, ya hechos |
-| E · Encuestas y cursos (**prioridad alta**) | Planificado, después de D (DEC-014) |
+| D · Dashboard Talent | **Hecho en modo demo** (D-01, 2026-10-23; ver CHANGELOG). Los módulos de encuestas y cursos llegan con E-09 |
+| E · Encuestas y cursos (**prioridad alta**) | **Siguiente** (E-01 y E-04, modelos y fixtures; DEC-014) |
 | F · Admin mínimo | Shell hecho; pantallas planificadas |
 | G · Oportunidades, retos, Company, comunidad | Solo en documentación |
 
@@ -95,6 +95,11 @@ el botón de la luna.
 Con sesión, la navegación es siempre la de Talent, también en `/`, `/companies` y los perfiles (DEC-030). Para enseñar la
 web como la ve un visitante, cierra sesión (icono de salida de la cabecera). Fichas para probar estados: `vialink`
 (desactualizada), `trazo` (sin contenido), `kairos` (sin Cultura) y `brisa-salud` (borrador, da 404).
+
+Inicio Talent (`/talent/dashboard`) cambia según la cuenta: Lucía está al 80 % (le falta la formación; botón principal
+"Añadir formación") y Marcos al 100 % (el módulo "Qué falta" desaparece y no hay botón principal). "Empresas de tus
+intereses" no muestra las que ya sigues, y se actualiza al seguir una desde su ficha. Un perfil vacío (0 %) y uno sin
+intereses se prueban vaciando esos campos en `data/fixtures/profiles.ts`.
 
 No hay lint ni tests todavía (ver X-01 y X-02 en ROADMAP).
 

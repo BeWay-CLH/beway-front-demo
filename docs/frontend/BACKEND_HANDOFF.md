@@ -153,6 +153,16 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
 
 ### BE-021 · Resumen del dashboard
 - Agregado de `TalentDashboardVM` o, si se prefiere, el frontend lo compone con BE-005, BE-008, BE-010 y BE-013.
+- **Frontend hoy (D-01):** lo compone `getTalentDashboard(userId)` con perfil (BE-005), empresas (BE-008) y seguidas (BE-025). No necesita
+  un endpoint propio para funcionar; un agregado solo ahorraría tres lecturas.
+- **Necesita (propio o compuesto):** apartados del perfil con su estado (los cinco de `ProfileCompletionVM`), intereses, visibilidad,
+  ids de empresas que sigue y fichas **publicadas** cuya categoría coincide con algún interés (el filtro por categoría de BE-008 sirve).
+- **Reglas de negocio que el backend debe respetar:** el dashboard no calcula "afinidad" ni puntuación: coincide la categoría o no
+  (decisión 11 del brief). El porcentaje de completitud son cinco apartados iguales; si producto cambia los apartados, cambia aquí y
+  en el editor a la vez.
+- **Pendiente:** cómo saber que alguien es nuevo y debe pasar por el onboarding (OI-021). Hoy se deduce de que no tiene ningún apartado.
+- **Permisos:** solo la propia persona. No devuelve datos de otras personas.
+- **E-09:** añadirá encuestas pendientes (BE-010) y cursos abiertos (BE-013).
 
 ### BE-022 · Contacto
 - Nombre, correo, motivo, mensaje (≤ 2.000), consentimiento. Anti-spam en servidor.
