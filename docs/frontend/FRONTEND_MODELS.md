@@ -3,8 +3,8 @@
 Los View Models (VM) son **del frontend**: describen lo que una pantalla necesita pintar, no lo que guarda el backend.
 Cuando existan DTOs, un adapter en `lib/adapters/` traduce DTO → VM (decisión del brief). El backend no tiene que adoptar estos tipos.
 
-Estado: los tipos de esta página son **propuesta**. Se escriben en `lib/models/<dominio>.ts` con el primer ticket que los use.
-Solo `Session` existe hoy (`lib/session.ts`).
+Estado: los tipos de esta página son **propuesta** salvo donde se indica "Implementación". Se escriben en
+`lib/models/<dominio>.ts` con el primer ticket que los use. Existen `session`, `profile`, `common` y `company`.
 
 ## Convenciones
 
@@ -116,7 +116,7 @@ para que servidor y navegador pinten igual).
 ## Empresas
 
 ```ts
-// Ya existe como `Company` en data/mock.ts; se renombra al migrar (C-01).
+// Propuesta original. Lo que se construyó está en "Implementación del bloque C", justo debajo.
 type CompanyCardVM = {
   id: string; slug: string; name: string;
   category: string; categoryIcon: string;
@@ -144,6 +144,33 @@ type EditorialStatus = 'draft' | 'in-review' | 'changes-requested' | 'published'
 type AdminCompanyRowVM = { id: string; slug: string; name: string; category: string; status: EditorialStatus; lastReviewedAt: string; updatedBy: string };
 type ReviewItemVM = { id: string; companyId: string; companyName: string; submittedAt: string; submittedBy: string; changedModules: CompanyModuleKind[] };
 ```
+
+## Implementación del bloque C (código real)
+
+Los tipos viven en `lib/models/company.ts`; el servicio en `lib/services/companies.ts`; los fixtures en
+`data/fixtures/companies.ts` y `follows.ts`. Cambios respecto a la propuesta de arriba:
+
+- **Las fuentes no son un módulo.** `CompanyModuleKind` es `'summary' | 'culture' | 'programs' | 'openings' | 'locations'`.
+  `SourceVM` lleva `id`; cada `CompanyModuleVM` cita `sourceIds?: string[]` (BE-009: "fuentes por módulo si las hay").
+  La vista pinta las fuentes como una pestaña aparte (DEC-031).
+- `CompanyCardVM.stats` es `CompanyStatVM[]` (`{ icon, value: number, label }`). `CompanyCardVM` no lleva `logo` obligatorio.
+- `CompanyDetailVM` = `CompanyCardVM` + `website?`, `followersCount?`, `isFollowing`, `modules`, `sources`, `lastReviewedAt`, `isStale`.
+- `CompanyRecord` (fixture) = `CompanyDetailVM` sin `isFollowing`, `isStale` ni `followersCount`, más `status: 'draft' | 'published'`.
+  **`status` nunca sale en un VM público.** Un borrador no aparece en el catálogo, ni en categorías, ni en la ficha.
+- `CompanyFilter` = `{ q?, category?, page?, pageSize? }`, con `category` = slug (`datos-e-ia`, `educacion`). `CompanyPageVM` =
+  `{ items, total, page, pageCount }`. Una página fuera de rango se acota; un `category` desconocido se ignora en la página.
+- `isStale` lo calcula el servicio con `STALE_AFTER_DAYS = 180` (`isStale(lastReviewedAt, now)`).
+- Los módulos sin cuerpo ni elementos se quitan en el servicio: no llegan a la pantalla.
+
+Servicios (`lib/services/companies.ts`): `getCompanyCategories`, `getCompanies`, `getCompanyBySlug`, `getFollowedCompanies`,
+`getCompanyDirectory` (versión corta de todas las publicadas, para recomponer "Empresas que sigues" con los cambios simulados
+de la sesión), `setCompanyFollowing` (simulado). Acción de servidor (`lib/actions/companies.ts`): `setFollowing`, exige sesión.
+
+Seguimientos (`data/fixtures/follows.ts`): Lucía sigue a Metrovía, Datalia y CLH; Marcos a ninguna.
+Los cambios simulados viven en `sessionStorage` (`beway-demo-follows:<userId>`), nunca en el fixture (`components/company/follow-store.ts`).
+
+Fixtures de empresa: 9 del starter + `cmp-clh` + `cmp-brisa-salud` (borrador). Estados de prueba: Vialink desactualizada, Trazo sin
+módulos, Kairos Edu sin Cultura. Formatos: `formatDate` ("12 feb 2026") y `formatCount` ("1.240") en `lib/format.ts`.
 
 ## Encuestas
 
@@ -241,8 +268,8 @@ Un solo universo coherente. Los IDs y slugs no cambian entre tickets.
 |---|---|---|
 | Sesión | `mockSession` (hecho) | `usr-lucia-martin`, `lucia-martin`, roles `talent` + `admin` |
 | Usuarios / perfiles | `data/fixtures/profiles.ts` (B-03) | `lucia-martin` público y completo · `marcos-gil` privado · `ana-ruiz` público a medias |
-| Empresas | `data/fixtures/companies.ts` (C-01) | Las 9 de `mock.ts` con `id: 'cmp-<slug>'` · `cmp-clh` (CLH como empresa) · 1 en `draft` (para el 404) · 1 con `lastReviewedAt` antiguo (desactualizada) |
-| Seguimientos | `data/fixtures/follows.ts` (C-05) | `lucia-martin` sigue a 3 empresas, incluida `cmp-clh` |
+| Empresas | `data/fixtures/companies.ts` (C-01, hecho) | Las 9 de `mock.ts` con `id: 'cmp-<slug>'` · `cmp-clh` (CLH como empresa) · 1 en `draft` (para el 404) · 1 con `lastReviewedAt` antiguo (desactualizada) |
+| Seguimientos | `data/fixtures/follows.ts` (C-05, hecho) | `lucia-martin` sigue a 3 empresas, incluida `cmp-clh`; `marcos-gil` a ninguna |
 | Encuestas | `data/fixtures/surveys.ts` (E-01) | 1 abierta sin empezar · 1 en curso · 1 completada · 1 próxima · 1 cerrada · 1 no elegible; los 5 tipos de pregunta; al menos 1 publicada por `cmp-clh` |
 | Cifras públicas | `data/fixtures/stats.ts` (A-08) | Las 4 de la landing, marcadas como ejemplo |
 | Cursos | `data/fixtures/courses.ts` (E-04) | 6 cursos: los 3 formatos, abiertos/próximos/cerrados, con y sin credencial |

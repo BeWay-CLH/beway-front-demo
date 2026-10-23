@@ -17,19 +17,26 @@ export type NavItem = {
   href: string;
   icon: string;
   status: RouteStatus;
+  /* Otras rutas que también marcan este ítem como actual. `:me` es el nombre de usuario de la sesión. */
+  alsoActive?: string[];
 };
 
 export const publicNav: NavItem[] = [
   { label: 'Empresas', href: '/companies', icon: 'building-2', status: 'live' },
 ];
 
+export const talentHome = '/talent/dashboard';
+
+/* "Inicio" de quien mira: el de su espacio si hay sesión, la portada si no. */
+export const homeFor = (signedIn: boolean) => (signedIn ? talentHome : '/');
+
 export const talentNav: NavItem[] = [
-  { label: 'Inicio', href: '/talent/dashboard', icon: 'layout-dashboard', status: 'live' },
+  { label: 'Inicio', href: talentHome, icon: 'layout-dashboard', status: 'live' },
   { label: 'Empresas', href: '/companies', icon: 'building-2', status: 'live' },
   { label: 'Encuestas', href: '/talent/surveys', icon: 'clipboard-list', status: 'planned' },
   { label: 'Cursos', href: '/talent/courses', icon: 'graduation-cap', status: 'planned' },
   { label: 'Credenciales', href: '/talent/credentials', icon: 'award', status: 'planned' },
-  { label: 'Perfil', href: '/talent/profile', icon: 'user-round', status: 'live' },
+  { label: 'Perfil', href: '/talent/profile', icon: 'user-round', status: 'live', alsoActive: ['/u/:me'] },
 ];
 
 export const adminNav: NavItem[] = [

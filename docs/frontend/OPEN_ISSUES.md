@@ -14,6 +14,14 @@ en [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md).
 | OI-016 | Encuestas: ¿respuestas anónimas, seudónimas o nominales? ¿Qué ve la empresa? ¿Se pueden editar tras enviar? | E-03, F-05 | Nominal para BeWay, agregadas para la empresa; no editables tras enviar | Producto / legal (LQ-05) |
 | OI-017 | ¿Qué es un joven "interesado" en una empresa (audiencia de sus encuestas)? | E-01, BE-010 | Sigue a la empresa **o** tiene su categoría entre sus intereses | Producto |
 | OI-018 | Edad mínima y menores de edad | B-01, B-04 | Sin control de edad en la demo | Legal (LQ-02) |
+| OI-019 | Ficha de CLH: nombre completo, descripción y qué publica (hoy "Equipo que impulsa BeWay. Publica encuestas como una empresa más") | C-02, E-01 | Texto provisional en el fixture `cmp-clh`; categoría "Ecosistema" | Producto |
+| OI-020 | Dominio de producción para la URL canónica (`metadataBase`) y compartir fichas | C-02 | Sin canónica ni imágenes sociales; solo título y descripción | Producto / infraestructura |
+
+## Estado tras el bloque C (2026-10-22)
+
+- OI-019 y OI-020 son nuevas. LQ-06 (aviso a la empresa y derecho de rectificación de una ficha) sigue abierta: la ficha lleva un
+  texto provisional (L-20) y un enlace a Contacto para pedir correcciones.
+- El resto sigue igual que tras el bloque B.
 
 ## Estado tras el bloque B (2026-10-22)
 

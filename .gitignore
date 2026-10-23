@@ -2,3 +2,11 @@ node_modules
 .next
 next-env.d.ts
 *.tsbuildinfo
+
+# graphify: se versiona el resultado útil (graph.json y GRAPH_REPORT.md).
+# No va: caché, temporales con rutas de tu máquina, manifest (mtime), coste ni el HTML (1 MB, se regenera).
+graphify-out/cache/
+graphify-out/.graphify_*
+graphify-out/manifest.json
+graphify-out/cost.json
+graphify-out/graph.html

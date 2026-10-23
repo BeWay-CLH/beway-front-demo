@@ -67,6 +67,15 @@ Detalle en [DS_UPDATE_1.1.md](DS_UPDATE_1.1.md), sección 5.
 | 10 | Tokens (`tokens.css`) | `--surface-sunken` vale lo mismo que `--surface-page` en claro (#f8fafc). Sin escalón de superficie, un panel "tonal" se distingue solo por el borde. | `tokens.css` líneas 19-21 | Un token `surface-raised` (paneles sobre la página) con escalón visible en claro y oscuro. |
 | 11 | `Footer` | Un enlace sin `href` se pinta con `href="#"`: enlaces muertos. | `Footer.jsx` líneas 17 y 24 | Renderizar texto sin `<a>` cuando no hay `href`. |
 
+## Peticiones nuevas del bloque C (2026-10-22)
+
+| # | Componente | Problema | Qué pedir | Workaround en el proyecto |
+|---|---|---|---|---|
+| 13 | `Tabs` | Las pestañas no enlazan con su panel (sin `id` ni `aria-controls`), todas entran en el orden de tabulación, no responden a flechas, Inicio ni Fin, y la fila no se desplaza en móvil (con seis pestañas se corta o se parte). | `id`/`aria-controls` por pestaña, `tabIndex={-1}` en las inactivas, flechas/Inicio/Fin y `overflow-x: auto` en la fila. | `components/company/CompanyTabs.tsx`: panel con `role="tabpanel"` y nombre, flechas con un manejador en el contenedor y fila con scroll. |
+| 14 | `Breadcrumbs` | Usa `<a href>` plano: en Next recarga la página entera. El `<nav>` no tiene nombre ni marca la última miga con `aria-current="page"`. | Prop `as` para el `Link` del router, `aria-label` por defecto ("Ruta de navegación") y `aria-current` en la última. | Se pasa `aria-label` desde la pantalla; la recarga completa se acepta. |
+| 15 | `CompanyCard` | Solo el botón navega, y es un `<button>` con `onClick`: no se puede abrir en otra pestaña ni copiar el enlace. El título no es un enlace. | `href` (y `as`) en la tarjeta; el botón pasa a ser un enlace y el título también. | `onView` con `router.push` hacia `/companies/[slug]`. |
+| 16 | `CompanyCard` y `Photo` (pregunta de marca) | Sin `cover`, cada tarjeta pinta el degradado de marca. En el catálogo son seis por pantalla, y CLAUDE.md pide como máximo un elemento con degradado por pantalla. | Decidir si las tarjetas sin foto usan una superficie neutra con el logo, o si la regla admite el degradado en tarjetas. | Se deja el comportamiento del DS. Resuelto de raíz cuando haya fotos reales (`cover`). |
+
 ## Prioridad ya cubierta (no pedir)
 
 - `NavBar` no es responsive ni marca el enlace activo: ya está en X-04 de ROADMAP. El proyecto usa `AppHeader`.

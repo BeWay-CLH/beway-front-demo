@@ -35,6 +35,9 @@ vigentes y no se reabren sin evidencia de conflicto real; aquí se registran las
 | DEC-026 | Estilo de app `editorial-greeting` para pantallas de trabajo (taste-skill), con la marca por encima | 2026-10-22 | Vigente |
 | DEC-027 | Títulos de app: 24 px en móvil y 32 px desde md | 2026-10-22 | Vigente |
 | DEC-028 | Progreso como dato, sin "Paso N de M" | 2026-10-22 | Vigente |
+| DEC-030 | La cabecera sigue a quien mira; grupo `(shared)` para pantallas con una sola URL | 2026-10-22 | Vigente · completa DEC-013 |
+| DEC-031 | Ficha de empresa en pestañas por módulo, con `?tab=` y fuentes aparte | 2026-10-22 | Vigente |
+| DEC-032 | Catálogo resuelto en servidor y seguimiento simulado por sesión | 2026-10-22 | Vigente hasta BE-008 y BE-025 |
 
 ---
 
@@ -248,3 +251,52 @@ los puntos 1 a 11 de [DS_REQUESTS.md](DS_REQUESTS.md).
 **Consecuencias.** Queda pendiente el punto 12 (conflicto de `background` en `Button`) y X-04. Los controles locales de
 DEC-024 pueden sustituirse por los del DS en un paso aparte.
 
+
+### DEC-030 · La cabecera sigue a quien mira
+
+**Contexto.** DEC-013 unificó la cabecera dentro de cada espacio, pero la navegación dependía de la carpeta de la ruta.
+`/companies` (grupo público) y `/u/[username]` (sin layout, y por tanto sin cabecera ni barra de demo) se abren desde
+Talent con la misma URL que ve un visitante. Al pulsar "Empresas" o "Perfil" desde Talent la navegación cambiaba por la
+pública (solo "Empresas", con búsqueda y sin "Perfil") o desaparecía.
+**Decisión.**
+- `SiteHeader` sigue a la sesión: con rol `talent` usa `talentNav` (la misma que dentro del espacio); sin sesión, `publicNav`
+  con búsqueda y accesos. Vale para la landing, los legales, contacto y el 404 global.
+- Nuevo grupo `app/(shared)/` para las pantallas con una sola URL para visitantes y miembros: `companies/`,
+  `companies/[slug]` y `u/[username]`. Su layout usa `ViewerShell`: con sesión, `AppShell space="talent"` (misma cabecera,
+  barra de demo en Talent, sin pie); sin sesión, `SiteHeader` y pie público.
+- `NavItem.alsoActive` (`/u/:me`) marca "Perfil" como actual en el perfil propio, al que se llega por `/talent/profile`.
+- "Mi espacio" solo aparece si la cabecera no trae ya "Inicio" (acceso y registro con sesión).
+**Consecuencias.** Un miembro nunca ve la navegación pública. Para ver la web como visitante hay que cerrar sesión: la
+barra de demo marca "Público" en la landing y los legales, pero no cambia la navegación. Los 404 y errores de `(shared)`
+se pintan dentro del marco de quien mira. El "Inicio" de los breadcrumbs sale de `homeFor(signedIn)` (`lib/routes.ts`).
+Una pantalla nueva que sirva a visitantes y a miembros con la misma URL va en `(shared)`; no se crean cabeceras propias.
+
+### DEC-031 · Ficha de empresa en pestañas por módulo
+
+**Contexto.** C-02 pide módulos (DEC-020) y un índice navegable; la ficha de una empresa con cinco módulos es larga en móvil.
+**Decisión.**
+- `Tabs` del DS: una pestaña por módulo con contenido, más "Fuentes" al final. Las fuentes **no** son un módulo
+  (`CompanyModuleKind` no incluye `sources`): `SourceVM` lleva `id` y cada módulo cita `sourceIds`; el pie del módulo
+  nombra sus fuentes y enlaza a la pestaña "Fuentes".
+- La pestaña activa vive también en `?tab=<kind>` (con `history.replaceState`, sin recargar) para poder compartir el enlace.
+  Un valor inválido cae en la primera. Flechas, Inicio y Fin cambian de pestaña; en móvil la fila se desplaza en horizontal.
+- Cabecera: banner con el logo en chip blanco (como `CompanyCard`) y el título **debajo**, nunca sobre la foto. Así el
+  contraste no depende de la imagen ni del degradado. Sin `cover`, el banner es el degradado de marca (uno por pantalla).
+- Un módulo sin contenido no llega del servicio. Una ficha sin ningún módulo muestra `PageState empty` dentro de la ficha.
+- Aviso de desactualización con `Alert tone="warning"` y la fecha concreta si pasan 180 días (DEC-020).
+**Consecuencias.** `Tabs` del DS no tiene `aria-controls`, flechas ni desplazamiento: se suplen aquí y se piden en
+[DS_REQUESTS.md](DS_REQUESTS.md) (punto 13). La URL canónica queda pendiente de dominio (OI-020).
+
+### DEC-032 · Catálogo en servidor y seguimiento simulado
+
+**Contexto.** C-03 pide filtros y búsqueda en la URL; C-05 pide seguir empresas sin backend.
+**Decisión.**
+- `/companies` resuelve texto, categoría y página en servidor con `getCompanies` (`?q=`, `?category=<slug>`, `?page=`). El
+  cliente solo actualiza la URL: el texto espera 300 ms tras la última tecla y usa `replace`; la paginación usa `push`.
+  Un valor que no existe se ignora. Las categorías salen de las fichas publicadas (un borrador no crea categoría).
+- Seguir y dejar de seguir llama a una acción de servidor que devuelve `{ simulated: true }` y avisa con `Toast`
+  "Simulación". El cambio se aplica sobre el fixture en `sessionStorage`, por cuenta, y se pierde al cerrar la pestaña.
+  "Empresas que sigues" (perfil propio) refleja esos cambios.
+- Esa lista solo se carga y se pinta para su titular: ni en el HTML de un perfil ajeno.
+- Sin sesión, "Seguir" lleva a `/signup`.
+**Consecuencias.** Al llegar BE-008 y BE-025 desaparece `components/company/follow-store.ts` y el servicio lee de la API.

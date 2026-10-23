@@ -1,15 +1,17 @@
 import type { Metadata } from 'next';
 import { Alert, Card, EmptyState, SectionLabel, StatStrip } from '@ds';
-import { categories, companies, programs } from '@/data/mock';
+import { programs } from '@/data/mock';
+import { getCompanies, getCompanyCategories } from '@/lib/services/companies';
 
 export const metadata: Metadata = { title: 'Admin CLH · BeWay' };
 
 /* Shell del backoffice (bloque A). Listado, editor y cola editorial llegan en el bloque F (F-01…F-04).
    Las cifras salen del dataset de ejemplo, no son métricas reales. */
-export default function AdminDashboard() {
+export default async function AdminDashboard() {
+  const [catalog, categories] = await Promise.all([getCompanies({ pageSize: 1 }), getCompanyCategories()]);
   const stats = [
-    { value: companies.length, label: 'Empresas en catálogo', icon: 'building-2' },
-    { value: categories.length - 1, label: 'Categorías', icon: 'tags' },
+    { value: catalog.total, label: 'Empresas en catálogo', icon: 'building-2' },
+    { value: categories.length, label: 'Categorías', icon: 'tags' },
     { value: programs.length, label: 'Programas de ejemplo', icon: 'graduation-cap' },
   ];
 

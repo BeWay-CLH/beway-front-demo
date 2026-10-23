@@ -92,8 +92,10 @@ themes before saying it is done.
 Antes de crear o mover rutas, lee `docs/frontend/README.md`: orden de lectura, estado de los bloques A–G,
 Definition of Done y qué documentos actualizar al terminar. Resumen:
 
-- Cuatro espacios: `app/(public)`, `app/(auth)`, `app/talent`, `app/admin` (Company llega en el bloque G). Todos usan la misma
-  cabecera (`components/shells/AppHeader.tsx` + `DemoBar`); no crees cabeceras propias por espacio.
+- Cuatro espacios: `app/(public)`, `app/(auth)`, `app/talent`, `app/admin` (Company llega en el bloque G), más `app/(shared)` para
+  pantallas que ven visitantes y miembros con la misma URL (`/companies`, `/u/[username]`). Todos usan la misma
+  cabecera (`components/shells/AppHeader.tsx` + `DemoBar`); no crees cabeceras propias por espacio. **La navegación sigue a
+  quien mira, no a la URL** (DEC-030): si una pantalla se abre desde dos espacios, va en `(shared)`, nunca duplicada.
 - Rutas en inglés. Mapa completo y estado en `docs/frontend/ROUTES.md`. Tickets y dependencias en `docs/frontend/ROADMAP.md`.
 - Los menús salen de `lib/routes.ts`; un ítem `planned` no se muestra. Al terminar una pantalla, pásalo a `live`.
 - Sesión simulada en `lib/session.ts` (`BEWAY_MOCK_ROLES` para probar roles). No es seguridad.

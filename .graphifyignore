@@ -1,5 +1,35 @@
-# Artefactos de trabajo y de build que no son documentación del producto
+# Qué NO entra en el grafo de conocimiento. Sintaxis de .gitignore (el último patrón que coincide gana).
+# Regla: el grafo guarda lo que explica el producto (pantallas, rutas, modelos, servicios, decisiones y reglas),
+# no lo que se deduce de ejecutar `npm install` ni lo que es historia o material de terceros.
+
+# --- Artefactos de trabajo y de build ---
 .taste-skill/
 .next/
 node_modules/
 graphify-out/
+
+# --- Configuración y dependencias: nodos de "package.json" y "tsconfig" sin valor para entender la app ---
+/package.json
+/package-lock.json
+/tsconfig.json
+/postcss.config.mjs
+/next-env.d.ts
+*.tsbuildinfo
+
+# --- Design system: carpeta de solo lectura (se reemplaza entera). Solo su contrato de tipos explica cómo se usa ---
+/design-system/*
+!/design-system/index.d.ts
+
+# --- Binarios: logos e iconos. Solo cuestan tokens de visión y no aportan relaciones ---
+/public/
+/app/icon.png
+
+# --- Utilidades de un solo uso o autogeneradas ---
+/scripts/
+/AGENTS.md
+/MIGRACION.md
+
+# --- Historia: ya está resumida en los documentos vigentes (DECISIONS, ROADMAP, ROUTES...) ---
+/docs/frontend/CHANGELOG.md
+/docs/frontend/EXISTING_UI_AUDIT.md
+/docs/frontend/DS_UPDATE_1.1.md

@@ -44,6 +44,15 @@ Lista de todo lo que el producto necesita de legal. Mientras no llegue, cada tex
 | L-32 | Aviso de enlaces a cursos de terceros | `/talent/courses/[slug]` | E |
 | L-33 | Nota sobre la emisión de credenciales | `/talent/credentials` | E |
 
+## 4. Textos provisionales ya en la demo (bloque C)
+
+| ID | Dónde está | Texto provisional |
+|---|---|---|
+| L-20 | Pie de `/companies/[slug]` | "Reunimos esta información de fuentes públicas. Si algo no es correcto, escríbenos" (enlaza a `/contact`) |
+| L-21 | Pie de `/companies/[slug]` | "Si sigues a una empresa, verás sus encuestas en tu espacio" |
+
+Ambos llevan debajo "Textos provisionales, pendientes de revisión legal". No afirman qué ve la empresa de quien la sigue (LQ-03, LQ-05).
+
 ## Formato de entrega que nos sirve
 
 Para cada ID: texto final en español, versión y fecha, y si el usuario debe aceptarlo explícitamente (casilla) o basta con informarle.

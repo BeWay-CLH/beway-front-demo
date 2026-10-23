@@ -1,5 +1,49 @@
 # Changelog
 
+## 2026-10-22 (5) · Navegación coherente y bloque C: catálogo y ficha de empresa (demo)
+
+### Corregido
+- **La cabecera cambiaba entre páginas.** `/companies` pintaba la navegación pública (solo "Empresas", con búsqueda) y
+  `/u/[username]` no tenía cabecera ni barra de demo. Ahora la navegación sigue a quien mira (DEC-030): con sesión es siempre
+  Inicio, Empresas, Perfil; sin sesión, la pública. También en la landing, los legales y los 404.
+- "Perfil" queda marcado como actual en el perfil propio (`/u/<usuario>`), y "Empresas" en la ficha.
+- "Mi espacio" solo aparece cuando la cabecera no trae ya "Inicio" (acceso y registro con sesión).
+
+### Añadido
+- **Grupo `app/(shared)/`** con `ViewerShell`: `/companies`, `/companies/[slug]` y `/u/[username]`, con su 404 y su error.
+- **C-01:** `lib/models/company.ts`, `lib/services/companies.ts`, `lib/actions/companies.ts`, fixtures `companies.ts` (11 fichas),
+  `follows.ts` y `logo.ts`; `formatDate` y `formatCount` en `lib/format.ts`.
+- **C-02:** `/companies/[slug]` con banner y logo en chip blanco, cifras, aviso de desactualizada, pestañas por módulo
+  (`?tab=`, teclado, desplazamiento en móvil), fuentes y nota de origen de los datos (`components/company/`).
+- **C-03:** `/companies` filtra y pagina en servidor con `?q=`, `?category=` y `?page=`; la tarjeta navega a la ficha; resumen
+  con `aria-live`.
+- **C-04:** una ficha en borrador o inexistente da 404 sin distinguirse; las categorías salen solo de fichas publicadas.
+- **C-05:** "Seguir / Siguiendo" simulado con `Toast` "Simulación" y "Empresas que sigues" en el perfil propio (solo su titular).
+- Documentación: DEC-030…DEC-032, OI-019 y OI-020, peticiones al DS 13 a 16, textos provisionales L-20 y L-21.
+
+### Cambiado
+- `data/mock.ts` ya no contiene empresas (X-06 hecho para empresas). `/talent/dashboard` enlaza sus tres empresas a la ficha y el
+  panel de Admin cuenta desde el servicio.
+- Catálogo: la búsqueda y el filtro dejan de ser estado local; ignoran tildes y mayúsculas.
+
+### Verificado
+- `npm run typecheck` y `npm run build` sin errores (22 rutas, `/companies/[slug]` nueva).
+- Chrome headless (DevTools) sobre desarrollo y sobre `next start`: recorrido Talent → Empresas → ficha → Perfil → Inicio con la
+  misma cabecera y el elemento activo correcto, para sesión y para visitante; menú móvil igual en todas las páginas.
+- 45 comprobaciones de flujo: pestañas con clic y teclado, `?tab=` válido e inválido, seguir y dejar de seguir con reflejo en el
+  perfil, estado vacío de Marcos, visitante a `/signup`, 404 de borrador sin filtrar su nombre, filtros, búsqueda, paginación y
+  parámetros inválidos. Consola sin errores en producción.
+- Sin scroll horizontal a 390, 768 y 1280 px, en claro y oscuro. Sin literales de color, paleta de Tailwind ni emoji en el código nuevo.
+- Regresión: perfil privado sin nombre en HTML ni título; Marcos sin acceso a Admin; rutas del bloque B con el mismo código HTTP.
+
+### Pendiente
+- Backend: BE-008, BE-009, BE-025. Legal: L-20, L-21, LQ-06. Producto: OI-019, OI-020.
+- En desarrollo, las páginas 404 muestran en consola un aviso de React por la etiqueta `<script>` del tema en `app/layout.tsx`
+  (también `/talent/xyz`). No aparece en producción. Se resuelve con `next/font` y el tema fuera del `<head>` (X-03).
+- Peticiones al design system: `DS_REQUESTS.md`, puntos 13 a 16.
+- No se ha regenerado `graphify-out/` (se hace con `/graphify`).
+- Verificado solo en Chrome headless: falta Safari y un dispositivo táctil real.
+
 ## 2026-10-22 (4) · Design system v1.1
 
 ### Cambiado

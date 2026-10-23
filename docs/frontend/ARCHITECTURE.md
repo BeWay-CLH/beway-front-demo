@@ -37,6 +37,7 @@ Estado: vigente desde 2026-10-22. Cambios a este documento requieren una entrada
                          │                                                                   │
   URL ──► proxy.ts* ──►  │  app/ (rutas finas, Server Components)                            │
        (*futuro, B-02)   │   ├─ (public)/ ─ SiteHeader + SiteFooter                          │
+                         │   ├─ (shared)/ ─ ViewerShell: Talent con sesión, público sin ella │
                          │   ├─ (auth)/   ─ AuthShell                                        │
                          │   ├─ talent/   ─ guard rol talent ─ TalentShell                   │
                          │   ├─ company/  ─ (LATER) guard rol company ─ CompanyShell         │
@@ -66,10 +67,14 @@ app/
 ├─ not-found.tsx              404 global (con cabecera y pie públicos)
 ├─ (public)/                  layout: SiteHeader + SiteFooter
 │  ├─ page.tsx                /
-│  ├─ companies/              /companies (+ [slug] en C-02)
+│  ├─ privacy · terms · contact
 │  ├─ programas/              legado del starter, ver DEC-009
 │  ├─ styleguide/             herramienta interna
 │  └─ error.tsx
+├─ (shared)/                  layout: ViewerShell (misma URL para visitantes y miembros, DEC-030)
+│  ├─ companies/              /companies y /companies/[slug]
+│  ├─ u/[username]/           /u/[username]
+│  └─ not-found.tsx · error.tsx
 ├─ (auth)/                    layout: AuthShell
 │  └─ signup/                 /signup (+ login, forgot-password en B)
 ├─ talent/                    layout: guard + TalentShell
@@ -88,23 +93,27 @@ components/
 ├─ SiteHeader.tsx · SiteFooter.tsx · ThemeToggle.tsx · NavButton.tsx   (del starter)
 ├─ PageState.tsx              estados de página (not-found, forbidden, signed-out, error, private, empty)
 ├─ RouteError.tsx             contenido de los error.tsx
-├─ shells/                    AppHeader (cabecera única), DemoBar, AppShell (Talent/Admin), AuthShell,
+├─ shells/                    AppHeader (cabecera única), DemoBar, AppShell (Talent/Admin), ViewerShell, AuthShell,
 │                             ShellNav/NavList, MobileMenu
-└─ <dominio>/                 (al crecer) company/, profile/, survey/, course/, admin/
+├─ company/                   CompanyProfile, CompanyTabs, CompanyModules, FollowButton, FollowedCompanies, follow-store
+├─ profile/ · forms/          perfil público y controles de formulario (bloque B)
+└─ <dominio>/                 (al crecer) survey/, course/, admin/
 
 lib/
-├─ routes.ts                  navegación por espacio con estado live/planned
-├─ session.ts                 sesión simulada y resolveAccess()
-├─ models/                    (B/C) View Models por dominio, solo tipos
-├─ services/                  (B/C) lectura/escritura por dominio; única puerta a los datos
+├─ routes.ts                  navegación por espacio con estado live/planned; homeFor()
+├─ session.ts                 sesión de demostración (cookie bw_demo)
+├─ models/                    View Models por dominio, solo tipos
+├─ services/                  lectura/escritura por dominio; única puerta a los datos
+├─ actions/                   acciones de servidor (escrituras simuladas)
 └─ adapters/                  (con la API) DTO → View Model
 
 data/
-└─ mock.ts                    fixtures actuales; se divide en data/fixtures/<dominio>.ts en C-01
+├─ fixtures/                  accounts, profiles, companies, follows, logo (un archivo por dominio)
+└─ mock.ts                    lo que aún no tiene fixture propio: programas, cifras de la landing, retos
 ```
 
-`lib/models`, `lib/services` y `lib/adapters` no existen todavía: se crean con el primer ticket que los necesite
-(B-01 o C-01), no antes.
+`lib/models` y `lib/services` existen desde B y C (`profile`, `session`, `company`; `profiles`, `companies`). `lib/adapters`
+se crea con la API.
 
 ## 4. Flujo de datos
 
@@ -157,12 +166,15 @@ navegación no cambien de sitio al pasar de un espacio a otro (DEC-013):
 
 | Espacio | Shell | Enlaces | Acciones | Pie |
 |---|---|---|---|---|
-| Public | `SiteHeader` + `SiteFooter` | `publicNav` + búsqueda | Tema, Crear cuenta | Sí |
+| Public | `SiteHeader` + `SiteFooter` | `publicNav` + búsqueda; con sesión, `talentNav` | Tema, Crear cuenta; con sesión, avatar | Sí |
+| Shared | `ViewerShell` | Con sesión `talentNav`; sin sesión `publicNav` + búsqueda | Tema, avatar o Crear cuenta | Solo sin sesión |
 | Auth | `AuthShell` | — | Tema | No |
 | Talent | `AppShell space="talent"` | `talentNav` | Tema, avatar | No |
 | Admin | `AppShell space="admin"` + `Badge` "Admin CLH" | `adminNav` | Tema, avatar | No |
 | Company | `AppShell space="company"` (G) | `companyNav` | Tema, avatar | No |
 
+- **La navegación sigue a quien mira, no a la URL** (DEC-030). `SiteHeader` y `ViewerShell` eligen `talentNav` si hay sesión
+  con rol `talent`. Una pantalla que ven visitantes y miembros con la misma URL va en `(shared)`.
 - Por debajo de `md` los enlaces pasan a `MobileMenu` (se cierra al navegar y con Escape).
 - La navegación sale de [`lib/routes.ts`](../../lib/routes.ts). Un ítem `planned` está en el mapa pero no se pinta.
   `NavList` marca la página actual con `aria-current="page"`.

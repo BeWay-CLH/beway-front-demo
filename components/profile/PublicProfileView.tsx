@@ -1,18 +1,22 @@
+import type { ReactNode } from 'react';
 import { Alert, Avatar, Icon, Tag } from '@ds';
 import { NavButton } from '@/components/NavButton';
 import { FormSection } from '@/components/forms/FormSection';
 import { formatPeriod } from '@/lib/format';
 import type { EducationVM, ExperienceVM, ProfileCardVM, ProfileVisibility } from '@/lib/models/profile';
 
-/* Perfil de una persona. Las secciones vacías no aparecen para visitantes; el propio titular ve una invitación. */
+/* Perfil de una persona. Las secciones vacías no aparecen para visitantes; el propio titular ve una invitación.
+   `following` (empresas que sigue) solo lo recibe el titular: nadie más ve esa lista. */
 export function PublicProfileView({
   profile,
   isOwner,
   visibility,
+  following,
 }: {
   profile: ProfileCardVM;
   isOwner: boolean;
   visibility: ProfileVisibility;
+  following?: ReactNode;
 }) {
   const showEmpty = (empty: boolean) => !empty || isOwner;
 
@@ -105,6 +109,12 @@ export function PublicProfileView({
                 <Tag key={s}>{s}</Tag>
               ))}
             </div>
+          </FormSection>
+        ) : null}
+
+        {isOwner && following ? (
+          <FormSection title="Empresas que sigues" description="Solo tú ves esta lista.">
+            {following}
           </FormSection>
         ) : null}
       </div>

@@ -88,11 +88,17 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
 - **Solo fichas publicadas.** Filtros: categoría, texto. Paginación (hoy 6 por página).
 - **Necesita por empresa:** `CompanyCardVM`.
 - **Cifras:** las `stats` deben ser reales o no enviarse (el frontend no las inventa).
+- **Frontend hoy (C-03):** `getCompanies({ q, category, page })` ya resuelve en servidor con `?q=`, `?category=<slug>` y `?page=`.
+  Necesita del backend: texto sobre nombre y descripción, categoría por slug estable, tamaño de página (hoy 6), total y el
+  listado de categorías **de fichas publicadas** (una categoría con solo borradores no debe aparecer). Sin acentos en la comparación.
 
 ### BE-009 · Ficha por slug
 - **Necesita:** `CompanyDetailVM` sin `isStale` (lo calcula frontend con `lastReviewedAt`, OI-004) y con fuentes por módulo si las hay.
 - No publicada o inexistente → 404. Slug antiguo → indicar el nuevo (BE-020).
 - **Nunca** incluir notas internas, auditoría ni datos de contacto no públicos (decisión 13).
+- **Frontend hoy (C-02, C-04):** espera `modules` en orden y solo los que tienen contenido, `sources` con `id`, `label`, `retrievedAt`
+  y `url` solo si es real, y `sourceIds` en cada módulo. El estado editorial (`draft`) nunca viaja. El frontend calcula
+  `isStale`. Para saber si la persona sigue la empresa necesita `isFollowing` en la misma lectura (BE-025).
 
 ### BE-010 · Encuestas disponibles
 - **Necesita:** `SurveySummaryVM[]` con `participation` y `eligibility` del usuario actual.
@@ -164,3 +170,5 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
 - Seguir / dejar de seguir una empresa publicada; listar las empresas que sigue el usuario; saber si sigue una ficha concreta.
 - **Permisos:** solo el propio usuario. Si la empresa ve quién la sigue lo decide legal (LQ-03, LQ-05).
 - **Uso:** botón en la ficha (C-05), audiencia de encuestas (BE-010), empresas sugeridas en el dashboard (BE-021).
+- **Frontend hoy (C-05):** `setFollowing(companyId, following)` devuelve una simulación; los cambios solo viven en `sessionStorage`.
+  "Empresas que sigues" se pinta únicamente para el titular del perfil: el backend no debe devolver esa lista a nadie más.

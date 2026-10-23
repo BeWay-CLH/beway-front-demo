@@ -1,8 +1,11 @@
+import type { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { PageState } from '@/components/PageState';
+import { FollowedCompanies } from '@/components/company/FollowedCompanies';
 import { PublicProfileView } from '@/components/profile/PublicProfileView';
 import { getSession } from '@/lib/session';
+import { getCompanyDirectory, getFollowedCompanies } from '@/lib/services/companies';
 import { getProfileForViewer } from '@/lib/services/profiles';
 
 type Params = { params: Promise<{ username: string }> };
@@ -30,5 +33,18 @@ export default async function ProfilePage({ params }: Params) {
 
   if (view.kind === 'private') return <PageState kind="private" />;
 
-  return <PublicProfileView profile={view} isOwner={view.isOwner} visibility={view.visibility} />;
+  /* Las empresas que sigue solo se cargan para su titular (C-05): para cualquier otra persona no viajan ni en el HTML. */
+  let following: ReactNode;
+  if (view.isOwner && session) {
+    const [followed, directory] = await Promise.all([getFollowedCompanies(session.userId), getCompanyDirectory()]);
+    following = (
+      <FollowedCompanies
+        userId={session.userId}
+        initialIds={followed.map((c) => c.id)}
+        directory={directory.map(({ id, slug, name, category, logo }) => ({ id, slug, name, category, logo }))}
+      />
+    );
+  }
+
+  return <PublicProfileView profile={view} isOwner={view.isOwner} visibility={view.visibility} following={following} />;
 }

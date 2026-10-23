@@ -1,10 +1,11 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import Link from 'next/link';
 import { NavButton } from '@/components/NavButton';
-import { companies } from '@/data/mock';
 import { completionOf } from '@/lib/completion';
 import type { CompletionItem } from '@/lib/models/profile';
 import { requireSession } from '@/lib/session';
+import { getCompanies } from '@/lib/services/companies';
 import { getAccountSettings, getProfileForm } from '@/lib/services/profiles';
 
 export const metadata: Metadata = { title: 'Inicio · BeWay' };
@@ -56,9 +57,10 @@ function joinEs(items: string[]): string {
 
 export default async function TalentDashboard() {
   const session = await requireSession();
-  const [form, settings] = await Promise.all([
+  const [form, settings, featured] = await Promise.all([
     getProfileForm(session.userId),
     getAccountSettings(session.userId),
+    getCompanies({ pageSize: 3 }),
   ]);
   if (!form || !settings) notFound();
 
@@ -158,10 +160,15 @@ export default async function TalentDashboard() {
         >
           <h2 id="companies-title" className="text-h3 font-heading text-fg-heading">Empresas del ecosistema</h2>
           <ul className="flex flex-col">
-            {companies.slice(0, 3).map((company) => (
-              <li key={company.id} className="flex items-center justify-between gap-4 border-t border-line-subtle py-3 first:border-t-0 first:pt-0">
-                <span className="font-semibold text-fg-heading">{company.name}</span>
-                <span className="text-sm text-fg-muted">{company.category}</span>
+            {featured.items.map((company) => (
+              <li key={company.id} className="border-t border-line-subtle first:border-t-0 first:pt-0">
+                <Link
+                  href={`/companies/${company.slug}`}
+                  className="transition-control flex items-center justify-between gap-4 py-3 hover:text-fg-accent"
+                >
+                  <span className="font-semibold text-fg-heading">{company.name}</span>
+                  <span className="text-sm text-fg-muted">{company.category}</span>
+                </Link>
               </li>
             ))}
           </ul>

@@ -21,8 +21,8 @@ y [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md) (textos y preguntas para legal).
 |---|---|
 | A · Shells, navegación, 404, cabecera única y barra de demo | **Hecho** (salvo A-07 y A-08, ver ROADMAP) |
 | B · Auth, onboarding, perfil, settings | **Hecho en modo demo** (B-01…B-09; ver CHANGELOG) |
-| C · Catálogo y ficha de empresa | **Siguiente** (C-01…C-05) |
-| D · Dashboard Talent | Planificado, depende de B y C |
+| C · Catálogo y ficha de empresa | **Hecho en modo demo** (C-01…C-05; ver CHANGELOG) |
+| D · Dashboard Talent | **Siguiente** (D-01); depende de B y C, ya hechos |
 | E · Encuestas y cursos (**prioridad alta**) | Planificado, después de D (DEC-014) |
 | F · Admin mínimo | Shell hecho; pantallas planificadas |
 | G · Oportunidades, retos, Company, comunidad | Solo en documentación |
@@ -88,8 +88,13 @@ La sesión es una cookie de la demo (`bw_demo`), no un acceso real (DEC-023). Pa
 ## Presentar la demo
 
 La barra oscura superior ("DEMO · Público · Talent · Admin CLH") salta entre espacios desde cualquier página.
-Recorrido sugerido: `/` → Empresas → Crear cuenta (muestra "Simulación") → Talent → Admin CLH → una URL inexistente
-(404 dentro del espacio) → tema oscuro con el botón de la luna.
+Recorrido sugerido: `/` → Empresas → Crear cuenta (muestra "Simulación") → Talent → Empresas → una ficha (pestañas,
+"Seguir") → Perfil ("Empresas que sigues") → Admin CLH → una URL inexistente (404 dentro del espacio) → tema oscuro con
+el botón de la luna.
+
+Con sesión, la navegación es siempre la de Talent, también en `/`, `/companies` y los perfiles (DEC-030). Para enseñar la
+web como la ve un visitante, cierra sesión (icono de salida de la cabecera). Fichas para probar estados: `vialink`
+(desactualizada), `trazo` (sin contenido), `kairos` (sin Cultura) y `brisa-salud` (borrador, da 404).
 
 No hay lint ni tests todavía (ver X-01 y X-02 en ROADMAP).
 

@@ -6,6 +6,9 @@ Basado en el `02-route-map.md` acordado. Las URLs están en inglés (DEC-002). `
 **Estado real:** `Hecha` existe y funciona · `Shell` existe con contenido mínimo · `Redirección` · `—` no existe.
 **Ticket:** dónde se construye (ver [ROADMAP.md](ROADMAP.md)).
 
+**Layout `Shared`** (`app/(shared)/`, DEC-030): pantallas con una sola URL para visitantes y miembros. Con sesión se pintan
+en el marco de Talent (misma cabecera, sin pie); sin sesión, en el público (con pie).
+
 Una ruta sin construir **no se crea** y **no aparece en menús** (DEC-004). La navegación sale de `lib/routes.ts`.
 Para presentar la demo, la `DemoBar` enlaza el inicio de cada espacio: `/`, `/talent/dashboard`, `/admin/dashboard` (DEC-013).
 
@@ -14,9 +17,9 @@ Para presentar la demo, la `DemoBar` enlaza el inicio de cada espacio: `/`, `/ta
 | URL | Pantalla | Producto | Real | Ticket | Layout | Acceso |
 |---|---|---|---|---|---|---|
 | `/` | Landing | NOW | Hecha | A-08 (copy) | Public | Público |
-| `/companies` | Catálogo de empresas | NOW | Hecha | C-03 | Public | Público |
-| `/companies/[slug]` | Ficha canónica de empresa | NOW | — | C-02 | Public | Público; solo fichas publicadas |
-| `/u/[username]` | Perfil compartible | NOW | Hecha | B-06 | Public | Según visibilidad; privado por defecto |
+| `/companies` | Catálogo de empresas | NOW | Hecha | C-03 | Shared | Público |
+| `/companies/[slug]` | Ficha canónica de empresa | NOW | Hecha | C-02 | Shared | Público; solo fichas publicadas |
+| `/u/[username]` | Perfil compartible | NOW | Hecha | B-06 | Shared | Según visibilidad; privado por defecto |
 | `/login` | Iniciar sesión | NOW | Hecha (demo) | B-02 | Auth | Público |
 | `/signup` | Registrarse | NOW | Hecha (simulación) | B-01 | Auth | Público |
 | `/forgot-password` | Recuperar acceso | NEXT | Hecha (simulación) | B-09 | Auth | Público |
@@ -90,6 +93,12 @@ la primera pantalla útil (G). `/company/surveys` reutiliza el editor de encuest
 
 Admin usa `[id]` (identificador estable) y Public usa `[slug]` (legible, puede cambiar). Ver DEC-011.
 
+## Estado del bloque C (2026-10-22)
+
+`/companies` filtra y pagina en servidor con `?q=`, `?category=<slug>` y `?page=`. `/companies/[slug]` acepta `?tab=<módulo>`
+(`summary`, `culture`, `programs`, `openings`, `locations`, `sources`). Una ficha en borrador o inexistente da 404 sin distinguirse
+(C-04). Seguir empresa es una simulación (DEC-032). Pendiente de backend: BE-008, BE-009, BE-025.
+
 ## Estado del bloque B (2026-10-22)
 
 Todas las rutas de acceso y de perfil funcionan en modo demo. Las escrituras son simulaciones (DEC-006).
@@ -112,7 +121,7 @@ Rutas demo antiguas que **no** se deben recrear: `/talent/empresa/santander`, `/
 
 ## Reglas especiales
 
-- Slug inexistente o ficha no publicada: `notFound()` dentro del espacio correcto.
+- Slug inexistente o ficha no publicada: `notFound()` dentro del marco de quien mira (`app/(shared)/not-found.tsx`).
 - `/u/[username]` privado: estado "Este perfil es privado" sin ningún dato del usuario, ni siquiera el nombre.
 - `/u/[username]` con un username antiguo: 404. Los usernames se pueden cambiar y el anterior deja de funcionar (DEC-017).
 - Sin sesión en `/talent/*`: hoy `PageState signed-out`; con `/login`, redirección a `/login?next=<ruta>` validando que `next` sea interna.

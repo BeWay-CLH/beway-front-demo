@@ -11,8 +11,8 @@ npm install
 npm run dev          # http://localhost:3000
 ```
 
-Páginas: `/` (inicio), `/companies` (directorio), `/signup` (registro), `/talent/dashboard` (espacio Talent, demo),
-`/admin/dashboard` (Admin CLH, demo), `/styleguide` (todos los componentes). Arquitectura, mapa de rutas y plan por
+Páginas: `/` (inicio), `/companies` y `/companies/[slug]` (directorio y ficha), `/u/[username]` (perfil), `/signup` (registro),
+`/talent/dashboard` (espacio Talent, demo), `/admin/dashboard` (Admin CLH, demo), `/styleguide` (todos los componentes). Arquitectura, mapa de rutas y plan por
 bloques en [`docs/frontend/`](docs/frontend/README.md).
 El botón de la luna en la barra alterna tema claro y oscuro.
 
@@ -21,7 +21,7 @@ El botón de la luna en la barra alterna tema claro y oscuro.
 | Ruta | Qué es |
 |---|---|
 | `design-system/` | Design system: `tokens.css`, `bundle.css`, `theme.css` (Tailwind), componentes en `src/`, tipos en `index.d.ts`. **No se edita aquí**: los cambios se hacen en el design system y se reemplaza esta carpeta. |
-| `app/` | Rutas. `(public)`, `(auth)`, `talent/`, `admin/`: un layout por espacio. Solo pantallas. |
+| `app/` | Rutas. `(public)`, `(shared)`, `(auth)`, `talent/`, `admin/`: un layout por espacio; `(shared)` es para pantallas que ven visitantes y miembros con la misma URL. Solo pantallas. |
 | `components/` | Piezas del sitio que no son del design system: cabecera, pie, tema, `NavButton`, `PageState` y `shells/`. |
 | `lib/` | `routes.ts` (navegación por espacio) y `session.ts` (sesión simulada). |
 | `docs/frontend/` | Arquitectura, rutas, roadmap, modelos, necesidades de backend y decisiones. |

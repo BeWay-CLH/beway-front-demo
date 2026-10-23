@@ -7,7 +7,7 @@ import { NavButton } from '@/components/NavButton';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { signOut } from '@/lib/auth-actions';
 import type { Session } from '@/lib/models/session';
-import type { NavItem, Space } from '@/lib/routes';
+import { talentHome, type NavItem, type Space } from '@/lib/routes';
 import { DemoBar, demoBarEnabled } from './DemoBar';
 import { MobileMenu } from './MobileMenu';
 import { NavList, ShellNav } from './ShellNav';
@@ -37,12 +37,13 @@ export function AppHeader({
 }) {
   const router = useRouter();
   const guestActions = !session && !quiet && space === 'public';
+  /* "Mi espacio" solo hace falta si la cabecera no trae ya el "Inicio" del espacio (acceso, registro). */
+  const spaceLink = Boolean(session) && space === 'public' && !items.some((i) => i.href === talentHome);
+  const username = session?.username;
 
   const desktopAccount = session ? (
     <>
-      {space === 'public' ? (
-        <NavButton href="/talent/dashboard" variant="ghost">Mi espacio</NavButton>
-      ) : null}
+      {spaceLink ? <NavButton href={talentHome} variant="ghost">Mi espacio</NavButton> : null}
       <NavButton href="/talent/settings" variant="ghost" aria-label="Ajustes de cuenta">
         <Avatar name={session.displayName} size={32} />
       </NavButton>
@@ -59,6 +60,7 @@ export function AppHeader({
 
   const mobileAccount = session ? (
     <>
+      {spaceLink ? <NavButton href={talentHome} variant="ghost" fullWidth icon="layout-dashboard">Mi espacio</NavButton> : null}
       <NavButton href="/talent/settings" variant="ghost" fullWidth icon="settings">Ajustes de cuenta</NavButton>
       <form action={signOut}>
         <Button type="submit" variant="ghost" fullWidth icon="log-out">Cerrar sesión</Button>
@@ -86,7 +88,7 @@ export function AppHeader({
             {badge ? <Badge tone="navy">{badge}</Badge> : null}
           </span>
         }
-        links={items.length > 0 ? <NavList items={items} /> : undefined}
+        links={items.length > 0 ? <NavList items={items} username={username} /> : undefined}
         actions={
           <>
             <ThemeToggle />
@@ -95,7 +97,7 @@ export function AppHeader({
               <div className="md:hidden">
                 <MobileMenu label="Abrir menú">
                   <div className="flex flex-col gap-4">
-                    {items.length > 0 ? <ShellNav items={items} label="Navegación" orientation="vertical" /> : null}
+                    {items.length > 0 ? <ShellNav items={items} label="Navegación" orientation="vertical" username={username} /> : null}
                     {mobileAccount ? <div className="flex flex-col gap-2 border-t border-line-subtle pt-4">{mobileAccount}</div> : null}
                   </div>
                 </MobileMenu>

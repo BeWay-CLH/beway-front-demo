@@ -17,11 +17,11 @@ tener que redecidir. Plantilla al final. Modelos en [FRONTEND_MODELS.md](FRONTEN
 - **Mobile:** desborda a 390 px (A-07).
 
 ### Catálogo de empresas · `/companies`
-- **Archivo:** `app/(public)/companies/` (`CompaniesView` de cliente) · **Actor:** cualquiera · **Bloque:** starter → C-03.
+- **Archivo:** `app/(shared)/companies/` (`page.tsx` de servidor, `CompaniesView` de cliente) · **Actor:** cualquiera · **Bloque/ticket:** C-03.
 - **Componentes:** `Breadcrumbs`, `SectionLabel`, `Tag variant="filter"`, `Input`, `CompanyCard`, `EmptyState`, `Pagination`.
-- **Datos:** `companies`, `categories`. Búsqueda inicial desde `?q=` (barra de búsqueda del header).
-- **Estados:** lista, sin resultados (con "Limpiar filtros"). Sin carga ni error (fixture).
-- **Pendiente:** `CompanyCard` no navega (C-03); filtros en URL (C-03).
+- **Datos:** `getCompanies({ q, category, page })` y `getCompanyCategories()` de `lib/services/companies.ts`. Todo en la URL: `?q=`, `?category=<slug>`, `?page=`.
+- **Estados:** lista · sin resultados (con "Limpiar filtros") · parámetros inválidos se ignoran. Sin carga ni error (fixture).
+- **Interacciones:** la tarjeta ("Ver perfil") navega a `/companies/[slug]`; el texto espera 300 ms; el resumen "N empresas en X para «q»" se anuncia con `aria-live`.
 - **BE:** BE-008.
 
 ### Registro (semilla) · `/signup`
@@ -36,7 +36,7 @@ tener que redecidir. Plantilla al final. Modelos en [FRONTEND_MODELS.md](FRONTEN
 ### Inicio Talent (shell) · `/talent/dashboard`
 - **Archivo:** `app/talent/dashboard/page.tsx` · **Actor:** Talent · **Bloque:** A → D-01.
 - **Componentes:** `SectionLabel`, `Alert info`, `Card`, `Icon`, `NavButton` (único primary).
-- **Datos:** `getMockSession().displayName`, `companies.length`.
+- **Datos:** perfil y ajustes (`lib/services/profiles.ts`) y tres empresas de `getCompanies({ pageSize: 3 })`, cada una enlaza a su ficha.
 - **Estados:** sin sesión → `PageState signed-out`; sin rol → `forbidden` (desde el layout).
 - **A11y/mobile:** una columna en móvil, dos desde `md`.
 
@@ -53,9 +53,10 @@ El logo está siempre en el mismo sitio y enlaza al inicio del espacio.
 
 | Shell | Archivo | Enlaces | Acciones | Pie |
 |---|---|---|---|---|
-| Public | `components/SiteHeader.tsx`, `SiteFooter.tsx` | Empresas + búsqueda | Tema, Crear cuenta | Sí |
+| Public | `components/SiteHeader.tsx`, `SiteFooter.tsx` | Empresas + búsqueda; con sesión, los de Talent | Tema, Crear cuenta; con sesión, avatar | Sí |
+| Shared | `components/shells/ViewerShell.tsx` (`app/(shared)/`) | Con sesión Inicio, Empresas, Perfil; sin sesión Empresas + búsqueda | Tema, avatar o Crear cuenta | Solo sin sesión |
 | Auth | `components/shells/AuthShell.tsx` | — | Tema | No |
-| Talent | `components/shells/AppShell.tsx` (`space="talent"`) | Inicio, Empresas | Tema, avatar | No |
+| Talent | `components/shells/AppShell.tsx` (`space="talent"`) | Inicio, Empresas, Perfil | Tema, avatar | No |
 | Admin | `components/shells/AppShell.tsx` (`space="admin"`) | Inicio · `Badge navy` "Admin CLH" junto al logo | Tema, avatar | No |
 
 - **DemoBar** (`components/shells/DemoBar.tsx`): franja oscura con "DEMO", enlaces a Público (`/`), Talent
@@ -63,15 +64,17 @@ El logo está siempre en el mismo sitio y enlaza al inicio del espacio.
   ejemplo". En móvil se puede desplazar en horizontal. Se apaga con `NEXT_PUBLIC_BEWAY_DEMO_BAR=off`.
 - **Móvil:** por debajo de `md` los enlaces y la búsqueda pasan al menú desplegable (`MobileMenu`, con
   `aria-expanded`/`aria-controls`, se cierra al navegar y con Escape).
-- "Iniciar sesión" sigue oculto hasta B-02.
+- **La navegación sigue a quien mira** (DEC-030): con sesión es la de Talent en cualquier página que no sea de Admin; sin sesión,
+  la pública. "Empresas" y "Perfil" no cambian la cabecera.
 
 ### Estados globales
 | Estado | Dónde | Acción |
 |---|---|---|
 | 404 público | `app/not-found.tsx` | "Ir al inicio" |
+| 404 de ficha o perfil | `app/(shared)/not-found.tsx` (dentro del marco de quien mira) | "Ver empresas" |
 | 404 Talent | `app/talent/not-found.tsx` + `[...missing]` | "Volver a tu inicio" |
 | 404 Admin | `app/admin/not-found.tsx` + `[...missing]` | "Volver al panel" |
-| Error | `error.tsx` en `(public)`, `talent`, `admin` → `RouteError` | "Reintentar" (`retry()`) |
+| Error | `error.tsx` en `(public)`, `(shared)`, `talent`, `admin` → `RouteError` | "Reintentar" (`retry()`) |
 | Sin sesión / sin rol | Layouts de Talent y Admin | "Crear cuenta" / "Ir al inicio" |
 
 ### Legado e internas
@@ -98,6 +101,37 @@ El logo está siempre en el mismo sitio y enlaza al inicio del espacio.
 | Sin acceso | `/admin/*` con Marcos | `app/admin/layout.tsx` | "¿Puedo entrar aquí?" · no | Ninguna |
 
 Para el tratamiento visual de estas pantallas (estilo, hoja, criterios) ver [DESIGN.md](DESIGN.md).
+
+---
+
+## Bloque C · implementado en modo demo (2026-10-22)
+
+| Pantalla | Ruta | Archivo | Pregunta y hallazgo | Simulación |
+|---|---|---|---|---|
+| Catálogo | `/companies` | `app/(shared)/companies/` | "¿Qué empresas hay?" · cuántas, por categoría y búsqueda | Ninguna (lectura) |
+| Ficha de empresa | `/companies/[slug]` | `components/company/CompanyProfile.tsx` | "¿Qué hace esta empresa y qué ofrece?" | "Seguir" simulado con `Toast` |
+| Ficha sin contenido | `/companies/trazo` | Mismo componente | `PageState empty` dentro de la ficha | Ninguna |
+| Ficha desactualizada | `/companies/vialink` | Mismo componente | `Alert warning` con la fecha de revisión | Ninguna |
+| Ficha no publicada | `/companies/brisa-salud` | `app/(shared)/not-found.tsx` | 404 sin distinguirse de un slug inexistente | Ninguna |
+| Empresas que sigues | `/u/[username]` (titular) | `components/company/FollowedCompanies.tsx` | Solo la ve su titular; vacía para Marcos | Refleja los cambios de la sesión |
+
+### C-02 · Ficha de empresa · `/companies/[slug]`
+- **Archivo:** `app/(shared)/companies/[slug]/page.tsx` + `components/company/` · **Actor:** cualquiera · **Bloque/ticket:** C-02, C-04, C-05.
+- **Componentes:** `Breadcrumbs`, `Photo`, `Alert`, `Tabs`, `Button`, `Toast`, `Icon`, `PageState`; propios: `CompanyProfile`,
+  `CompanyTabs`, `CompanyModules`, `FollowButton`.
+- **Datos:** `getCompanyBySlug(slug, viewerId)` → `CompanyDetailVM | null` (null → `notFound()`). Sin estado editorial ni auditoría.
+- **Estructura:** migas (Inicio sigue a quien mira) · banner con logo en chip blanco · nombre, categoría y descripción ·
+  "Seguir" (único primary) · aviso de desactualizada · cuatro cifras (2×2 en móvil) · pestañas · nota sobre el origen de los datos.
+- **Pestañas:** una por módulo con contenido (Resumen, Cultura, Programas, Vacantes, Sedes) y "Fuentes". `?tab=<kind>`,
+  flechas/Inicio/Fin, desplazamiento horizontal en móvil. Cada módulo nombra sus fuentes y enlaza a "Fuentes".
+- **Estados:** completa · módulo vacío (sin pestaña) · sin módulos (`PageState empty`) · desactualizada (>180 días, con fecha) ·
+  no publicada o inexistente (404 en el marco de quien mira).
+- **Seguir:** sin sesión lleva a `/signup`. Con sesión alterna "Seguir" / "Siguiendo", muestra `Toast` "Simulación" y guarda el
+  cambio solo en `sessionStorage` (DEC-032).
+- **Textos provisionales:** L-20 (origen de los datos y cómo corregir) y L-21 (qué pasa al seguir), marcados "pendientes de revisión legal".
+- **BE:** BE-009, BE-025. **Autorización:** pública, solo fichas publicadas.
+- **A11y / mobile:** `role="tabpanel"` con nombre, `aria-live` en el aviso, foco visible; sin scroll horizontal a 390 px; claro y oscuro.
+- **Meta:** `generateMetadata` con nombre y descripción. Canónica pendiente de dominio (OI-020).
 
 ---
 
@@ -140,7 +174,7 @@ Para el tratamiento visual de estas pantallas (estilo, hoja, criterios) ver [DES
 - Texto con aviso "Borrador pendiente de revisión legal" (OI-012). Contacto: formulario con envío simulado.
 - Enlazar desde `SiteFooter` (`legalLinks`).
 
-### C-02 · Ficha de empresa · `/companies/[slug]`
+### C-02 · Ficha de empresa · `/companies/[slug]` (plan original; implementada arriba, con el título bajo el banner y no sobre la foto)
 - **Estructura:** `Breadcrumbs` · cabecera con `Photo overlay="hero"` (logo en chip blanco, nombre, categoría) · botón "Seguir" (C-05) · aviso de desactualización · módulos · fuentes.
 - **Seguir (C-05):** `Button variant="outline"` "Seguir" / "Siguiendo"; sin sesión lleva a crear cuenta; resultado simulado con `Toast`. Aviso L-21.
 - **Módulos (DEC-020):** Resumen (obligatorio) · Cultura · Programas (enlaza a cursos cuando existan) · Vacantes (sin URLs inventadas) · Sedes · Fuentes.
