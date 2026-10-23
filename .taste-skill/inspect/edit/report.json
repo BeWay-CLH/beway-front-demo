@@ -1,0 +1,1573 @@
+{
+ "url": ".taste-skill/snap/edit.html",
+ "at": "2026-10-22T21:29:14.329Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.36,
+    0.24
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1754,
+     "screens": 1.9,
+     "words": 140,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 20,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Editar perfil",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Editar perfil",
+     "words": 2,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Editar perfil",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.28,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.92,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.08,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.5
+     },
+     "measureChars": 99,
+     "max": {
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "text": "Editar perfil"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.07,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.49
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.44
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.04
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      },
+      {
+       "color": "#006f8b",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 2,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "Ver perfil"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 1440px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 1440px",
+      "section.grid.gap-4 1052px",
+      "section.grid.gap-4 1052px",
+      "section.grid.gap-4 1052px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 5,
+       "iconTopped": false,
+       "rounded": false,
+       "top": 570
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 1754,
+    "margins": {
+     "left": 80,
+     "right": 32
+    },
+    "sections": [
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 262,
+      "height": 308,
+      "words": 24,
+      "media": 0,
+      "middle": 100,
+      "heading": {
+       "text": "Datos básicos",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 194,
+      "right": 194,
+      "textLeft": 194,
+      "textRight": 443,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 570,
+      "height": 277,
+      "words": 15,
+      "media": 0,
+      "middle": 32,
+      "heading": {
+       "text": "Sobre ti",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 194,
+      "right": 194,
+      "textLeft": 194,
+      "textRight": 801,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 847,
+      "height": 364,
+      "words": 23,
+      "media": 0,
+      "middle": 45,
+      "heading": {
+       "text": "Experiencia",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 194,
+      "right": 194,
+      "textLeft": 194,
+      "textRight": 305,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1449,
+      "height": 184,
+      "words": 20,
+      "media": 0,
+      "middle": 31,
+      "heading": {
+       "text": "Habilidades",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 194,
+      "right": 194,
+      "textLeft": 194,
+      "textRight": 211,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Editar perfil",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 194,
+      "n": 8
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.11,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 180,
+     "h": 780
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 46,
+     "right": 32
+    },
+    "hero": {
+     "text": "Editar perfil",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 6,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 6,
+     "radii": [
+      [
+       0,
+       6
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.02,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ]
+    },
+    "title": {
+     "text": "Editar perfil",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.5,
+    0.33
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1794,
+     "screens": 1.8,
+     "words": 140,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 20,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Editar perfil",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Editar perfil",
+     "words": 2,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Editar perfil",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.52,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.92,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.08,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.5
+     },
+     "measureChars": 68,
+     "max": {
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "text": "Editar perfil"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.07,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.49
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.44
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.04
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      },
+      {
+       "color": "#006f8b",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 11,
+     "inHero": 2,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "Ver perfil"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 768px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 768px",
+      "section.grid.gap-4 720px",
+      "section.grid.gap-4 720px",
+      "section.grid.gap-4 720px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1794,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 262,
+      "height": 308,
+      "words": 24,
+      "media": 0,
+      "middle": 31,
+      "heading": {
+       "text": "Datos básicos",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 52,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 570,
+      "height": 277,
+      "words": 15,
+      "media": 0,
+      "middle": 18,
+      "heading": {
+       "text": "Sobre ti",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 410,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 847,
+      "height": 364,
+      "words": 23,
+      "media": 0,
+      "middle": 25,
+      "heading": {
+       "text": "Experiencia",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 25,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1211,
+      "height": 139,
+      "words": 10,
+      "media": 0,
+      "middle": 32,
+      "heading": {
+       "text": "Formación",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 323,
+      "textLeft": 24,
+      "textRight": 340,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1350,
+      "height": 139,
+      "words": 18,
+      "media": 0,
+      "middle": 42,
+      "heading": {
+       "text": "Intereses",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 127,
+      "textLeft": 24,
+      "textRight": 140,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1489,
+      "height": 184,
+      "words": 20,
+      "media": 0,
+      "middle": 42,
+      "heading": {
+       "text": "Habilidades",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 41,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Editar perfil",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 8
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 24,
+     "right": 24
+    },
+    "hero": {
+     "text": "Editar perfil",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 6,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 6,
+     "radii": [
+      [
+       0,
+       6
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.02,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ]
+    },
+    "title": {
+     "text": "Editar perfil",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.002
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.43,
+    0.46,
+    0.25
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 2487,
+     "screens": 2.9,
+     "words": 133,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 20,
+     "sections": 6,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Editar perfil",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Editar perfil",
+     "words": 2,
+     "lines": 1,
+     "size": 24,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Editar perfil",
+      "words": 2,
+      "chars": 13,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 149,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.92,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.08,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.5
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "text": "Editar perfil"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.07,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.49
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.46
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.03
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.02
+      },
+      {
+       "color": "#006f8b",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#ffffff",
+      "hsl": {
+       "h": 0,
+       "s": 0,
+       "l": 1
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 10,
+     "inHero": 1,
+     "radius": 8,
+     "height": 30,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Ver perfil"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 8,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 390px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 390px",
+      "section.grid.gap-4 358px",
+      "section.grid.gap-4 358px",
+      "section.grid.gap-4 358px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 8,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 2487,
+    "margins": {
+     "left": 0,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "header.flex.flex-col",
+      "tag": "header",
+      "top": 149,
+      "height": 153,
+      "words": 17,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Editar perfil",
+       "size": 24,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 57,
+      "textLeft": 16,
+      "textRight": 57,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 334,
+      "height": 399,
+      "words": 24,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Datos básicos",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 33,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 733,
+      "height": 347,
+      "words": 15,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Sobre ti",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 50,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1080,
+      "height": 604,
+      "words": 23,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Experiencia",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 79,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1684,
+      "height": 175,
+      "words": 10,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Formación",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 108,
+      "textLeft": 16,
+      "textRight": 108,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 1859,
+      "height": 203,
+      "words": 18,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Intereses",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 63,
+      "textLeft": 16,
+      "textRight": 63,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     },
+     {
+      "sel": "section.grid.gap-4",
+      "tag": "section",
+      "top": 2062,
+      "height": 312,
+      "words": 20,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Habilidades",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 26,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": true,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Editar perfil",
+      "size": 24,
+      "top": 149,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 8
+     }
+    ],
+    "leftBlocks": 8,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 0,
+     "right": 16
+    },
+    "hero": {
+     "text": "Editar perfil",
+     "words": 2,
+     "chars": 13,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 6,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 6,
+     "radii": [
+      [
+       0,
+       6
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.01,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24
+     ]
+    },
+    "title": {
+     "text": "Editar perfil",
+     "size": 24,
+     "top": 149
+    },
+    "colourShare": 0.001
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "below-fold",
+   "width": 1440,
+   "message": "Only 2 of 6 blocks start on the first 1440px screen.",
+   "fix": "Every block the brief names shows its header and first rows on the first desktop screen: size the headline block to its question, cap long lists with \"View all\", and put time-sensitive blocks before long tables."
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\edit\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\edit\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\edit\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\edit\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\edit\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\edit\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

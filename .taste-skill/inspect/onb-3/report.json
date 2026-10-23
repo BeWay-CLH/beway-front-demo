@@ -1,0 +1,1287 @@
+{
+ "url": ".taste-skill/snap/onb-3.html",
+ "at": "2026-10-22T21:28:30.313Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.38
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 900,
+     "screens": 1,
+     "words": 77,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 16,
+     "sections": 0,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Privacidad",
+     "words": 1,
+     "chars": 10,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Privacidad",
+     "words": 1,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Privacidad",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.73,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "75%",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 34,
+      "vw": 2.4,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.04,
+      "top": 311,
+      "tag": "span",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.89,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.11,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20,
+      32,
+      34
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.8
+     },
+     "measureChars": 77,
+     "max": {
+      "size": 34,
+      "vw": 2.4,
+      "font": "Space Grotesk",
+      "text": "75%"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.04,
+     "centerShare": 0.04,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.46
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.42
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.09
+      },
+      {
+       "color": "#006f8b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#d6f6ff",
+      "hsl": {
+       "h": 193,
+       "s": 1,
+       "l": 0.92
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 4,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "4 Privacidad",
+      "Atrás",
+      "Terminar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "nav → rgba(11, 19, 43, 0.08) 0px 2px 6px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 1440px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 1440px",
+      "div.flex.flex-col-reverse 670px"
+     ],
+     "outlinedBoxes": 3,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 900,
+    "margins": {
+     "left": 80,
+     "right": 32
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Privacidad",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 194,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 1,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.27,
+    "voidBox": {
+     "x": 0,
+     "y": 660,
+     "w": 1440,
+     "h": 240
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 46,
+     "right": 32
+    },
+    "hero": {
+     "text": "Privacidad",
+     "words": 1,
+     "chars": 10,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 2,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 4,
+     "radii": [
+      [
+       16,
+       3
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 1,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 1,
+     "tabularShare": 0,
+     "kpiMax": 34
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.13,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20,
+      32,
+      34
+     ]
+    },
+    "title": {
+     "text": "Privacidad",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.008
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.45
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1024,
+     "screens": 1,
+     "words": 77,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 16,
+     "sections": 0,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Privacidad",
+     "words": 1,
+     "chars": 10,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Privacidad",
+     "words": 1,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Privacidad",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "75%",
+      "words": 1,
+      "chars": 3,
+      "lines": 1,
+      "size": 34,
+      "vw": 4.4,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.02,
+      "leading": 1,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.08,
+      "top": 311,
+      "tag": "span",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 2,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.89,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.11,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20,
+      32,
+      34
+     ],
+     "sizeCount": 9,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.8
+     },
+     "measureChars": 40,
+     "max": {
+      "size": 34,
+      "vw": 4.4,
+      "font": "Space Grotesk",
+      "text": "75%"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0.04,
+     "centerShare": 0.04,
+     "smallText": 2
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.46
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.42
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.09
+      },
+      {
+       "color": "#006f8b",
+       "share": 0.02
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#d6f6ff",
+      "hsl": {
+       "h": 193,
+       "s": 1,
+       "l": 0.92
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 4,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "4 Privacidad",
+      "Atrás",
+      "Terminar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 1,
+     "shadowOverlay": 0,
+     "shadowSamples": [
+      "nav → rgba(11, 19, 43, 0.08) 0px 2px 6px 0px"
+     ],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 768px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 768px",
+      "div.flex.flex-col-reverse 338px"
+     ],
+     "outlinedBoxes": 3,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 3,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1024,
+    "margins": {
+     "left": 24,
+     "right": 32
+    },
+    "sections": [],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Privacidad",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 1,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 24,
+     "right": 32
+    },
+    "hero": {
+     "text": "Privacidad",
+     "words": 1,
+     "chars": 10,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 2,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 4,
+     "radii": [
+      [
+       16,
+       3
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 1,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 1,
+     "tabularShare": 0,
+     "kpiMax": 34
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.13,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20,
+      32,
+      34
+     ]
+    },
+    "title": {
+     "text": "Privacidad",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.014
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.6
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 844,
+     "screens": 1,
+     "words": 55,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 16,
+     "sections": 0,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Privacidad",
+     "words": 1,
+     "chars": 10,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Privacidad",
+     "words": 1,
+     "lines": 1,
+     "size": 24,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Privacidad",
+      "words": 1,
+      "chars": 10,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 149,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.92,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.08,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      18,
+      20,
+      24
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.8
+     },
+     "measureChars": 36,
+     "max": {
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "text": "Privacidad"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.04,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [
+      {
+       "color": "#ffffff",
+       "top": 312,
+       "hsl": {
+        "h": 0,
+        "s": 0,
+        "l": 1
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.51
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.4
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.07
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.02
+      },
+      {
+       "color": "#006f8b",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#00d4ff",
+      "hsl": {
+       "h": 190,
+       "s": 1,
+       "l": 0.5
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 2,
+     "inHero": 2,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Atrás",
+      "Terminar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 3,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 390px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 390px",
+      "div.flex.flex-col-reverse 308px"
+     ],
+     "outlinedBoxes": 2,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 2,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 844,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "div.flex.flex-col",
+      "tag": "div",
+      "top": 337,
+      "height": 274,
+      "words": 32,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 41,
+      "right": 82,
+      "textLeft": 41,
+      "textRight": 82,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.flex.flex-col-reverse",
+      "tag": "div",
+      "top": 635,
+      "height": 125,
+      "words": 2,
+      "media": 0,
+      "middle": 0,
+      "heading": null,
+      "left": 25,
+      "right": 41,
+      "textLeft": 161,
+      "textRight": 161,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Privacidad",
+      "size": 24,
+      "top": 149,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 1,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 16,
+     "right": 16
+    },
+    "hero": {
+     "text": "Privacidad",
+     "words": 1,
+     "chars": 10,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 1,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 3,
+     "radii": [
+      [
+       16,
+       2
+      ],
+      [
+       0,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.1,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      11,
+      12,
+      14,
+      15,
+      16,
+      18,
+      20,
+      24,
+      34
+     ]
+    },
+    "title": {
+     "text": "Privacidad",
+     "size": 24,
+     "top": 149
+    },
+    "colourShare": 0.054
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\onb-3\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\onb-3\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\onb-3\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\onb-3\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\onb-3\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\onb-3\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

@@ -1,0 +1,1531 @@
+{
+ "url": ".taste-skill/snap/dash-dark.html",
+ "at": "2026-10-22T21:30:05.356Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.64,
+    0.56
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 935,
+     "screens": 1,
+     "words": 100,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 17,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Hola, Lucía. Tu perfil está al 80%.",
+     "words": 7,
+     "chars": 35,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Hola, Lucía. Tu perfil está al 80 %.",
+     "words": 8,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Hola, Lucía. Tu perfil está al 80 %.",
+      "words": 8,
+      "chars": 36,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.35,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24,
+      32
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.9
+     },
+     "measureChars": 105,
+     "max": {
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "text": "Hola, Lucía. Tu perfil está al 80 %."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.13,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0b132b",
+     "bodyBgHsl": {
+      "h": 225,
+      "s": 0.59,
+      "l": 0.11
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#94a3b8",
+       "share": 0.54
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.26
+      },
+      {
+       "color": "#f8fafc",
+       "share": 0.16
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.03
+      },
+      {
+       "color": "#00d4ff",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#00d4ff",
+      "hsl": {
+       "h": 190,
+       "s": 1,
+       "l": 0.5
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 6,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "Completar mi perfil",
+      "Completar",
+      "Ver mi perfil",
+      "Ver todas las empresas"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 1440px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 1440px",
+      "li.flex.items-center 468px",
+      "li.flex.items-center 468px"
+     ],
+     "outlinedBoxes": 8,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 262
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 935,
+    "margins": {
+     "left": 80,
+     "right": 32
+    },
+    "sections": [
+     {
+      "sel": "div.grid.gap-4",
+      "tag": "div",
+      "top": 393,
+      "height": 188,
+      "words": 32,
+      "media": 0,
+      "middle": 201,
+      "heading": {
+       "text": "Qué falta",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 219,
+      "right": 257,
+      "textLeft": 219,
+      "textRight": 257,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.grid.gap-4",
+      "tag": "div",
+      "top": 613,
+      "height": 282,
+      "words": 32,
+      "media": 0,
+      "middle": 162,
+      "heading": {
+       "text": "Empresas del ecosistema",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 203,
+      "right": 375,
+      "textLeft": 219,
+      "textRight": 375,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Hola, Lucía. Tu perfil está al 80 %.",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 219,
+      "n": 3
+     },
+     {
+      "x": 194,
+      "n": 1
+     },
+     {
+      "x": 753,
+      "n": 1
+     },
+     {
+      "x": 1020,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.12,
+    "voidBox": {
+     "x": 1200,
+     "y": 240,
+     "w": 240,
+     "h": 660
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": true,
+    "ground": "#0b132b",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 46,
+     "right": 32
+    },
+    "hero": {
+     "text": "Hola, Lucía. Tu perfil está al 80%.",
+     "words": 7,
+     "chars": 35,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 8,
+     "firstScreen": 8,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 8,
+     "radii": [
+      [
+       16,
+       8
+      ]
+     ],
+     "heavyBorders": 8,
+     "borderSamples": [
+      "#ffffff on #1c2541 (15.1:1)",
+      "#ffffff on #1c2541 (15.1:1)",
+      "#ffffff on #1c2541 (15.1:1)"
+     ],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.03,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24,
+      32
+     ]
+    },
+    "title": {
+     "text": "Hola, Lucía. Tu perfil está al 80 %.",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.417
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 1,
+   "filled": [
+    0.72
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1024,
+     "screens": 1,
+     "words": 100,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 17,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Hola, Lucía. Tu perfil está al 80%.",
+     "words": 7,
+     "chars": 35,
+     "lines": 2,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Hola, Lucía. Tu perfil está al 80 %.",
+     "words": 8,
+     "lines": 2,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Hola, Lucía. Tu perfil está al 80 %.",
+      "words": 8,
+      "chars": 36,
+      "lines": 2,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.62,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24,
+      32
+     ],
+     "sizeCount": 6,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.9
+     },
+     "measureChars": 69,
+     "max": {
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "text": "Hola, Lucía. Tu perfil está al 80 %."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.13,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0b132b",
+     "bodyBgHsl": {
+      "h": 225,
+      "s": 0.59,
+      "l": 0.11
+     },
+     "dark": true,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#94a3b8",
+       "share": 0.54
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.26
+      },
+      {
+       "color": "#f8fafc",
+       "share": 0.16
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.03
+      },
+      {
+       "color": "#00d4ff",
+       "share": 0
+      }
+     ],
+     "button": {
+      "bg": "#00d4ff",
+      "hsl": {
+       "h": 190,
+       "s": 1,
+       "l": 0.5
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 6,
+     "inHero": 6,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "Completar mi perfil",
+      "Completar",
+      "Ver mi perfil",
+      "Ver todas las empresas"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 768px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 768px",
+      "li.flex.items-center 302px",
+      "li.flex.items-center 302px"
+     ],
+     "outlinedBoxes": 8,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 299
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1024,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "div.grid.gap-4",
+      "tag": "div",
+      "top": 429,
+      "height": 208,
+      "words": 32,
+      "media": 0,
+      "middle": 66,
+      "heading": {
+       "text": "Qué falta",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 49,
+      "right": 49,
+      "textLeft": 49,
+      "textRight": 52,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.grid.gap-4",
+      "tag": "div",
+      "top": 669,
+      "height": 304,
+      "words": 32,
+      "media": 0,
+      "middle": 50,
+      "heading": {
+       "text": "Empresas del ecosistema",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 33,
+      "right": 49,
+      "textLeft": 49,
+      "textRight": 49,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Hola, Lucía. Tu perfil está al 80 %.",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 49,
+      "n": 3
+     },
+     {
+      "x": 24,
+      "n": 1
+     },
+     {
+      "x": 417,
+      "n": 1
+     },
+     {
+      "x": 601,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": true,
+    "ground": "#0b132b",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 24,
+     "right": 24
+    },
+    "hero": {
+     "text": "Hola, Lucía. Tu perfil está al 80%.",
+     "words": 7,
+     "chars": 35,
+     "lines": 2,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 8,
+     "firstScreen": 8,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 8,
+     "radii": [
+      [
+       16,
+       8
+      ]
+     ],
+     "heavyBorders": 8,
+     "borderSamples": [
+      "#ffffff on #1c2541 (15.1:1)",
+      "#ffffff on #1c2541 (15.1:1)",
+      "#ffffff on #1c2541 (15.1:1)"
+     ],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.03,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24,
+      32
+     ]
+    },
+    "title": {
+     "text": "Hola, Lucía. Tu perfil está al 80 %.",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.477
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.67,
+    0.86
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 1670,
+     "screens": 2,
+     "words": 93,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 17,
+     "sections": 4,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Hola, Lucía. Tu perfil está al 80%.",
+     "words": 7,
+     "chars": 35,
+     "lines": 2,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Hola, Lucía. Tu perfil está al 80 %.",
+     "words": 8,
+     "lines": 2,
+     "size": 24,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Hola, Lucía. Tu perfil está al 80 %.",
+      "words": 8,
+      "chars": 36,
+      "lines": 2,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 149,
+      "tag": "h1",
+      "kind": "heading"
+     },
+     {
+      "text": "Pública",
+      "words": 1,
+      "chars": 7,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 396,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "2",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 396,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "4",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "left",
+      "widthRatio": 0.33,
+      "top": 510,
+      "tag": "span",
+      "kind": "heading"
+     },
+     {
+      "text": "1",
+      "words": 1,
+      "chars": 1,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": 0,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "right",
+      "widthRatio": 0.33,
+      "top": 510,
+      "tag": "span",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 5,
+     "maxLines": 2,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": 1,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.84,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.16,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.43,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 5.9
+     },
+     "measureChars": 44,
+     "max": {
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "text": "Hola, Lucía. Tu perfil está al 80 %."
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.14,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#0b132b",
+     "bodyBgHsl": {
+      "h": 225,
+      "s": 0.59,
+      "l": 0.11
+     },
+     "dark": true,
+     "sectionBgs": [
+      {
+       "color": "#1c2541",
+       "top": 1056,
+       "hsl": {
+        "h": 225,
+        "s": 0.4,
+        "l": 0.18
+       }
+      }
+     ],
+     "textColors": [
+      {
+       "color": "#94a3b8",
+       "share": 0.52
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.27
+      },
+      {
+       "color": "#f8fafc",
+       "share": 0.17
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.03
+      }
+     ],
+     "button": {
+      "bg": "#00d4ff",
+      "hsl": {
+       "h": 190,
+       "s": 1,
+       "l": 0.5
+      },
+      "fg": "#0b132b"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Completar mi perfil",
+      "Completar"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 4,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 390px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 390px",
+      "li.flex.items-center 308px",
+      "li.flex.items-center 308px"
+     ],
+     "outlinedBoxes": 8,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 8,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": [
+      {
+       "count": 3,
+       "iconTopped": false,
+       "rounded": true,
+       "top": 347
+      }
+     ]
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 1670,
+    "margins": {
+     "left": 16,
+     "right": 41
+    },
+    "sections": [
+     {
+      "sel": "header.flex.flex-col",
+      "tag": "header",
+      "top": 149,
+      "height": 166,
+      "words": 16,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Hola, Lucía. Tu perfil está al 80 %.",
+       "size": 24,
+       "tag": "h1"
+      },
+      "left": 16,
+      "right": 67,
+      "textLeft": 16,
+      "textRight": 67,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.grid.grid-cols-2",
+      "tag": "div",
+      "top": 347,
+      "height": 214,
+      "words": 5,
+      "media": 0,
+      "middle": 102,
+      "heading": {
+       "text": "Pública",
+       "size": 24,
+       "tag": "span"
+      },
+      "left": 37,
+      "right": 89,
+      "textLeft": 37,
+      "textRight": 89,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.grid.gap-4",
+      "tag": "div",
+      "top": 592,
+      "height": 432,
+      "words": 32,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Qué falta",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 41,
+      "right": 83,
+      "textLeft": 41,
+      "textRight": 83,
+      "fullBleed": false,
+      "footer": false,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.grid.gap-4",
+      "tag": "div",
+      "top": 1056,
+      "height": 582,
+      "words": 32,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Empresas del ecosistema",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 25,
+      "right": 41,
+      "textLeft": 41,
+      "textRight": 41,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Hola, Lucía. Tu perfil está al 80 %.",
+      "size": 24,
+      "top": 149,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 41,
+      "n": 5
+     },
+     {
+      "x": 16,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 6,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": true,
+    "ground": "#0b132b",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 16,
+     "right": 27
+    },
+    "hero": {
+     "text": "Hola, Lucía. Tu perfil está al 80%.",
+     "words": 7,
+     "chars": 35,
+     "lines": 2,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 8,
+     "firstScreen": 5,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 8,
+     "radii": [
+      [
+       16,
+       8
+      ]
+     ],
+     "heavyBorders": 8,
+     "borderSamples": [
+      "#ffffff on #1c2541 (15.1:1)",
+      "#ffffff on #1c2541 (15.1:1)",
+      "#ffffff on #1c2541 (15.1:1)"
+     ],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.01,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24
+     ]
+    },
+    "title": {
+     "text": "Hola, Lucía. Tu perfil está al 80 %.",
+     "size": 24,
+     "top": 149
+    },
+    "colourShare": 0.455
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [
+  {
+   "level": "WARN",
+   "id": "heavy-borders",
+   "width": 1440,
+   "message": "8 panel borders are dark against their ground: #ffffff on #1c2541 (15.1:1) | #ffffff on #1c2541 (15.1:1) | #ffffff on #1c2541 (15.1:1)",
+   "fix": "A panel border is a whisper: about 1.1–1.3:1 against its ground on a light screen (#e5e7eb–#ededed on white), and about 1.2–1.5:1 on a dark one (#1a1a1a on #000, #2e2e2e on #111). Darker lines turn the screen into a grid of boxes; keep the stronger line for controls.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  },
+  {
+   "level": "WARN",
+   "id": "colour-sprawl",
+   "width": 1440,
+   "message": "42% of the first screen is strongly coloured.",
+   "fix": "Keep the screen neutral and spend colour on data and status: the studied screens sit near 3%, and only tinted styles reach 10–15%, as pale tints rather than saturated fills.",
+   "alsoAt": [
+    768,
+    390
+   ]
+  }
+ ],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\dash-dark\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\dash-dark\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\dash-dark\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\dash-dark\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\dash-dark\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\dash-dark\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

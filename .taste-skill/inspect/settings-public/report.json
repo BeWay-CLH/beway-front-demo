@@ -1,0 +1,1325 @@
+{
+ "url": ".taste-skill/snap/settings-public.html",
+ "at": "2026-10-22T21:29:31.171Z",
+ "allow": [],
+ "viewports": [
+  {
+   "width": 1440,
+   "height": 900,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.23,
+    0.24
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "page": {
+     "height": 1388,
+     "screens": 1.5,
+     "words": 175,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 15,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Ajustes de cuenta",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.73,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.93,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.07,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.5
+     },
+     "measureChars": 99,
+     "max": {
+      "size": 32,
+      "vw": 2.2,
+      "font": "Space Grotesk",
+      "text": "Ajustes de cuenta"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.06,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.72
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.19
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.04
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.04
+      },
+      {
+       "color": "#a5303f",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#0b132b",
+      "hsl": {
+       "h": 225,
+       "s": 0.59,
+       "l": 0.11
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "Cambiar contraseña"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 1440px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 1440px",
+      "section#privacidad.grid.gap-4 1052px",
+      "section.grid.gap-4 1052px",
+      "div.flex.flex-col 1052px"
+     ],
+     "outlinedBoxes": 0,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 0,
+     "boxRadius": 0,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "pageH": 1388,
+    "margins": {
+     "left": 80,
+     "right": 32
+    },
+    "sections": [
+     {
+      "sel": "form.flex.flex-col",
+      "tag": "form",
+      "top": 262,
+      "height": 849,
+      "words": 132,
+      "media": 0,
+      "middle": 67,
+      "heading": {
+       "text": "Cuenta",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 194,
+      "right": 194,
+      "textLeft": 194,
+      "textRight": 219,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-8.flex",
+      "tag": "div",
+      "top": 1143,
+      "height": 205,
+      "words": 21,
+      "media": 0,
+      "middle": 87,
+      "heading": {
+       "text": "Sesión",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 194,
+      "right": 728,
+      "textLeft": 194,
+      "textRight": 745,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Ajustes de cuenta",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 194,
+      "n": 6
+     },
+     {
+      "x": 571,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 7,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0.11,
+    "voidBox": {
+     "x": 0,
+     "y": 120,
+     "w": 180,
+     "h": 780
+    }
+   },
+   "app": {
+    "viewport": {
+     "w": 1440,
+     "h": 900
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 46,
+     "right": 32
+    },
+    "hero": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 32,
+     "vw": 2.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 4,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 4,
+     "radii": [
+      [
+       0,
+       4
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.02,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ]
+    },
+    "title": {
+     "text": "Ajustes de cuenta",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.002
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 768,
+   "height": 1024,
+   "load": "load",
+   "screens": 2,
+   "filled": [
+    0.34,
+    0.33
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "page": {
+     "height": 1510,
+     "screens": 1.5,
+     "words": 175,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 15,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "lines": 1,
+     "size": 32,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Ajustes de cuenta",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "weight": 700,
+      "tracking": -0.01,
+      "leading": 1.15,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.94,
+      "top": 157,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.93,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.07,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.5
+     },
+     "measureChars": 68,
+     "max": {
+      "size": 32,
+      "vw": 4.2,
+      "font": "Space Grotesk",
+      "text": "Ajustes de cuenta"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.06,
+     "smallText": 1
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.72
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.19
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.04
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.04
+      },
+      {
+       "color": "#a5303f",
+       "share": 0.01
+      }
+     ],
+     "button": {
+      "bg": "#0b132b",
+      "hsl": {
+       "h": 225,
+       "s": 0.59,
+       "l": 0.11
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 5,
+     "inHero": 2,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "LM",
+      "Cambiar contraseña"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 768px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 768px",
+      "section#privacidad.grid.gap-4 720px",
+      "section.grid.gap-4 720px",
+      "div.flex.flex-col 720px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "pageH": 1510,
+    "margins": {
+     "left": 24,
+     "right": 24
+    },
+    "sections": [
+     {
+      "sel": "form.flex.flex-col",
+      "tag": "form",
+      "top": 262,
+      "height": 931,
+      "words": 132,
+      "media": 0,
+      "middle": 20,
+      "heading": {
+       "text": "Cuenta",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 24,
+      "textLeft": 24,
+      "textRight": 34,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-8.flex",
+      "tag": "div",
+      "top": 1225,
+      "height": 245,
+      "words": 21,
+      "media": 0,
+      "middle": 36,
+      "heading": {
+       "text": "Sesión",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 24,
+      "right": 336,
+      "textLeft": 24,
+      "textRight": 353,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Ajustes de cuenta",
+      "size": 32,
+      "top": 157,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 24,
+      "n": 6
+     },
+     {
+      "x": 290,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 7,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 768,
+     "h": 1024
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 24,
+     "right": 24
+    },
+    "hero": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 32,
+     "vw": 4.2,
+     "font": "Space Grotesk",
+     "weight": 700,
+     "tracking": -0.01,
+     "leading": 1.15,
+     "top": 157,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 4,
+     "firstScreen": 2,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 5,
+     "radii": [
+      [
+       0,
+       4
+      ],
+      [
+       16,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.02,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      32
+     ]
+    },
+    "title": {
+     "text": "Ajustes de cuenta",
+     "size": 32,
+     "top": 157
+    },
+    "colourShare": 0.005
+   },
+   "consoleErrors": []
+  },
+  {
+   "width": 390,
+   "height": 844,
+   "load": "load",
+   "screens": 3,
+   "filled": [
+    0.37,
+    0.41,
+    0.45
+   ],
+   "motion": {
+    "elements": 0,
+    "css": 0,
+    "transitions": 0,
+    "scripted": 0,
+    "videos": 0,
+    "playingVideos": 0
+   },
+   "metrics": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "page": {
+     "height": 1808,
+     "screens": 2.1,
+     "words": 168,
+     "img": 2,
+     "video": 0,
+     "canvas": 0,
+     "svg": 15,
+     "sections": 5,
+     "horizontalOverflow": 0,
+     "overflowCulprits": [],
+     "uiFragments": 0,
+     "uiAbuse": false,
+     "realPictures": 0,
+     "videoCount": 0,
+     "uiPictures": 0,
+     "pictureSamples": [],
+     "blendText": 0,
+     "sideScrollers": 0,
+     "brokenImages": [],
+     "emoji": [],
+     "videosNoPoster": 0
+    },
+    "hero": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "h1": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "lines": 1,
+     "size": 24,
+     "font": "Space Grotesk"
+    },
+    "headings": [
+     {
+      "text": "Ajustes de cuenta",
+      "words": 3,
+      "chars": 17,
+      "lines": 1,
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "weight": 600,
+      "tracking": -0.01,
+      "leading": 1.2,
+      "upper": false,
+      "italic": false,
+      "mono": false,
+      "align": "left",
+      "position": "center",
+      "widthRatio": 0.92,
+      "top": 149,
+      "tag": "h1",
+      "kind": "heading"
+     }
+    ],
+    "headingSummary": {
+     "count": 1,
+     "maxLines": 1,
+     "over2Lines": 0,
+     "statements": 0,
+     "centered": 0,
+     "medianWords": null,
+     "mixedFontHeadings": 0
+    },
+    "type": {
+     "families": [
+      {
+       "family": "Inter",
+       "share": 0.93,
+       "mono": false
+      },
+      {
+       "family": "Space Grotesk",
+       "share": 0.07,
+       "mono": false
+      }
+     ],
+     "familyCount": 2,
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24
+     ],
+     "sizeCount": 5,
+     "notLoaded": [],
+     "body": {
+      "font": "Inter",
+      "size": 14,
+      "leading": 1.5,
+      "weight": 400,
+      "tracking": 0,
+      "contrast": 4.5
+     },
+     "measureChars": 51,
+     "max": {
+      "size": 24,
+      "vw": 6.2,
+      "font": "Space Grotesk",
+      "text": "Ajustes de cuenta"
+     },
+     "monoShare": 0,
+     "monoProseShare": 0,
+     "monoFamilies": [],
+     "monoSamples": [],
+     "microLabels": 0,
+     "microLabelShare": 0,
+     "microSamples": [],
+     "upperShare": 0,
+     "centerShare": 0.06,
+     "smallText": 0
+    },
+    "eyebrows": [],
+    "numbered": [],
+    "color": {
+     "bodyBg": "#f8fafc",
+     "bodyBgHsl": {
+      "h": 210,
+      "s": 0.4,
+      "l": 0.98
+     },
+     "dark": false,
+     "sectionBgs": [],
+     "textColors": [
+      {
+       "color": "#64748b",
+       "share": 0.73
+      },
+      {
+       "color": "#0b132b",
+       "share": 0.2
+      },
+      {
+       "color": "#ffffff",
+       "share": 0.04
+      },
+      {
+       "color": "#94a3b8",
+       "share": 0.02
+      },
+      {
+       "color": "#a5303f",
+       "share": 0.02
+      }
+     ],
+     "button": {
+      "bg": "#0b132b",
+      "hsl": {
+       "h": 225,
+       "s": 0.59,
+       "l": 0.11
+      },
+      "fg": "#ffffff"
+     },
+     "lowContrast": []
+    },
+    "buttons": {
+     "count": 4,
+     "inHero": 1,
+     "radius": 8,
+     "height": 40,
+     "withShadow": 0,
+     "withGradient": 0,
+     "mono": 0,
+     "upper": 0,
+     "heroLabels": [
+      "Cambiar contraseña"
+     ]
+    },
+    "surfaces": {
+     "shadowStatic": 0,
+     "shadowOverlay": 0,
+     "shadowSamples": [],
+     "gradients": 0,
+     "scrims": 0,
+     "gradientSamples": [],
+     "gradientText": 0,
+     "hairlines": 6,
+     "hairlineSamples": [
+      "div.border-b.border-line-inverse 390px",
+      "header.max-md:px-4!.max-md:[&>form]:hidden 390px",
+      "section#privacidad.grid.gap-4 358px",
+      "section.grid.gap-4 358px",
+      "div.flex.flex-col 358px"
+     ],
+     "outlinedBoxes": 1,
+     "dashed": 0,
+     "blurred": 0,
+     "roundedBoxes": 1,
+     "boxRadius": 16,
+     "squareMedia": 0,
+     "roundedMedia": 0,
+     "mediaRadius": 0,
+     "textShadow": 0,
+     "cardRows": []
+    },
+    "heroMedia": [],
+    "nav": {
+     "links": 3,
+     "fixed": true,
+     "height": 117,
+     "floatingPill": false,
+     "blur": false
+    },
+    "fontsLoaded": [
+     "inter",
+     "space grotesk"
+    ]
+   },
+   "layout": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "pageH": 1808,
+    "margins": {
+     "left": 16,
+     "right": 16
+    },
+    "sections": [
+     {
+      "sel": "form.flex.flex-col",
+      "tag": "form",
+      "top": 246,
+      "height": 1181,
+      "words": 132,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Cuenta",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 16,
+      "right": 16,
+      "textLeft": 16,
+      "textRight": 22,
+      "fullBleed": false,
+      "footer": false,
+      "hero": true,
+      "continues": false,
+      "pinned": false
+     },
+     {
+      "sel": "div.mt-8.flex",
+      "tag": "div",
+      "top": 1459,
+      "height": 317,
+      "words": 21,
+      "media": 0,
+      "middle": 0,
+      "heading": {
+       "text": "Sesión",
+       "size": 20,
+       "tag": "h2"
+      },
+      "left": 0,
+      "right": 121,
+      "textLeft": 16,
+      "textRight": 121,
+      "fullBleed": false,
+      "footer": true,
+      "hero": false,
+      "continues": false,
+      "pinned": false
+     }
+    ],
+    "gaps": [],
+    "h1s": [
+     {
+      "text": "Ajustes de cuenta",
+      "size": 24,
+      "top": 149,
+      "firstScreen": true
+     }
+    ],
+    "edgeText": [],
+    "edges": [
+     {
+      "x": 16,
+      "n": 6
+     },
+     {
+      "x": 37,
+      "n": 1
+     }
+    ],
+    "leftBlocks": 7,
+    "bodySize": 14,
+    "stage": false,
+    "explains": false,
+    "slivers": [],
+    "voidShare": 0,
+    "voidBox": null
+   },
+   "app": {
+    "viewport": {
+     "w": 390,
+     "h": 844
+    },
+    "dark": false,
+    "ground": "#f8fafc",
+    "sidebar": null,
+    "topbar": {
+     "h": 41
+    },
+    "canvas": {
+     "left": 0,
+     "right": 16
+    },
+    "hero": {
+     "text": "Ajustes de cuenta",
+     "words": 3,
+     "chars": 17,
+     "lines": 1,
+     "size": 24,
+     "vw": 6.2,
+     "font": "Space Grotesk",
+     "weight": 600,
+     "tracking": -0.01,
+     "leading": 1.2,
+     "top": 149,
+     "tag": "h1",
+     "kind": "heading",
+     "align": "left",
+     "position": "left"
+    },
+    "charts": 0,
+    "layout": {
+     "panels": 4,
+     "firstScreen": 1,
+     "ragged": [],
+     "voids": []
+    },
+    "tiles": 0,
+    "panels": {
+     "count": 5,
+     "radii": [
+      [
+       0,
+       4
+      ],
+      [
+       16,
+       1
+      ]
+     ],
+     "heavyBorders": 0,
+     "borderSamples": [],
+     "heavyShadows": 0,
+     "softShadows": 0,
+     "shadowSamples": [],
+     "glass": 0
+    },
+    "chips": {
+     "count": 0,
+     "hues": 0,
+     "samples": []
+    },
+    "numbers": {
+     "cells": 0,
+     "leftAligned": 0,
+     "figures": 0,
+     "tabularShare": null,
+     "kpiMax": null
+    },
+    "rows": null,
+    "chartHues": 0,
+    "placeholders": [],
+    "type": {
+     "under13": 0.01,
+     "tiny": 0,
+     "tinySamples": [],
+     "sizes": [
+      12,
+      14,
+      16,
+      20,
+      24
+     ]
+    },
+    "title": {
+     "text": "Ajustes de cuenta",
+     "size": 24,
+     "top": 149
+    },
+    "colourShare": 0.003
+   },
+   "consoleErrors": []
+  }
+ ],
+ "findings": [],
+ "images": [
+  {
+   "viewport": "desktop",
+   "width": 1440,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\settings-public\\desktop-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\settings-public\\desktop-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "tablet",
+   "width": 768,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\settings-public\\tablet-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\settings-public\\tablet-page-01.jpg"
+   ],
+   "film": []
+  },
+  {
+   "viewport": "mobile",
+   "width": 390,
+   "fold": "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\settings-public\\mobile-fold.jpg",
+   "pages": [
+    "C:\\Users\\chris\\Documents\\Programming\\BEWAY\\beway-front-starter\\beway-front\\.taste-skill\\inspect\\settings-public\\mobile-page-01.jpg"
+   ],
+   "film": []
+  }
+ ]
+}

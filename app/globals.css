@@ -1,0 +1,6 @@
+@import "tailwindcss";
+@import "../design-system/tokens.css";
+@import "../design-system/bundle.css";
+@import "../design-system/theme.css";
+
+/* Next scans the project for classes automatically; the design-system folder is inside it. */

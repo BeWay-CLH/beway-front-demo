@@ -1,0 +1,35 @@
+/* Component stylesheet, loaded after tokens.css. Everything here is either a
+   gradient or overlay (which tokens.json has no family for), the control
+   transition, or CSS that inline styles cannot express (placeholders, theme
+   swaps, opt-in motion). Type scale and tracking live in tokens.json. */
+:root{
+  --gradient-brand:linear-gradient(135deg,var(--brand-dark) 0%,var(--brand-navy) 45%,var(--brand-cyan) 100%);
+  --gradient-brand-soft:linear-gradient(135deg,var(--brand-navy) 0%,var(--brand-cyan) 100%);
+  /* Gradient button: navy to cyan-700 so white text holds 4.5:1 along the whole fill (the full cyan end would not). */
+  --gradient-action:linear-gradient(135deg,var(--brand-navy) 0%,var(--brand-cyan-700) 100%);
+  --gradient-mark:linear-gradient(135deg,var(--brand-navy) 0%,var(--brand-cyan) 100%);
+  --gradient-footer:linear-gradient(90deg,#0A8FA8 0%,var(--brand-navy) 45%,var(--brand-dark) 100%);
+  /* Photography overlays: navy, never black. hero keeps the left dark for text, card fades the bottom. */
+  --overlay-hero:linear-gradient(90deg,rgba(7,13,32,.88) 0%,rgba(11,19,43,.62) 45%,rgba(11,19,43,.12) 100%);
+  --overlay-card:linear-gradient(180deg,rgba(11,19,43,0) 35%,rgba(11,19,43,.55) 100%);
+  --transition-control:background-color var(--duration-fast) var(--ease-standard),color var(--duration-fast) var(--ease-standard),border-color var(--duration-fast) var(--ease-standard),box-shadow var(--duration-base) var(--ease-standard),transform var(--duration-fast) var(--ease-standard);
+}
+input::placeholder,textarea::placeholder{color:var(--text-muted);opacity:1}
+
+/* Logo variant="auto": primary mark on light, negative mark on dark. */
+.bw-logo-on-dark{display:none !important}
+[data-theme="dark"] .bw-logo-on-light{display:none !important}
+[data-theme="dark"] .bw-logo-on-dark{display:block !important}
+
+/* LogoMarquee logos stay greyscale; on dark they flip to light grey. */
+.bw-marquee img{filter:grayscale(1);opacity:.7}
+[data-theme="dark"] .bw-marquee img{filter:grayscale(1) brightness(0) invert(1);opacity:.6}
+
+/* Opt-in motion. Both are off unless the component's animate prop is set, and
+   both are skipped when the user prefers reduced motion. */
+@keyframes bw-pulse{0%,100%{opacity:1}50%{opacity:.5}}
+@keyframes bw-marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:no-preference){
+  .bw-skeleton--animate{animation:bw-pulse 1.8s var(--ease-standard) infinite}
+  .bw-marquee-track--animate{animation:bw-marquee 40s linear infinite}
+}

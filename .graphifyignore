@@ -1,0 +1,5 @@
+# Artefactos de trabajo y de build que no son documentación del producto
+.taste-skill/
+.next/
+node_modules/
+graphify-out/

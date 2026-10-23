@@ -1,0 +1,125 @@
+/* Generated from tokens.json by mk_theme.py. Do not edit by hand.
+   Tailwind v4 theme for the BeWay design system. Every utility reads a CSS variable from
+   tokens.css, so the dark theme (data-theme="dark") switches without dark: variants.
+
+   Colour keys:  bg-surface-card  text-fg-body  border-line-control  bg-action-primary  text-status-danger-text
+   Radius keys:  rounded-control (8px)  rounded-card (16px)  rounded-panel (24px)  rounded-tiny (4px)  rounded-full (pills)
+   Shadow keys:  shadow-card  shadow-raised  shadow-overlay  shadow-accent-glow
+   Type keys:    text-display  text-h1  text-h2  text-h3  font-heading  tracking-eyebrow  */
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+@theme {
+  --color-*: initial;
+  --radius-*: initial;
+  --shadow-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+}
+
+@theme inline {
+  --color-brand-dark: var(--brand-dark);
+  --color-brand-navy: var(--brand-navy);
+  --color-brand-cyan: var(--brand-cyan);
+  --color-brand-light: var(--brand-light);
+  --color-brand-gray: var(--brand-gray);
+  --color-brand-gray-600: var(--brand-gray-600);
+  --color-brand-navy-600: var(--brand-navy-600);
+  --color-brand-navy-400: var(--brand-navy-400);
+  --color-brand-cyan-600: var(--brand-cyan-600);
+  --color-brand-cyan-700: var(--brand-cyan-700);
+  --color-brand-cyan-300: var(--brand-cyan-300);
+  --color-brand-cyan-100: var(--brand-cyan-100);
+  --color-brand-gray-400: var(--brand-gray-400);
+  --color-brand-gray-500: var(--brand-gray-500);
+  --color-brand-gray-200: var(--brand-gray-200);
+  --color-brand-gray-100: var(--brand-gray-100);
+  --color-white: var(--white);
+  --color-surface-page: var(--surface-page);
+  --color-surface-card: var(--surface-card);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-inverse-alt: var(--surface-inverse-alt);
+  --color-surface-accent-subtle: var(--surface-accent-subtle);
+  --color-surface-scrim: var(--surface-scrim);
+  --color-fg-body: var(--text-body);
+  --color-fg-heading: var(--text-heading);
+  --color-fg-muted: var(--text-muted);
+  --color-fg-accent: var(--text-accent);
+  --color-fg-on-inverse: var(--text-on-inverse);
+  --color-fg-on-inverse-muted: var(--text-on-inverse-muted);
+  --color-fg-on-accent: var(--text-on-accent);
+  --color-line-subtle: var(--border-subtle);
+  --color-line-strong: var(--border-strong);
+  --color-line-control: var(--border-control);
+  --color-line-inverse: var(--border-inverse);
+  --color-line-accent: var(--border-accent);
+  --color-action-primary: var(--action-primary);
+  --color-action-primary-hover: var(--action-primary-hover);
+  --color-action-primary-active: var(--action-primary-active);
+  --color-action-secondary: var(--action-secondary);
+  --color-action-secondary-hover: var(--action-secondary-hover);
+  --color-focus-ring: var(--focus-ring);
+  --color-focus-ring-on-inverse: var(--focus-ring-on-inverse);
+  --color-link: var(--link);
+  --color-link-hover: var(--link-hover);
+  --color-link-on-inverse: var(--link-on-inverse);
+  --color-status-success: var(--status-success);
+  --color-status-warning: var(--status-warning);
+  --color-status-danger: var(--status-danger);
+  --color-status-info: var(--status-info);
+  --color-status-success-text: var(--status-success-text);
+  --color-status-warning-text: var(--status-warning-text);
+  --color-status-danger-text: var(--status-danger-text);
+
+  --radius-tiny: var(--radius-sm);
+  --radius-control: var(--radius-md);
+  --radius-card: var(--radius-lg);
+  --radius-panel: var(--radius-xl);
+
+  --shadow-hairline: var(--shadow-xs);
+  --shadow-card: var(--shadow-sm);
+  --shadow-raised: var(--shadow-md);
+  --shadow-overlay: var(--shadow-lg);
+  --shadow-on-dark: var(--shadow-inverse);
+  --shadow-accent-glow: var(--shadow-glow);
+
+  --font-sans: var(--font-body);
+  --font-heading: var(--font-display);
+
+  --text-display: var(--text-logo-size);
+  --text-display--line-height: var(--text-logo-lh);
+  --text-display--font-weight: var(--text-logo-weight);
+  --text-h1: var(--text-h1-size);
+  --text-h1--line-height: var(--text-h1-lh);
+  --text-h1--font-weight: var(--text-h1-weight);
+  --text-h2: var(--text-h2-size);
+  --text-h2--line-height: var(--text-h2-lh);
+  --text-h2--font-weight: var(--text-h2-weight);
+  --text-h3: var(--text-h3-size);
+  --text-h3--line-height: var(--text-h3-lh);
+  --text-h3--font-weight: var(--text-h3-weight);
+
+  --tracking-hero: var(--tracking-display);
+  --tracking-heading: var(--tracking-tight);
+  --tracking-label: var(--tracking-wide);
+  --tracking-eyebrow: var(--tracking-caps);
+  --tracking-wordmark-wide: var(--tracking-wordmark);
+
+  --container-site: var(--container-lg);
+  --container-narrow: var(--container-md);
+}
+
+@utility bg-brand-gradient { background-image: var(--gradient-brand); }
+@utility bg-brand-gradient-soft { background-image: var(--gradient-brand-soft); }
+@utility bg-overlay-hero { background-image: var(--overlay-hero); }
+@utility bg-overlay-card { background-image: var(--overlay-card); }
+@utility focus-ring { box-shadow: var(--ring-focus); }
+@utility transition-control { transition: var(--transition-control); }
+
+@layer base {
+  body { background-color: var(--surface-page); color: var(--text-body); font-family: var(--font-body); }
+  h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-heading); letter-spacing: var(--tracking-tight); }
+  :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
+}
