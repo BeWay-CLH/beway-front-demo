@@ -2,6 +2,13 @@
 
 export type CompanyStatVM = { icon: string; value: number; label: string };
 
+/* Una de las cinco cifras de la tarjeta (ficha 04). value null = "—": el dato no aplica o no existe todavía. */
+export type CompanyMetricVM = {
+  key: 'certificaciones' | 'challenges' | 'encuestas' | 'miniproyectos' | 'oportunidades';
+  label: string;
+  value: number | null;
+};
+
 /* Tarjeta del catálogo (BE-008). Máximo cinco cifras: es lo que admite `CompanyCard`. */
 export type CompanyCardVM = {
   id: string;
@@ -13,6 +20,8 @@ export type CompanyCardVM = {
   logo?: string;
   cover?: string;
   stats: CompanyStatVM[];
+  /* Las cinco cifras de la guía, en orden. Si falta, la tarjeta usa `stats`. */
+  metrics?: CompanyMetricVM[];
 };
 
 /* Módulos de la ficha (DEC-020). La lista es abierta: un tipo nuevo solo añade una entrada aquí y su vista. */
