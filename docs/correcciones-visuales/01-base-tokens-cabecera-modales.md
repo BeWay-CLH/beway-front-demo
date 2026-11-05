@@ -116,7 +116,16 @@ Registra aquí cada token cambiado durante la implementación: archivo, valor an
 
 | Archivo | Antes | Después | Motivo |
 |---|---|---|---|
-| (completar) | | | |
+| `design-system/tokens.json` y `tokens.css` | `brand-cyan` como `action-primary` | navy `#0B172C` (primario); `accent-teal` y `accent-teal-strong` para progreso y texto | D2: la referencia sustituye el cian (DEC-037) |
+| `design-system/tokens.json` y `tokens.css` | `text-muted` `#566377` | `#5F6B7D` (oscuro `#B3BDCC`) | D3: la referencia (`#788496`) da 3,8:1 |
+| `design-system/tokens.json` y `tokens.css` | `border-control` `#7B8BA1` | sin cambio | D3: la referencia (`#E0E6EC`) da 1,3:1 |
+| `design-system/tokens.json` y `tokens.css` | `radius-md` 8px, `radius-lg` 16px | 7px, 13px; nuevos `radius-dialog` 14px, `radius-directory` 12px, `radius-search` 8px | 01 A5, A6, A7, A9 |
+| `design-system/tokens.json` y `tokens.css` | `font-display` Space Grotesk, `font-body` Inter | Manrope, DM Sans (`next/font`) | 01 A1 |
+| `design-system/tokens.json` y `tokens.css` | `h1` 32px, `h2` 24px, `h3` 20px | `clamp(31px,3vw,43px)`, 26px, 18px, con tracking por nivel | 01 A4 |
+| `design-system/tokens.json` y `tokens.css` | `control-height-md` 40px, `container-lg` 1200px | 42px, 1510px | 01 A3, A5 |
+| `design-system/tokens.json` y `tokens.css` | `blur-panel` 12px, `surface-scrim` `rgba(11,19,43,.62)` | 5px, `rgba(8,27,50,.42)` | 01 A9 |
+
+Lista completa, con todos los tokens y componentes, en [DS_CAMBIOS.md](DS_CAMBIOS.md).
 
 ---
 
