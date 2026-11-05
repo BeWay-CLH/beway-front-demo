@@ -27,8 +27,14 @@ export type NavItem = {
   alsoActive?: string[];
 };
 
+/* Visitante: las seis áreas de exploración de la guía (ficha 02). Los enlaces de talento piden sesión. */
 export const publicNav: NavItem[] = [
   { label: 'Empresas', href: '/companies', icon: 'building-2', status: 'live' },
+  { label: 'Certificaciones', href: '/talent/courses', icon: 'graduation-cap', status: 'live' },
+  { label: 'Challenges', href: '/talent/challenges', icon: 'trophy', status: 'live' },
+  { label: 'Miniproyectos', href: '/talent/miniprojects', icon: 'folder-kanban', status: 'live' },
+  { label: 'Encuestas', href: '/talent/surveys', icon: 'clipboard-list', status: 'live' },
+  { label: 'Oportunidades', href: '/talent/opportunities', icon: 'briefcase', status: 'live' },
 ];
 
 export const talentHome = '/talent/dashboard';

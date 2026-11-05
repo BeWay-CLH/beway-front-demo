@@ -67,6 +67,7 @@ export function PersonalMenu({ session }: { session: Session }) {
           <Link href="/talent/dashboard" onClick={() => setOpen(false)} className={row}><Icon name="layout-dashboard" size={18} />Mi panel</Link>
           <Link href="/talent/profile" onClick={() => setOpen(false)} className={row}><Icon name="user-round" size={18} />Mi perfil y CV</Link>
           <Link href="/ayuda" onClick={() => setOpen(false)} className={row}><Icon name="circle-help" size={18} />Ayuda</Link>
+          <Link href="/talent/settings" onClick={() => setOpen(false)} className={row}><Icon name="settings" size={18} />Ajustes de cuenta</Link>
         </nav>
         <form action={signOut} className="border-t border-line-subtle pt-3">
           <Button type="submit" variant="ghost" fullWidth icon="log-out">Cerrar sesión</Button>

@@ -23,8 +23,8 @@ const linkBase = 'transition-control inline-flex items-center gap-2 text-xs font
 
 const styles = {
   horizontal: {
-    list: 'flex h-full items-stretch gap-5',
-    link: `${linkBase} h-full border-b-2 border-transparent`,
+    list: 'flex h-full items-stretch gap-5 whitespace-nowrap',
+    link: `${linkBase} h-full shrink-0 border-b-2 border-transparent max-md:text-[10px]`,
     active: 'font-[750] text-fg-heading border-line-accent',
     idle: 'text-fg-muted hover:text-fg-heading',
   },
