@@ -42,10 +42,10 @@ export const homeFor = (signedIn: boolean) => (signedIn ? talentHome : '/');
 export const talentNav: NavItem[] = [
   { label: 'Empresas', href: '/companies', icon: 'building-2', status: 'live' },
   { label: 'Certificaciones', href: '/talent/courses', icon: 'graduation-cap', status: 'live' },
-  { label: 'Challenges', href: '/talent/challenges', icon: 'trophy', status: 'planned' },
-  { label: 'Miniproyectos', href: '/talent/miniprojects', icon: 'folder-kanban', status: 'planned' },
+  { label: 'Challenges', href: '/talent/challenges', icon: 'trophy', status: 'live' },
+  { label: 'Miniproyectos', href: '/talent/miniprojects', icon: 'folder-kanban', status: 'live' },
   { label: 'Encuestas', href: '/talent/surveys', icon: 'clipboard-list', status: 'live' },
-  { label: 'Oportunidades', href: '/talent/opportunities', icon: 'briefcase', status: 'planned' },
+  { label: 'Oportunidades', href: '/talent/opportunities', icon: 'briefcase', status: 'live' },
   { label: 'Mi panel', href: talentHome, icon: 'layout-dashboard', status: 'live', side: 'end' },
   { label: 'Mi perfil', href: '/talent/profile', icon: 'user-round', status: 'live', side: 'end', alsoActive: ['/u/:me'] },
   { label: 'Credenciales', href: '/talent/credentials', icon: 'award', status: 'live', side: 'none' },
