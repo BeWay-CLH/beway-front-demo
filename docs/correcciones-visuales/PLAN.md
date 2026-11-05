@@ -24,7 +24,7 @@
 | Inventario de solo lectura: un agente de infraestructura y uno por fase (01–07). Sin errores | Hecho |
 | Typecheck de línea base (`npm run typecheck`) | OK, sin errores |
 | Build de línea base (`npm run build`) | OK, código de salida 0 |
-| Rama de partida `correcciones/00-base` y commit de la fase 00 | Pendiente |
+| Rama de partida `correcciones/00-base` y commit de la fase 00 (`a30e21f`) | Hecho |
 | Confirmación del usuario de este plan y de las decisiones D1–D10 | Pendiente |
 
 **Regla de la fase 00 (de 00-instrucciones):** no se implementa ninguna fase hasta que el usuario confirme el plan.
@@ -142,7 +142,7 @@ Cada una tiene una recomendación. Sin confirmación no empieza la fase 01.
 python -W ignore -c "import pymupdf,os; d=pymupdf.open('docs/correcciones-visuales/Beway_correccion_visual_completa.pdf'); os.makedirs('<carpeta-temporal>',exist_ok=True); [d[n].get_pixmap(dpi=110).save(f'<carpeta-temporal>/ref_p{n+1:02d}.png') for n in range(d.page_count)]"
 ```
 
-- [ ] **Step 7: Crear la rama de partida y commitear la fase 00.**
+- [x] **Step 7: Crear la rama de partida y commitear la fase 00.** Hecho: `a30e21f`.
 
 ```bash
 git checkout -b correcciones/00-base
@@ -150,7 +150,7 @@ git add docs/correcciones-visuales/PLAN.md docs/correcciones-visuales/00-instruc
 git commit -m "docs(correcciones): plan y fichas de la fase 00" -m "Co-Authored-By: Claude Haiku 5.5 <noreply@anthropic.com>"
 ```
 
-- [ ] **Step 8: Verificar** `git log --oneline -2` y `git status --short`: solo deben quedar sin seguimiento el PDF y el cambio de `.gitignore`.
+- [x] **Step 8: Verificar** `git log --oneline -2` y `git status --short`: quedan sin seguimiento el PDF y el cambio de `.gitignore`, como se planeó. Hecho.
 - [ ] **Step 9: Confirmación del usuario** de este plan y de D1–D10. Hasta entonces no se toca código.
 
 ---
