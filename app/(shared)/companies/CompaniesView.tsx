@@ -1,25 +1,32 @@
 'use client';
 
 import { useEffect, useRef, useState, useTransition } from 'react';
+import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
-import { Breadcrumbs, Button, CompanyCard, EmptyState, Input, Pagination, SectionLabel, Tag } from '@ds';
+import { Button, EmptyState, Icon, Input, Pagination, Tag } from '@ds';
+import { CompanyGrid } from '@/components/company/CompanyGrid';
 import { formatCount } from '@/lib/format';
 import type { CompanyCategoryVM, CompanyPageVM } from '@/lib/models/company';
 
 type Query = { q: string; category?: string };
 
-/* Pantalla del catálogo. Los filtros no se filtran aquí: cada cambio actualiza la URL y el servidor devuelve la
-   página (C-03). El texto espera 300 ms tras la última tecla para no pedir una página por letra. */
+/* Pantalla del directorio (guía de correcciones, ficha 03 y 05). Los filtros no se filtran aquí: cada cambio
+   actualiza la URL y el servidor devuelve la página (C-03). El texto espera 300 ms tras la última tecla. */
 export function CompaniesView({
   result,
   categories,
   query,
-  homeHref,
+  showPanel,
+  userId,
+  followingIds,
 }: {
   result: CompanyPageVM;
   categories: CompanyCategoryVM[];
   query: Query;
-  homeHref: string;
+  /* Con sesión, "Mi panel" a la derecha del encabezado. Sin sesión no hay destino: no se muestra. */
+  showPanel: boolean;
+  userId?: string;
+  followingIds: string[];
 }) {
   const router = useRouter();
   const pathname = usePathname();
@@ -61,21 +68,47 @@ export function CompaniesView({
   };
 
   const active = categories.find((c) => c.slug === query.category);
-  const summary =
-    result.total === 1 ? '1 empresa' : `${formatCount(result.total)} empresas`;
+  const summary = result.total === 1 ? '1 empresa' : `${formatCount(result.total)} empresas`;
 
   return (
-    <div className="mx-auto flex max-w-site flex-col gap-8 px-4 py-8 md:px-6 md:py-10">
-      <Breadcrumbs aria-label="Ruta de navegación" items={[{ label: 'Inicio', href: homeHref }, { label: 'Empresas' }]} />
-
-      <header className="flex flex-col gap-3">
-        <SectionLabel>Directorio</SectionLabel>
-        <h1 className="text-h2 font-heading text-fg-heading md:text-h1">Empresas del ecosistema</h1>
-        <p className="max-w-2xl text-fg-muted">Conoce a las empresas que abren retos y vacantes. Filtra por categoría y entra a su ficha.</p>
+    <div className="mx-auto flex w-full max-w-site flex-col gap-7 px-4 pt-9 pb-16 md:px-8">
+      <header className="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
+        <div className="flex flex-col gap-2">
+          <h1 className="font-heading text-[25px] leading-[1.2] font-[700] text-fg-heading [letter-spacing:var(--tracking-h1)] md:text-[30px]">Encuentra tu lugar.</h1>
+          <p className="m-0 text-[11px] leading-[1.6] text-fg-muted md:text-sm">
+            Empresas para descubrir. Experiencias para aprender. Oportunidades para avanzar.
+          </p>
+        </div>
+        {showPanel ? (
+          <Link
+            href="/talent/dashboard"
+            className="inline-flex h-8 flex-none items-center gap-2 self-start rounded-control border border-line-control bg-surface-card px-3 text-xs font-[650] text-fg-body transition-control hover:bg-surface-sunken md:self-auto"
+          >
+            <Icon name="layout-dashboard" size={14} />
+            Mi panel
+          </Link>
+        ) : null}
       </header>
 
-      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-        <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por categoría">
+      <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
+          <p aria-live="polite" className="m-0 text-sm text-fg-muted">
+            {summary}
+            {active ? ` en ${active.label}` : ''}
+            {query.q ? ` para “${query.q}”` : ''}
+          </p>
+          <div className="w-full md:w-80">
+            <Input
+              icon="search"
+              type="search"
+              placeholder="Buscar empresa"
+              value={text}
+              onChange={(e) => onText(e.target.value)}
+              aria-label="Buscar empresa"
+            />
+          </div>
+        </div>
+        <div className="flex flex-wrap gap-2" role="group" aria-label="Filtrar por sector">
           <Tag variant="filter" selected={!query.category} onClick={() => go({ category: undefined })}>
             Todas
           </Tag>
@@ -85,46 +118,18 @@ export function CompaniesView({
             </Tag>
           ))}
         </div>
-        <div className="w-full md:w-72">
-          <Input
-            icon="search"
-            type="search"
-            placeholder="Buscar empresa"
-            value={text}
-            onChange={(e) => onText(e.target.value)}
-            aria-label="Buscar empresa"
-          />
-        </div>
       </div>
-
-      <p aria-live="polite" className="-mt-4 text-sm text-fg-muted">
-        {summary}
-        {active ? ` en ${active.label}` : ''}
-        {query.q ? ` para “${query.q}”` : ''}
-      </p>
 
       {result.items.length === 0 ? (
         <EmptyState
           icon="search"
-          title="Sin resultados"
-          description="No hay empresas con esos filtros. Prueba con otra categoría o quita la búsqueda."
-          action={<Button variant="secondary" icon="rotate-ccw" onClick={clear}>Limpiar filtros</Button>}
+          title="No hay empresas con esos filtros."
+          description="Prueba otro sector o cambia tu búsqueda."
+          action={<Button variant="secondary" icon="rotate-ccw" onClick={clear}>Ver empresas</Button>}
         />
       ) : (
-        <div aria-busy={pending} className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {result.items.map((c) => (
-            <CompanyCard
-              key={c.id}
-              name={c.name}
-              category={c.category}
-              categoryIcon={c.categoryIcon}
-              description={c.description}
-              logo={c.logo}
-              cover={c.cover}
-              stats={c.stats}
-              onView={() => router.push(`/companies/${c.slug}`)}
-            />
-          ))}
+        <div aria-busy={pending}>
+          <CompanyGrid items={result.items} followingIds={followingIds} userId={userId} />
         </div>
       )}
 
