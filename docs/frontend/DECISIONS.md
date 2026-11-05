@@ -369,3 +369,57 @@ cursos siguen siendo dominios distintos (OI-010).
 de empresa en chip blanco, regla de marca), `panel-void` en el inicio y en credenciales (tarjetas hermanas con distinto número de filas, que comparten el borde
 inferior y llevan la acción fijada al pie; lo que el propio skill prevé en §4.2) y `hero-void` en credenciales, una pantalla que cabe entera en el primer pantallazo
 con solo dos logros y sin contenido que inventar.
+
+### DEC-037 · Acento navy y teal, sin cian en acciones (corrección visual, D2)
+
+**Contexto.** La guía de correcciones de los fundadores (2026-10-29) fija navy para el primario y teal para progreso y estados. El DS tenía cian `#00D4FF` como acento de acción, foco y enlace, y `CLAUDE.md` lo exigía ("cian como único acento").
+**Decisión.** Se toma la referencia: primario navy con texto blanco; teal solo para progreso, estados y marcas; cian solo como arte de marca. Los tokens se cambian en `design-system/tokens.json` (ver `DS_CAMBIOS.md`). `CLAUDE.md` se actualiza en el mismo cambio.
+**Consecuencias.** Un primario navy por vista. El filtro de categoría seleccionado es navy. El texto teal usa `accent-teal-strong` (ver DEC-039). Se supera la regla "un primario cian por vista" de `CLAUDE.md`.
+
+### DEC-038 · Edición del design system con registro (corrección visual, D1)
+
+**Contexto.** Los estilos del DS van en línea; los overrides desde Tailwind no alcanzan sin `!`. La regla "no editar `design-system/`" bloqueaba el cambio. Los fundadores autorizaron editarlo.
+**Decisión.** Se edita `design-system/` cuando el choque es de componente o de token. Cada cambio queda en `docs/correcciones-visuales/DS_CAMBIOS.md` (archivo, antes, después, motivo) para reaplicarlo si el DS se reemplaza. Los overrides en `components/` solo como puente temporal.
+**Consecuencias.** `design-system/` ya no es de solo lectura en este repo, con registro. `CLAUDE.md` y `docs/frontend/README.md` lo dicen. `DS_REQUESTS.md` sigue siendo la vía para pedir cambios al origen.
+
+### DEC-039 · Contraste: valores que cumplen, con reporte a los fundadores (corrección visual, D3)
+
+**Contexto.** Con los valores de la referencia, el texto secundario da 3,8:1, el teal como texto 2,5:1 y el borde de campo 1,3:1. `CLAUDE.md` exige 4,5:1 para texto y 3:1 para controles.
+**Decisión.** Texto secundario `#5F6B7D` (5,4:1); teal de texto e iconos `#037A78` (5,2:1); borde de control sin cambio (`#7B8BA1`, 3,5:1). El teal `#04B8B6` queda para relleno de progreso. Las diferencias se reportan en `DS_CAMBIOS.md` §4.
+**Consecuencias.** Pequeñas diferencias de tono frente a la referencia. Los fundadores pueden pedir fidelidad exacta, asumiendo el contraste.
+
+### DEC-040 · Modo oscuro conservado y derivado (corrección visual, D4)
+
+**Contexto.** La referencia no define tema oscuro; el DS sí.
+**Decisión.** Se conserva el modo oscuro. Los tokens nuevos (navy, teal, paper, ink, muted) reciben valores oscuros derivados y comprobados por contraste (texto secundario `#B3BDCC`, acento de texto `#5EE0DE`). El primario se invierte a paper con texto navy.
+**Consecuencias.** Cada pantalla se revisa en claro y oscuro antes de cerrarse (regla de `CLAUDE.md`).
+
+### DEC-041 · Pantallas del bloque G construidas "en proceso" (corrección visual, D5)
+
+**Contexto.** Aula, evaluación, challenges, miniproyectos, oportunidades, candidatura y ayuda no tienen modelo ni ruta. `DEC-004` prohíbe rutas sin construir, y el brief deja G para después.
+**Decisión.** Los fundadores piden verlas ya, marcadas "En proceso". Cada pantalla se crea con su ruta y un estado visible "En proceso", sin escrituras reales y sin datos inventados. Se construyen por fases (04, 05, 07) con fixtures `TODO(seed)` y escrituras simuladas.
+**Consecuencias.** `DEC-004` deja de aplicarse a estas rutas mientras estén marcadas "En proceso". Ninguna pantalla "En proceso" presenta éxito real.
+
+### DEC-042 · Rutas en inglés, etiquetas de la referencia (corrección visual, D6)
+
+**Contexto.** La referencia usa rutas de prototipo en español (`#/empresas`, `#/perfil`).
+**Decisión.** Se mantienen las rutas en inglés (`DEC-002`, `ROUTES.md`). La navegación y los títulos usan las etiquetas de la referencia en español ("Certificaciones", "Mi panel", "Mi perfil").
+**Consecuencias.** Un enlace compartido de la referencia no abre la demo. Aceptado por los fundadores ("mantener el orden y congruencia").
+
+### DEC-043 · Nombres reales de empresas con permiso; logos como placeholders (corrección visual, D7)
+
+**Contexto.** Las 17 fichas corporativas usan nombres, logos y colores de marcas reales. Los fundadores confirman el permiso de las empresas.
+**Decisión.** Se usan los nombres reales. Los logos y portadas no están en el repo: se usan placeholders `TODO(seed)` (color base e iniciales), y no se dibujan logos a mano. Descargar los archivos oficiales requiere confirmación explícita antes de versionarlos.
+**Consecuencias.** Las fichas se ven como demo en vivo sin logos oficiales hasta que se confirme su origen.
+
+### DEC-044 · Contexto de producto con `PRODUCT.md` (corrección visual, D10)
+
+**Contexto.** El skill de diseño impeccable exige un `PRODUCT.md` con la verdad del producto antes de trabajar en visual.
+**Decisión.** Entrevista corta (2026-11-05): usuario principal, talento; propuesta, programas de empresas con evidencias. El archivo `PRODUCT.md` en la raíz recoge lo confirmado y marca como abierto lo que no lo está (métricas de éxito, usuarios secundarios).
+**Consecuencias.** Las decisiones visuales se revisan contra ese archivo. No se fijan estilos en él.
+
+### DEC-045 · Cabecera en dos filas y cuenta en ventanas (corrección visual, fichas 01 y 06)
+
+**Contexto.** La referencia pide dos filas (logo y buscador; navegación), alturas por contexto y la cuenta (menú personal y notificaciones) en ventanas centradas. El DS tenía una fila de 76 px, y `DEC-013` fijaba una sola altura.
+**Decisión.** `NavBar` pasa a dos filas con alturas por contexto (83 y 57 por defecto; 66 y 46 en directorio; 58 en ficha). La cuenta abre dos ventanas de 740 px con el `Dialog` del DS. La navegación de talento sigue el orden de la guía (`lib/routes.ts`). Se mantiene el menú plegable por debajo de lg/md (`DEC-036`) hasta la fase 02, donde la navegación móvil pasa a fila desplazable (ficha 07; cambia `DEC-007`).
+**Consecuencias.** Cambia `DEC-013` (altura única) y se completa `DEC-036`. Pendiente de confirmar la fila móvil en la fase 02.
