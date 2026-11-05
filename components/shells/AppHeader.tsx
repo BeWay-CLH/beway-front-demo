@@ -2,19 +2,22 @@
 
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { Avatar, Badge, Button, IconButton, Logo, NavBar } from '@ds';
+import { Badge, Button, Logo, NavBar } from '@ds';
 import { NavButton } from '@/components/NavButton';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { signOut } from '@/lib/auth-actions';
 import type { Session } from '@/lib/models/session';
-import { talentHome, type NavItem, type Space } from '@/lib/routes';
+import { headerItems, talentHome, type NavItem, type Space } from '@/lib/routes';
+import { NotificationsButton, PersonalMenu } from './AccountMenus';
 import { DemoBar, demoBarEnabled } from './DemoBar';
 import { MobileMenu } from './MobileMenu';
 import { NavList, ShellNav } from './ShellNav';
 
-/* Cabecera única de todos los espacios (DEC-013): mismo NavBar, misma altura, logo en el mismo sitio.
-   Solo cambian los enlaces y la cuenta. El NavBar del DS no es responsive (DEC-007): por debajo de md se
-   ocultan sus enlaces y su búsqueda (el "!" vence al estilo inline del DS) y la navegación pasa al menú. */
+/* Cabecera única de todos los espacios (DEC-013; guía de correcciones 01 C): dos filas.
+   Fila 1: logo, buscador y cuenta. Fila 2: navegación a la izquierda (side 'start') y a la derecha ('end').
+   Solo cambian los enlaces y la cuenta. Por debajo de lg (o md con pocos enlaces) la fila 2 y el buscador se
+   ocultan y la navegación pasa al menú plegable. La navegación horizontal desplazable llega en la fase 02 (ficha 07).
+   Las clases responsive llevan "!" porque los estilos en línea del DS vencen a las clases normales. */
 export function AppHeader({
   space,
   homeHref,
@@ -37,24 +40,25 @@ export function AppHeader({
 }) {
   const router = useRouter();
   const guestActions = !session && !quiet && space === 'public';
-  /* "Mi espacio" solo hace falta si la cabecera no trae ya el "Inicio" del espacio (acceso, registro). */
+  /* "Mi espacio" solo hace falta si la cabecera no trae ya el "Mi panel" del espacio (acceso, registro). */
   const spaceLink = Boolean(session) && space === 'public' && !items.some((i) => i.href === talentHome);
   const username = session?.username;
-  /* Con más de cuatro enlaces (Talent tiene seis) la fila no cabe a 768 px: el menú plegable sube hasta lg. */
-  const bp =
-    items.length > 4
-      ? { bar: 'max-lg:px-4! max-lg:[&>form]:hidden max-lg:[&>nav]:hidden!', account: 'max-lg:hidden', menu: 'lg:hidden' }
-      : { bar: 'max-md:px-4! max-md:[&>form]:hidden max-md:[&>nav]:hidden!', account: 'max-md:hidden', menu: 'md:hidden' };
 
+  const visible = headerItems(items);
+  const startItems = visible.filter((i) => (i.side ?? 'start') === 'start');
+  const endItems = visible.filter((i) => i.side === 'end');
+  /* Con más de cuatro enlaces visibles la fila no cabe a lg; con menos, a md. */
+  const wide = visible.length > 4;
+  /* La cuenta (campana y avatar) se ve en todos los anchos: la ficha 06 pide acceso a todo en móvil. */
+  const bp = wide
+    ? { bar: 'max-lg:px-4!', nav: 'max-lg:hidden!', search: 'max-lg:hidden!', account: '', menu: 'lg:hidden' }
+    : { bar: 'max-md:px-4!', nav: 'max-md:hidden!', search: 'max-md:hidden!', account: '', menu: 'md:hidden' };
+
+  /* Con sesión: campana (notificaciones) y avatar (menú personal, con Mi panel, Mi perfil y Cerrar sesión). */
   const desktopAccount = session ? (
     <>
-      {spaceLink ? <NavButton href={talentHome} variant="ghost">Mi espacio</NavButton> : null}
-      <NavButton href="/talent/settings" variant="ghost" aria-label="Ajustes de cuenta">
-        <Avatar name={session.displayName} size={32} />
-      </NavButton>
-      <form action={signOut}>
-        <IconButton type="submit" icon="log-out" label="Cerrar sesión" />
-      </form>
+      <NotificationsButton />
+      <PersonalMenu session={session} />
     </>
   ) : guestActions ? (
     <>
@@ -82,7 +86,9 @@ export function AppHeader({
     <div className="sticky top-0 z-40">
       {demoBarEnabled ? <DemoBar space={space} /> : null}
       <NavBar
-        className={bp.bar}
+        barClassName={bp.bar}
+        navClassName={bp.nav}
+        searchClassName={bp.search}
         showSearch={search}
         onSearch={(q) => router.push('/companies' + (q ? `?q=${encodeURIComponent(q)}` : ''))}
         logo={
@@ -93,16 +99,17 @@ export function AppHeader({
             {badge ? <Badge tone="navy">{badge}</Badge> : null}
           </span>
         }
-        links={items.length > 0 ? <NavList items={items} username={username} /> : undefined}
+        links={startItems.length > 0 ? <NavList items={startItems} username={username} /> : undefined}
+        endLinks={endItems.length > 0 ? <NavList items={endItems} username={username} /> : undefined}
         actions={
           <>
             <ThemeToggle />
             {desktopAccount ? <div className={`flex items-center gap-2 ${bp.account}`}>{desktopAccount}</div> : null}
-            {items.length > 0 || mobileAccount ? (
+            {visible.length > 0 || mobileAccount ? (
               <div className={bp.menu}>
                 <MobileMenu label="Abrir menú">
                   <div className="flex flex-col gap-4">
-                    {items.length > 0 ? <ShellNav items={items} label="Navegación" orientation="vertical" username={username} /> : null}
+                    {visible.length > 0 ? <ShellNav items={visible} label="Navegación" orientation="vertical" username={username} /> : null}
                     {mobileAccount ? <div className="flex flex-col gap-2 border-t border-line-subtle pt-4">{mobileAccount}</div> : null}
                   </div>
                 </MobileMenu>

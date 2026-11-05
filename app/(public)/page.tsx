@@ -9,7 +9,7 @@ export default function Home() {
       <section>
         <Photo overlay="hero" height={460} radius="var(--radius-xl)" alt="">
           <div className="flex h-full max-w-xl flex-col justify-center gap-6 px-10 py-12">
-            <span className="eyebrow uppercase text-brand-cyan">Ecosistema de talento</span>
+            <span className="eyebrow uppercase text-link-on-inverse">Ecosistema de talento</span>
             <h1 className="text-display font-heading tracking-hero text-white">Conectamos talento, construimos el futuro</h1>
             <p className="text-base text-white/80">Perfiles verificados, retos abiertos y programas de mentoría en un solo lugar.</p>
             <div className="flex flex-wrap gap-3">
