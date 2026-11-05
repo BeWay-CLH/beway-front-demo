@@ -108,6 +108,10 @@ export interface CompanyCardProps extends Omit<React.HTMLAttributes<HTMLElement>
   logo?: string;
   logoAlt?: string;
   /** Up to five tiles. */
+  /** The five directory figures in order (guide 04). value null shows "—". */
+  metrics?: { key: string; label: string; value: number | null }[];
+  /** Control placed right of the name (follow mark). */
+  followSlot?: React.ReactNode;
   stats?: CompanyCardStat[];
   ctaLabel?: string;
   onView?: () => void;
