@@ -6,9 +6,10 @@ const FOCUSABLE = 'a[href],button:not([disabled]),input:not([disabled]):not([typ
 
 function visible(el) { return el.offsetParent !== null || el === document.activeElement; }
 
-/* Modal dialog. Escape and the scrim close it (when onClose is given), Tab cycles inside it,
-   focus moves in when it opens and returns to the trigger when it closes, the page behind does not scroll.
-   Title and description are linked with aria-labelledby / aria-describedby; with no title pass aria-label. */
+/* Modal dialog (guía de correcciones, 01 A9 y D): cabecera con padding 18px 26px, cuerpo con 30 px,
+   radio 14 px, backdrop rgba(8,27,50,.42) con blur 5 px (tokens). Escape y el scrim cierran (si hay onClose),
+   Tab cicla dentro, el foco entra al abrir y vuelve al disparador al cerrar, la página de fondo no se desplaza.
+   Título y descripción se enlazan con aria-labelledby / aria-describedby; sin título pasa aria-label. */
 export function Dialog({ open = false, ...props }) {
   if (!open) return null;
   return <DialogPanel {...props} />;
@@ -22,6 +23,7 @@ function DialogPanel({ title, description, footer, onClose, closeLabel = 'Cerrar
   const closeRef = React.useRef(onClose);
   closeRef.current = onClose;
   const pointerDownOnScrim = React.useRef(false);
+  const hasHeader = Boolean(title || onClose);
 
   React.useEffect(() => {
     const previous = document.activeElement;
@@ -65,22 +67,29 @@ function DialogPanel({ title, description, footer, onClose, closeLabel = 'Cerrar
         ref={panel} role="dialog" aria-modal="true" tabIndex={-1} onKeyDown={onKeyDown}
         aria-labelledby={title ? titleId : undefined} aria-describedby={description ? descId : undefined}
         style={{
-          width: '100%', boxSizing: 'border-box', maxWidth: width, maxHeight: '100%', overflowY: 'auto', outline: 'none',
+          width: 'calc(100% - 38px)', boxSizing: 'border-box', maxWidth: width, maxHeight: '90dvh', overflowY: 'auto', outline: 'none',
           background: 'var(--surface-card)', color: 'var(--text-body)',
-          borderRadius: 'var(--radius-lg)', boxShadow: 'var(--shadow-lg)',
-          padding: 'var(--space-6)', display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', ...style,
+          borderRadius: 'var(--radius-dialog)', boxShadow: 'var(--shadow-lg)',
+          display: 'flex', flexDirection: 'column', ...style,
         }}
         {...rest}
       >
-        <div data-dialog-header="" style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-4)' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: 1 }}>
-            {title ? <h3 id={titleId} style={{ margin: 0 }}>{title}</h3> : null}
-            {description ? <p id={descId} style={{ margin: 0, color: 'var(--text-muted)', fontSize: 'var(--text-small-size)' }}>{description}</p> : null}
+        {hasHeader ? (
+          <div
+            data-dialog-header=""
+            style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-4)', padding: '18px 26px', borderBottom: '1px solid var(--border-subtle)' }}
+          >
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-2)', flex: 1, minWidth: 0 }}>
+              {title ? <h3 id={titleId} style={{ margin: 0 }}>{title}</h3> : null}
+              {description ? <p id={descId} style={{ margin: 0, color: 'var(--text-muted)', fontSize: 'var(--text-small-size)' }}>{description}</p> : null}
+            </div>
+            {onClose ? <IconButton icon="x" label={closeLabel} size="sm" onClick={onClose} /> : null}
           </div>
-          {onClose ? <IconButton icon="x" label={closeLabel} size="sm" onClick={onClose} /> : null}
-        </div>
-        {children}
-        {footer ? <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--space-3)' }}>{footer}</div> : null}
+        ) : null}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 'var(--space-4)', padding: '30px' }}>{children}</div>
+        {footer ? (
+          <div style={{ display: 'flex', justifyContent: 'flex-end', gap: 'var(--space-3)', padding: '18px 26px', borderTop: '1px solid var(--border-subtle)' }}>{footer}</div>
+        ) : null}
       </div>
     </div>
   );

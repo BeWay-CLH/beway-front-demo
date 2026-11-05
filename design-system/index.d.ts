@@ -173,6 +173,8 @@ export interface FooterProps extends React.HTMLAttributes<HTMLElement> {
   /** Replaces the logo. */
   logo?: React.ReactNode;
   logoHeight?: number;
+  /** Centre phrase of the light footer. Omitted until the copy is approved (decision D9). */
+  tagline?: React.ReactNode;
   links?: FooterLink[];
   legalLinks?: FooterLink[];
   copyright?: string;
@@ -246,7 +248,6 @@ export interface LogoMarqueeProps extends React.HTMLAttributes<HTMLDivElement> {
 export declare function LogoMarquee(props: LogoMarqueeProps): React.JSX.Element;
 
 export interface NavBarProps extends Omit<React.HTMLAttributes<HTMLElement>, 'onSubmit'> {
-  tone?: 'light' | 'navy';
   /** Folder holding the logo PNGs. */
   assetBase?: string;
   /** Replaces the logo. */
@@ -255,14 +256,20 @@ export interface NavBarProps extends Omit<React.HTMLAttributes<HTMLElement>, 'on
   showSearch?: boolean;
   searchPlaceholder?: string;
   onSearch?: (query: string) => void;
-  loginLabel?: string;
-  ctaLabel?: string;
-  onLogin?: () => void;
-  onCta?: () => void;
-  /** Centre navigation links, left of the search. */
+  /** Row 2, left: primary navigation links. */
   links?: React.ReactNode;
-  /** Replaces the login and CTA buttons (signed-in state). */
+  /** Row 2, right: secondary links (for example Mi panel, Mi perfil). */
+  endLinks?: React.ReactNode;
+  /** Row 1, right: account and theme controls. */
   actions?: React.ReactNode;
+  /** Row 1 height in px: 83 general, 66 directory, 58 company sheet. */
+  barHeight?: number;
+  /** Row 2 height in px: 57 general, 46 directory. */
+  navHeight?: number;
+  /** Classes for row 1, row 2 and the search wrapper (responsive hiding). Use the important modifier. */
+  barClassName?: string;
+  navClassName?: string;
+  searchClassName?: string;
 }
 export declare function NavBar(props: NavBarProps): React.JSX.Element;
 

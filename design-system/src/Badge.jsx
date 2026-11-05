@@ -4,7 +4,7 @@ import { Icon } from './Icon.jsx';
 
 const TONES = {
   neutral: { background: 'var(--surface-sunken)', color: 'var(--text-muted)', border: '1px solid var(--border-subtle)' },
-  accent: { background: 'var(--surface-accent-subtle)', color: 'var(--text-accent)', border: '1px solid rgba(0,212,255,.35)' },
+  accent: { background: 'var(--surface-accent-subtle)', color: 'var(--text-accent)', border: '1px solid var(--border-accent-subtle)' },
   navy: { background: 'var(--action-secondary)', color: 'var(--text-on-inverse)', border: '1px solid transparent' },
   success: { background: 'color-mix(in srgb, var(--status-success) 14%, transparent)', color: 'var(--status-success-text)', border: '1px solid color-mix(in srgb, var(--status-success) 34%, transparent)' },
   warning: { background: 'color-mix(in srgb, var(--status-warning) 16%, transparent)', color: 'var(--status-warning-text)', border: '1px solid color-mix(in srgb, var(--status-warning) 36%, transparent)' },

@@ -4,7 +4,7 @@ import { Icon } from './Icon.jsx';
 import { IconButton } from './IconButton.jsx';
 
 const TONES = {
-  info: { icon: 'info', color: 'var(--brand-cyan)', base: 'var(--brand-cyan)' },
+  info: { icon: 'info', color: 'var(--status-info)', base: 'var(--status-info)' },
   success: { icon: 'check-circle', color: 'var(--status-success-text)', base: 'var(--status-success)' },
   warning: { icon: 'alert-triangle', color: 'var(--status-warning-text)', base: 'var(--status-warning)' },
   danger: { icon: 'alert-circle', color: 'var(--status-danger-text)', base: 'var(--status-danger)' },

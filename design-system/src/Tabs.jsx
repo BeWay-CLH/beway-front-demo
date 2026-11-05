@@ -21,7 +21,7 @@ export function Tabs({ items = [], value, onChange, onInverse = false, style, ..
               padding: '0 0 var(--space-3)', marginBottom: -1,
               fontFamily: 'var(--font-body)', fontSize: 'var(--text-small-size)', fontWeight: 600,
               color: active ? (onInverse ? 'var(--white)' : 'var(--text-heading)') : (onInverse ? 'var(--text-on-inverse-muted)' : 'var(--text-muted)'),
-              borderBottom: '2px solid ' + (active ? 'var(--brand-cyan)' : 'transparent'),
+              borderBottom: '2px solid ' + (active ? 'var(--border-accent)' : 'transparent'),
               transition: 'var(--transition-control)',
             }}
           >
