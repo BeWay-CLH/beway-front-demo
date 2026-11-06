@@ -266,6 +266,21 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
         </FormSection>
       </div>
 
+      <section aria-labelledby="cv-title" className="mt-8 flex flex-col gap-3 rounded-card border border-dashed border-line-control bg-surface-card p-6">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 flex-none items-center justify-center rounded-control bg-surface-sunken text-fg-body">
+            <Icon name="file-text" size={18} />
+          </span>
+          <div className="flex flex-col">
+            <h2 id="cv-title" className="m-0 font-heading text-[17px] font-[600] text-fg-heading">Adjunta tu CV.</h2>
+            <span className="text-xs text-fg-muted">PDF. Próximamente: la demo no sube archivos.</span>
+          </div>
+        </div>
+        <div>
+          <Button type="button" variant="secondary" icon="upload" disabled>Elegir archivo</Button>
+        </div>
+      </section>
+
       <footer className="flex flex-col gap-4 border-t border-line-subtle pt-8">
         {saved ? (
           <Alert tone="info" title="Simulación">
