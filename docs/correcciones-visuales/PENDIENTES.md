@@ -79,3 +79,16 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 05-5 | Plazos y fechas en texto de ejemplo ("15 dic 2026"). | Sin fuente de fechas real. | Seed. |
 | 05-6 | Las portadas usan el color base de la marca; sin logos oficiales. | Sin assets oficiales (D7). | Seed. |
 | 05-7 | El texto "Ejemplo" de los fixtures no aparece en las tarjetas (solo en el encabezado de la página). | Se rotula la página completa. | Revisar al cerrar la fase. |
+
+## Fase 06 · Mi panel, perfil y vista para empresas
+
+| # | Pendiente | Causa | Dónde se cierra |
+|---|---|---|---|
+| 06-1 | Perfil: el CV no tiene la composición 2×2 de la ficha 24 ni el orden completo (identidad, vídeo, CV, habilidades, certificaciones, evidencias). | El formulario actual es largo; solo se añadió el bloque de vídeo y la vista previa. | Siguiente iteración de fase 06. |
+| 06-2 | "Mi vídeo pitch" sin subida: botón deshabilitado con "Próximamente". | Sin campo, almacenamiento ni endpoint (BE pendiente). | Backend de vídeo y consentimiento. |
+| 06-3 | BEWAY Score y ranking: rotulados como ejemplo, sin cifra ni fórmula. | Regla de la guía: no crear algoritmos. | Decisión de producto. |
+| 06-4 | "Oportunidades para ti": texto de "sin oportunidades" (no hay catálogo). | Fase 07 crea el catálogo; hoy no hay datos. | Fase 07. |
+| 06-5 | "Próximos eventos": sin datos. | No hay modelo de eventos. | Backend de eventos. |
+| 06-6 | Validated Skills y evidencias (ficha 25) sin cambios de presentación. | No hay modelo de validación (DEC-021, OI-009). | Modelo de verificación. |
+| 06-7 | La vista para empresas usa los valores del formulario, no el perfil público (sin visibilidad aplicada en la ventana). | Vista previa del formulario; no publica nada. | Revisar al cerrar la fase. |
+| 06-8 | "Tu semana" mezcla encuestas y cursos sin orden por urgencia. | Datos del panel actual, sin modelo de agenda. | Fase de agenda. |
