@@ -67,3 +67,15 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 04-5 | Ventana de acreditación solo en `/talent/credentials` (ficha 15). El dashboard la añade en la fase 06. | Orden de la fase 06. | Fase 06. |
 | 04-6 | Los bloques del aula son de ejemplo (sin vídeo, sin recursos). | Sin contenido real (seed). | Seed. |
 | 04-7 | `CourseRow.tsx` y `CourseFilters.tsx` ya no se usan en el catálogo. | Se sustituyen por `CourseCard`. | Limpieza al cerrar la fase 04. |
+
+## Fase 05 · Challenges y miniproyectos
+
+| # | Pendiente | Causa | Dónde se cierra |
+|---|---|---|---|
+| 05-1 | Los challenges cerrados siguen mostrando "Conocer el challenge" (sin inscripción). | Falta un estado "Cerrado" en la CTA; la ficha no lo define. | Copy de fundadores (D9). |
+| 05-2 | La participación ("Unirme", borrador, entrega) es simulada: solo dura la pestaña. | No hay backend de retos (ROADMAP G). Decisión D5 y DEC-006. | Backend de participación. |
+| 05-3 | "Simular entrega" no envía nada; el texto del botón y de la casilla son provisionales. | Copy pendiente (D9). | Copy de fundadores. |
+| 05-4 | El documento de apoyo se elige pero no se sube. | No hay almacenamiento de archivos en la demo. | Backend de archivos. |
+| 05-5 | Plazos y fechas en texto de ejemplo ("15 dic 2026"). | Sin fuente de fechas real. | Seed. |
+| 05-6 | Las portadas usan el color base de la marca; sin logos oficiales. | Sin assets oficiales (D7). | Seed. |
+| 05-7 | El texto "Ejemplo" de los fixtures no aparece en las tarjetas (solo en el encabezado de la página). | Se rotula la página completa. | Revisar al cerrar la fase. |
