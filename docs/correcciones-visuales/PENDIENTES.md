@@ -55,3 +55,15 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 03-8 | El directorio muestra las 10 fichas de ejemplo originales además de las 17 marcas (27 en total). | La referencia muestra 19. No se eliminan fichas de prueba. | Decisión de fundadores. |
 | 03-9 | Fichas de empresa sin barra de navegación de la app: cabecera de 58 px. | Ficha 09: cabecera exterior mínima. El visitante vuelve con el logo. | Decisión de producto (si se quiere navegación en la ficha). |
 | 03-10 | Colores de marca en `data/fixtures/brands.ts` (17 paletas). | Excepción documentada: son datos de marca, no tokens del DS (opción A de la fase 03). | Revisar con el equipo de DS. |
+
+## Fase 04 · Certificaciones, aula y evaluación
+
+| # | Pendiente | Causa | Dónde se cierra |
+|---|---|---|---|
+| 04-1 | Pestañas "Todas / En curso / Completadas" de la ficha 11 son "Todas / Abiertas / Próximas / Cerradas". | No hay progreso por usuario en el modelo. Decisión D5. | Cuando exista progreso real. |
+| 04-2 | El progreso del aula se guarda en `sessionStorage` por curso (escritura simulada, solo dura la pestaña). | No hay backend de progreso (BE-XXX pendiente). | Backend (BE de inscripción y progreso). |
+| 04-3 | Ficha de certificación (ficha 13) sin cambios de composición: hero, lateral de 335 px y módulos en acordeón. | Prioridad a catálogo, aula y evaluación. | Siguiente iteración de fase 04. |
+| 04-4 | Evaluación sin modelo: cuando se completan los bloques, se dice que todavía no está disponible. | No hay preguntas, intentos ni nota en el dominio. | Backend de evaluación. |
+| 04-5 | Ventana de acreditación solo en `/talent/credentials` (ficha 15). El dashboard la añade en la fase 06. | Orden de la fase 06. | Fase 06. |
+| 04-6 | Los bloques del aula son de ejemplo (sin vídeo, sin recursos). | Sin contenido real (seed). | Seed. |
+| 04-7 | `CourseRow.tsx` y `CourseFilters.tsx` ya no se usan en el catálogo. | Se sustituyen por `CourseCard`. | Limpieza al cerrar la fase 04. |

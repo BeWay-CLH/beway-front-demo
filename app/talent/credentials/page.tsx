@@ -6,6 +6,7 @@ import { courseMeta, startText } from '@/components/course/course-labels';
 import { formatDate } from '@/lib/format';
 import { requireSession } from '@/lib/session';
 import { getCourses } from '@/lib/services/courses';
+import { AccreditationDialog } from '@/components/credentials/AccreditationDialog';
 import { getCredentials } from '@/lib/services/credentials';
 
 export const metadata: Metadata = { title: 'Credenciales · BeWay', robots: { index: false } };
@@ -61,6 +62,7 @@ export default async function CredentialsPage() {
                         </Link>
                       </span>
                     ) : null}
+                    <AccreditationDialog credential={c} holderName={session.displayName} />
                   </div>
                 </li>
               ))}
