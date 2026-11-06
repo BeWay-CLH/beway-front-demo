@@ -35,6 +35,7 @@ Estado de todas: **Pendiente — DTO por definir**, salvo que se indique.
 | BE-023 | Recuperación de contraseña | `/forgot-password` | B |
 | BE-024 | Cifras públicas de la landing | `/` | A-08 |
 | BE-025 | Seguir y dejar de seguir empresas | `/companies/[slug]`, perfil propio, audiencia de encuestas | C |
+| BE-026 | Contenido del paquete de las 17 fichas: formación, retos, miniproyectos, recursos, becas, programas académicos y marcas, con su procedencia (`origin`) y estado de la fuente. Embajadores con su estado de autorización (`authorized`, DEC-059). Carga idempotente por `cmp-<slug>` (DEC-046, DEC-047) | `/companies/[slug]`, `/companies` | C (Tarea 2) |
 
 ---
 

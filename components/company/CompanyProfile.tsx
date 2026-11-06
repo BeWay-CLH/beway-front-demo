@@ -4,6 +4,7 @@ import { NavButton } from '@/components/NavButton';
 import { PageState } from '@/components/PageState';
 import { formatCount, formatDate } from '@/lib/format';
 import type { CompanyDetailVM } from '@/lib/models/company';
+import { COLLECTION_ORDER, hasCollection } from './CompanyCollections';
 import { CompanyTabs } from './CompanyTabs';
 import { FollowButton } from './FollowButton';
 
@@ -22,6 +23,8 @@ export function CompanyProfile({
   initialTab?: string;
 }) {
   const hasModules = company.modules.length > 0;
+  const hasPackage = COLLECTION_ORDER.some((k) => hasCollection(company.collections, k));
+  const notices = company.notices;
 
   return (
     <div className="mx-auto flex w-full max-w-site flex-col gap-6 px-4 py-6 md:px-6 md:py-8">
@@ -71,6 +74,14 @@ export function CompanyProfile({
         </Alert>
       ) : null}
 
+      {notices.length > 0 ? (
+        <Alert tone="info" title="Datos a confirmar">
+          {notices.map((n, i) => (
+            <p key={i}>{n}</p>
+          ))}
+        </Alert>
+      ) : null}
+
       {company.stats.length > 0 ? (
         <dl className="grid grid-cols-2 gap-4 md:grid-cols-4">
           {company.stats.map((s) => (
@@ -85,8 +96,15 @@ export function CompanyProfile({
         </dl>
       ) : null}
 
-      {hasModules ? (
-        <CompanyTabs modules={company.modules} sources={company.sources} initialTab={initialTab} />
+      {hasModules || hasPackage ? (
+        <CompanyTabs
+          modules={company.modules}
+          sources={company.sources}
+          collections={company.collections}
+          sectionHeadings={company.sectionHeadings}
+          heroActions={company.heroActions}
+          initialTab={initialTab}
+        />
       ) : (
         <PageState
           kind="empty"

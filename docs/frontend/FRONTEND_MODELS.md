@@ -145,6 +145,18 @@ type AdminCompanyRowVM = { id: string; slug: string; name: string; category: str
 type ReviewItemVM = { id: string; companyId: string; companyName: string; submittedAt: string; submittedBy: string; changedModules: CompanyModuleKind[] };
 ```
 
+## Paquete de contenido de las 17 fichas (Tarea 2, DEC-046)
+
+Tipos en `lib/models/company.ts`, sección «Colecciones del paquete». `CompanyDetailVM` incluye `CompanyPackageVM`
+(`sector`, `heroActions`, `sectionHeadings`, `notices` y `collections`). En `CompanyRecord` es opcional, así que las fichas de
+ejemplo no cambian. Colecciones: `LearningVM` (formación), `ChallengeVM` (retos), `MiniprojectVM`, `AmbassadorVM` (todos, con
+`authorized`), `ResourceVM`, `ScholarshipVM`, `AcademicProgramVM` y `BrandVM`. `OfferOrigin` replica `contentOrigin`
+del paquete. Un dato ausente no llega: el campo se omite o la lista va vacía. Los embajadores se muestran con su nombre y
+la etiqueta «Pendiente de autorización» si `authorized` es false (DEC-059).
+
+Cadena: `data/seed/companies.content.v2.json` (copia íntegra) → `lib/seed/companies-adapter.ts` (función pura) →
+`lib/seed/companies.ts` (carga una vez) → `lib/services/companies.ts` (fusión sin duplicados). Validación: `npm run seed:check`.
+
 ## Implementación del bloque C (código real)
 
 Los tipos viven en `lib/models/company.ts`; el servicio en `lib/services/companies.ts`; los fixtures en

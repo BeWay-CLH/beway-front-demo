@@ -1,5 +1,35 @@
 # Changelog
 
+## 2026-11-06 · Seed de las 17 fichas de empresa (Tarea 2), sobre las composiciones de fase 03
+
+Plan, correspondencias y decisiones: [SEED_EMPRESAS.md](SEED_EMPRESAS.md). Decisiones DEC-046 a DEC-063.
+
+### Añadido
+- **Datos:** `data/seed/companies.content.v2.json` (copia íntegra del paquete, sin editar).
+- **Adaptador puro:** `lib/seed/companies-adapter.ts` (paquete → registro de empresa) y `lib/seed/companies.ts` (carga una vez).
+- **Bloques con datos** en las 17 composiciones de fase 03: resumen, formación, retos, miniproyectos, embajadores (con nombre y etiqueta de autorización pendiente), recursos, becas, grados y másteres, y marcas. Componentes en `components/company/`: `CompanyCollections`, `ExternalLink` y `ScholarshipTable`.
+- **Ficha genérica:** las 11 fichas de ejemplo tienen sus pestañas, que solo aparecen si hay datos.
+- **Cabecera:** los CTA del paquete llevan a su bloque. Aviso "Datos a confirmar" con la fecha de revisión.
+- **Seed:** `npm run seed:check` (conteos, slugs, idempotencia, reglas de contenido y coincidencia con las 17 composiciones).
+
+### Cambiado
+- Fase 03: `data/fixtures/brands.ts` deja de llevar textos y cifras de ejemplo y queda solo como composición. `BrandPage` recibe la ficha de la empresa. Se elimina `brandCompanyRecords`.
+- Garrigues vive en `/companies/garrigues` (slug de fase 03). Nombres de la guía para McKinsey, SILBON, HEINEKEN y L'Oréal.
+- Cifras de la tarjeta: miniproyectos cuenta los del paquete; retos y oportunidades quedan en "—" (DEC-057).
+- La fase 03 dice "Formación" en lugar de "Certificaciones" (DEC-062).
+
+### Corregido en móvil
+- Badge de convocatoria más corto y enlaces externos `relative`: sin desbordamiento horizontal en las 17 fichas a 375 px.
+
+### No cambiado
+- `design-system/`, tokens, CSS global, Tailwind y configuración del proyecto.
+- Las 11 fichas de ejemplo.
+
+### Verificado
+- `npm run seed:check` OK; `npm run typecheck` y `npm run build` sin errores.
+- Las 17 fichas: HTTP 200, h1 y bloques correctos; sin "undefined" ni "null"; a 375 px sin desbordamiento. Revisión visual de Instituto BME, Google y Santander.
+- **No verificado:** enlaces externos del paquete (no abiertos uno a uno); logotipos, portadas y consentimiento de embajadores (DEC-050, DEC-059); vigencia de convocatorias, becas y precios (DEC-053); modo oscuro de las composiciones de fase 03.
+
 ## 2026-11-05 · Correcciones visuales, fase 01 (base: tokens, DS, cabecera, cuenta, pie)
 
 ### Cambiado

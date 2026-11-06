@@ -67,6 +67,16 @@ Ambos llevan debajo "Textos provisionales, pendientes de revisión legal". No af
 Todos llevan "Textos provisionales, pendientes de revisión legal" en esta lista, no en pantalla. Ninguno promete que se haya guardado nada: las
 pantallas dicen "Simulación" cuando una acción no tiene backend.
 
+## 6. Fichas del paquete de Tarea 2 (17 empresas, 2026-11-06)
+
+| ID | Texto o pregunta | Dónde se muestra | Bloque |
+|---|---|---|---|
+| L-34 | Aviso de la ficha: "Algunas fechas, convocatorias y condiciones pueden haber cambiado desde la revisión del 5 de noviembre de 2026. Antes de darlas por vigentes, confírmalas en la fuente: …" | Ficha de las 17 empresas | Seed (Tarea 2) |
+| L-35 | Etiquetas de procedencia: "Propuesta BeWay", "Catálogo externo", "Iniciativa oficial externa", "Certificación no verificada", y la nota de Retos: "Una iniciativa oficial externa no implica colaboración con BeWay." | Pestañas Formación y Retos | Seed (Tarea 2) |
+| L-36 | Textos de Embajadores: "Personas de la comunidad CLH. No forman parte de la plantilla de la empresa. Las que no han dado su autorización se marcan como pendientes." y la etiqueta "Pendiente de autorización" en cada perfil | Pestaña Embajadores | Seed (Tarea 2) |
+| LQ-11 | Desde el 2026-11-06 se muestran los nombres de los 85 embajadores CLH del paquete, todos sin autorización registrada (DEC-059). ¿Hace falta el consentimiento de cada persona antes de publicar, y dónde se guarda? (OI-026) | Pestaña Embajadores | F |
+| LQ-12 | Las 17 fichas no están reclamadas por la empresa (`claimedBy: null`). ¿Hace falta avisar a la empresa y dar derecho de rectificación antes de publicarlas, como en LQ-06? | Fichas de las 17 empresas | F |
+
 ## Formato de entrega que nos sirve
 
 Para cada ID: texto final en español, versión y fecha, y si el usuario debe aceptarlo explícitamente (casilla) o basta con informarle.

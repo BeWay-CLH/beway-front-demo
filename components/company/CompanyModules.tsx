@@ -108,7 +108,14 @@ export function SourcesView({ sources }: { sources: SourceVM[] }) {
           <li key={s.id} className={`${rowBase} md:flex-row md:items-baseline md:justify-between md:gap-6`}>
             <span className="flex items-center gap-3">
               <span className="text-fg-muted"><Icon name="file-text" size={16} /></span>
-              <span className="font-semibold text-fg-heading">{s.label}</span>
+              {s.url ? (
+                <a href={s.url} target="_blank" rel="noopener noreferrer" className="font-semibold text-link underline hover:text-link-hover">
+                  {s.label}
+                  <span className="sr-only"> (se abre en una pestaña nueva)</span>
+                </a>
+              ) : (
+                <span className="font-semibold text-fg-heading">{s.label}</span>
+              )}
             </span>
             <span className="text-sm tabular-nums text-fg-muted">Consultada el {formatDate(s.retrievedAt)}</span>
           </li>
