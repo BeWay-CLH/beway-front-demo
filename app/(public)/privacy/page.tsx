@@ -31,7 +31,8 @@ export default function PrivacyPage() {
   return (
     <article className="mx-auto flex w-full max-w-275 flex-col gap-8 px-4 py-8 md:px-6 md:py-10">
       <header className="flex flex-col gap-4">
-        <h1 className="text-h1 font-heading text-fg-heading">Política de privacidad</h1>
+        <p className="eyebrow m-0 text-fg-muted uppercase">Política de privacidad</p>
+        <h1 className="m-0 font-heading text-[30px] leading-[1.2] font-[700] text-fg-heading md:text-[38px] [letter-spacing:var(--tracking-h1)]">Tu información, con claridad.</h1>
         <Alert tone="warning" title="Borrador pendiente de revisión legal">
           Este texto no es definitivo. Lo que aparece aquí describe cómo se ha diseñado la demo.
         </Alert>

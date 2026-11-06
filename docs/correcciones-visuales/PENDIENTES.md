@@ -108,3 +108,13 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 07-9 | Guardadas y candidaturas: solo en la sesión del navegador. | Escritura simulada (DEC-006). | Backend. |
 | 07-10 | Revisión móvil de encuestas (ficha 38) y catálogos (ficha 39) sin verificación con sesión de encuestas. | Encuestas sin rediseño todavía. | Siguiente iteración de fase 07. |
 | 07-11 | Galería de encuestas hecha (tarjetas 3/2/1). La pantalla de pregunta (07-2) sigue sin rediseño. | Orden de la fase 07. | Siguiente iteración de fase 07. |
+
+## Cierre de la noche · estado final por ficha
+
+| Ficha | Estado | Nota |
+|---|---|---|
+| 04-3 (ficha 13) | Hecho | Hero de marca, tarjetas "Lo que te llevas", "Tu recorrido" en acordeón, "Cómo se refleja en tu perfil" y lateral de datos. |
+| 06-1 (ficha 24, CV) | Parcial | Zona "Adjunta tu CV." añadida (deshabilitada). Faltan los campos Idiomas y Especialidad: el modelo de perfil no los tiene. |
+| 07-2 (fichas 32–33) | Decisión tomada: no se rediseña por pregunta | El runner trabaja por secciones con validación y borrador. Pasar a una pantalla por pregunta cambia esa lógica, que la guía pide no tocar. |
+| 07-3 (ficha 35) | Decisión tomada: alta de una sola pantalla | Los tres pasos visibles (Cuenta / Formación / Intereses) cambian el flujo de alta y chocan con B-01. La formación sigue en onboarding. Pendiente de confirmar con producto. |
+| 07-5 (ficha 37) | Parcial | Encabezado de la guía aplicado. El texto legal sigue siendo borrador. |
