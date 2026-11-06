@@ -107,3 +107,4 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 07-8 | Ayuda: preguntas y respuestas provisionales, pendientes de revisión de los fundadores. | Copy (D9). | Copy de fundadores. |
 | 07-9 | Guardadas y candidaturas: solo en la sesión del navegador. | Escritura simulada (DEC-006). | Backend. |
 | 07-10 | Revisión móvil de encuestas (ficha 38) y catálogos (ficha 39) sin verificación con sesión de encuestas. | Encuestas sin rediseño todavía. | Siguiente iteración de fase 07. |
+| 07-11 | Galería de encuestas hecha (tarjetas 3/2/1). La pantalla de pregunta (07-2) sigue sin rediseño. | Orden de la fase 07. | Siguiente iteración de fase 07. |
