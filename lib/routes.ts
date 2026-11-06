@@ -3,6 +3,11 @@
 
 export type RouteStatus = 'live' | 'planned';
 
+/* Dónde va el ítem en la cabecera de dos filas (guía de correcciones, ficha 01):
+   'start' = fila de navegación a la izquierda, 'end' = a la derecha, 'none' = fuera de la cabecera
+   (se llega desde otra pantalla). Por defecto, 'start'. */
+export type NavSide = 'start' | 'end' | 'none';
+
 /* Espacios que se pueden recorrer desde la barra de demostración. Auth cuenta como Público. */
 export type Space = 'public' | 'talent' | 'admin';
 
@@ -17,12 +22,19 @@ export type NavItem = {
   href: string;
   icon: string;
   status: RouteStatus;
+  side?: NavSide;
   /* Otras rutas que también marcan este ítem como actual. `:me` es el nombre de usuario de la sesión. */
   alsoActive?: string[];
 };
 
+/* Visitante: las seis áreas de exploración de la guía (ficha 02). Los enlaces de talento piden sesión. */
 export const publicNav: NavItem[] = [
   { label: 'Empresas', href: '/companies', icon: 'building-2', status: 'live' },
+  { label: 'Certificaciones', href: '/talent/courses', icon: 'graduation-cap', status: 'live' },
+  { label: 'Challenges', href: '/talent/challenges', icon: 'trophy', status: 'live' },
+  { label: 'Miniproyectos', href: '/talent/miniprojects', icon: 'folder-kanban', status: 'live' },
+  { label: 'Encuestas', href: '/talent/surveys', icon: 'clipboard-list', status: 'live' },
+  { label: 'Oportunidades', href: '/talent/opportunities', icon: 'briefcase', status: 'live' },
 ];
 
 export const talentHome = '/talent/dashboard';
@@ -30,13 +42,19 @@ export const talentHome = '/talent/dashboard';
 /* "Inicio" de quien mira: el de su espacio si hay sesión, la portada si no. */
 export const homeFor = (signedIn: boolean) => (signedIn ? talentHome : '/');
 
+/* Orden de la guía: Empresas, Certificaciones, Challenges, Miniproyectos, Encuestas, Oportunidades
+   a la izquierda; Mi panel y Mi perfil a la derecha. Etiquetas en español; rutas en inglés (DEC-002, D6).
+   Credenciales no es un enlace de cabecera: se llega desde Mi perfil (ficha 25). */
 export const talentNav: NavItem[] = [
-  { label: 'Inicio', href: talentHome, icon: 'layout-dashboard', status: 'live' },
   { label: 'Empresas', href: '/companies', icon: 'building-2', status: 'live' },
+  { label: 'Certificaciones', href: '/talent/courses', icon: 'graduation-cap', status: 'live' },
+  { label: 'Challenges', href: '/talent/challenges', icon: 'trophy', status: 'live' },
+  { label: 'Miniproyectos', href: '/talent/miniprojects', icon: 'folder-kanban', status: 'live' },
   { label: 'Encuestas', href: '/talent/surveys', icon: 'clipboard-list', status: 'live' },
-  { label: 'Cursos', href: '/talent/courses', icon: 'graduation-cap', status: 'live' },
-  { label: 'Credenciales', href: '/talent/credentials', icon: 'award', status: 'live' },
-  { label: 'Perfil', href: '/talent/profile', icon: 'user-round', status: 'live', alsoActive: ['/u/:me'] },
+  { label: 'Oportunidades', href: '/talent/opportunities', icon: 'briefcase', status: 'live' },
+  { label: 'Mi panel', href: talentHome, icon: 'layout-dashboard', status: 'live', side: 'end' },
+  { label: 'Mi perfil', href: '/talent/profile', icon: 'user-round', status: 'live', side: 'end', alsoActive: ['/u/:me'] },
+  { label: 'Credenciales', href: '/talent/credentials', icon: 'award', status: 'live', side: 'none' },
 ];
 
 export const adminNav: NavItem[] = [
@@ -48,3 +66,6 @@ export const adminNav: NavItem[] = [
 ];
 
 export const liveOnly = (items: NavItem[]) => items.filter((i) => i.status === 'live');
+
+/* Ítems que aparecen en la cabecera (no 'none'), en su orden. */
+export const headerItems = (items: NavItem[]) => items.filter((i) => (i.side ?? 'start') !== 'none');

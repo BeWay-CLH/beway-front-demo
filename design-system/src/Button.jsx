@@ -3,9 +3,10 @@ import React from 'react';
 import { Icon } from './Icon.jsx';
 import { useFocusVisible, focusRing, shadows } from './a11y.js';
 
+/* Medidas de la guía de correcciones (01 A5): md 42 px, 12 px / 650, icono 16; sm 34 px, 11 px. */
 const SIZES = {
-  sm: { height: 'var(--control-height-sm)', padding: '0 var(--space-3)', font: 'var(--text-small-size)', gap: 'var(--space-2)', icon: 16 },
-  md: { height: 'var(--control-height-md)', padding: '0 var(--space-4)', font: 'var(--text-body-size)', gap: 'var(--space-2)', icon: 18 },
+  sm: { height: 'var(--control-height-sm)', padding: '0 var(--space-3)', font: 'var(--text-control-sm-size)', gap: 'var(--space-2)', icon: 14 },
+  md: { height: 'var(--control-height-md)', padding: '10px 17px', font: 'var(--text-control-size)', gap: 'var(--space-2)', icon: 16 },
   lg: { height: 'var(--control-height-lg)', padding: '0 var(--space-5)', font: 'var(--text-body-size)', gap: 'var(--space-3)', icon: 20 },
 };
 
@@ -13,19 +14,21 @@ const SIZES = {
    so hover can change borderColor without React warning about mixed shorthand/longhand. */
 const VARIANTS = {
   primary: { background: 'var(--action-primary)', color: 'var(--text-on-accent)', borderColor: 'transparent' },
-  secondary: { background: 'var(--action-secondary)', color: 'var(--text-on-inverse)', borderColor: 'var(--border-inverse)' },
+  /* Secundario de la referencia: superficie blanca con borde. El borde es el de control (3:1, decisión D3). */
+  secondary: { background: 'var(--surface-card)', color: 'var(--text-body)', borderColor: 'var(--border-control)' },
   outline: { background: 'transparent', color: 'var(--text-body)', borderColor: 'var(--border-control)' },
   ghost: { background: 'transparent', color: 'var(--text-body)', borderColor: 'transparent' },
   /* `border-box` in the shorthand sets background-origin and background-clip too. */
   gradient: { background: 'var(--gradient-action) border-box', color: 'var(--white)', borderColor: 'transparent' },
 };
 
+/* Sin brillo: la referencia solo sube el primario 1 px (translateY(-1px)), lo que hace `lift`. */
 const HOVER = {
-  primary: { background: 'var(--action-primary-hover)', glow: true },
-  secondary: { background: 'var(--action-secondary-hover)' },
+  primary: { background: 'var(--action-primary-hover)', lift: true },
+  secondary: { background: 'var(--surface-sunken)' },
   outline: { background: 'var(--surface-raised)', borderColor: 'var(--text-muted)' },
   ghost: { background: 'var(--surface-raised)' },
-  gradient: { glow: true },
+  gradient: {},
 };
 
 /* On a dark photo or surface (inverse): light fills and visible outlines. */
@@ -83,13 +86,13 @@ export function Button({
         display: fullWidth ? 'flex' : 'inline-flex', width: fullWidth ? '100%' : undefined,
         alignItems: 'center', justifyContent: 'center', gap: s.gap, boxSizing: 'border-box',
         height: s.height, padding: s.padding, fontFamily: 'var(--font-body)',
-        fontSize: s.font, fontWeight: 600, letterSpacing: 'var(--tracking-tight)', lineHeight: 1,
+        fontSize: s.font, fontWeight: 650, letterSpacing: 'var(--tracking-tight)', lineHeight: 1,
         whiteSpace: 'nowrap', textDecoration: 'none', outline: 'none', margin: 0,
         borderWidth: 1, borderStyle: 'solid', borderRadius: 'var(--radius-md)',
         cursor: disabled ? 'not-allowed' : 'pointer',
         transition: 'var(--transition-control)', ...merged, ...pressed,
-        boxShadow: shadows(hv && hv.glow ? 'var(--shadow-glow)' : null, fv.visible ? focusRing(onInverse) : null),
-        transform: press && !disabled ? 'translateY(1px)' : 'none',
+        boxShadow: shadows(null, fv.visible ? focusRing(onInverse) : null),
+        transform: press && !disabled ? 'translateY(1px)' : hv && hv.lift ? 'translateY(-1px)' : 'none',
         ...style,
       }}
       {...rest}

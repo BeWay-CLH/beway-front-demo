@@ -10,7 +10,7 @@ export function SectionLabel({ children, onInverse = false, align = 'left', styl
         letterSpacing: 'var(--tracking-caps)', textTransform: 'uppercase',
         color: onInverse ? 'var(--white)' : 'var(--text-heading)',
       }}>{children}</span>
-      <span style={{ width: 56, height: 'var(--border-width-accent)', background: 'var(--brand-cyan)', borderRadius: 2 }} />
+      <span style={{ width: 56, height: 'var(--border-width-accent)', background: 'var(--accent-teal)', borderRadius: 2 }} />
     </div>
   );
 }

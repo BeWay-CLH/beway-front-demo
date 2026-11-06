@@ -20,7 +20,7 @@ export function Checkbox({ checked, defaultChecked, label, description, disabled
       <span style={{
         position: 'relative', width: 18, height: 18, flex: 'none', marginTop: description ? 2 : 0, boxSizing: 'border-box',
         borderRadius: 'var(--radius-sm)', display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
-        background: on ? 'var(--brand-cyan)' : 'var(--surface-card)',
+        background: on ? 'var(--action-primary)' : 'var(--surface-card)',
         borderWidth: 1, borderStyle: 'solid',
         borderColor: invalid ? 'var(--status-danger)' : on ? 'var(--text-accent)' : 'var(--border-control)',
         color: 'var(--brand-dark)', boxShadow: fv.visible ? focusRing(false) : 'none', transition: 'var(--transition-control)',

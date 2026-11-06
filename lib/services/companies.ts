@@ -1,11 +1,14 @@
 import { companyRecords } from '@/data/fixtures/companies';
+import { courseRecords } from '@/data/fixtures/courses';
 import { followsByUser } from '@/data/fixtures/follows';
+import { surveyRecords } from '@/data/fixtures/surveys';
 import type { Simulated } from '@/lib/models/common';
 import type {
   CompanyCardVM,
   CompanyCategoryVM,
   CompanyDetailVM,
   CompanyFilter,
+  CompanyMetricVM,
   CompanyPageVM,
   CompanyRecord,
   CompanyRefVM,
@@ -48,7 +51,28 @@ function toCard(r: CompanyRecord): CompanyCardVM {
     logo: r.logo,
     cover: r.cover,
     stats: r.stats,
+    metrics: metricsFor(r),
   };
+}
+
+/* Las cinco cifras de la tarjeta (guía de correcciones, ficha 04), en su orden. Solo cuentan datos existentes:
+   certificaciones = cursos del fixture cuyo proveedor es la empresa; encuestas = encuestas que publica;
+   challenges = retos y oportunidades = vacantes de su ficha (cifras ya cargadas en el fixture); miniproyectos
+   no tiene fuente todavía y va como "—" (null). Sin fórmulas ni datos nuevos. */
+function metricsFor(r: CompanyRecord): CompanyMetricVM[] {
+  const stat = (label: string) => r.stats.find((s) => s.label.toLowerCase() === label)?.value ?? null;
+  return [
+    { key: 'certificaciones', label: 'Certificaciones', value: courseRecords.filter((c) => c.provider === r.name).length },
+    { key: 'challenges', label: 'Challenges', value: stat('retos') },
+    { key: 'encuestas', label: 'Encuestas', value: surveyRecords.filter((s) => s.publisherId === r.id).length },
+    { key: 'miniproyectos', label: 'Miniproyectos', value: null },
+    { key: 'oportunidades', label: 'Oportunidades', value: stat('vacantes') },
+  ];
+}
+
+/* Empresas que sigue una persona. Lectura para la tarjeta del directorio (la escritura sigue siendo simulada). */
+export async function getFollowingIds(viewerId?: string): Promise<string[]> {
+  return viewerId ? (followsByUser[viewerId] ?? []) : [];
 }
 
 /* El módulo sin contenido no llega (criterio de C-02): ni cuerpo ni elementos. */

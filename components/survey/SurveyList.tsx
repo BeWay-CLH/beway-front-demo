@@ -57,7 +57,7 @@ export function SurveyList({ userId, surveys }: { userId: string; surveys: Surve
           {tab === 'available' ? (
             <div className="flex flex-col gap-8">
               {available.length > 0 ? (
-                <ul className="flex flex-col">
+                <ul className="grid gap-[21px] min-[651px]:grid-cols-2 min-[901px]:grid-cols-3">
                   {available.map((s) => (
                     <SurveyRow key={s.id} survey={s} userId={userId} completed={false} primary={s.id === firstPending?.id} />
                   ))}
@@ -81,7 +81,7 @@ export function SurveyList({ userId, surveys }: { userId: string; surveys: Surve
                   <p className="text-sm text-fg-muted">
                     Siguiendo a la empresa, o añadiendo su tema a tus intereses, las verás en Disponibles.
                   </p>
-                  <ul className="mt-2 flex flex-col">
+                  <ul className="mt-2 grid gap-[21px] min-[651px]:grid-cols-2 min-[901px]:grid-cols-3">
                     {others.slice(0, MAX_NOT_ELIGIBLE).map((s) => (
                       <SurveyRow key={s.id} survey={s} userId={userId} completed={false} primary={false} />
                     ))}
@@ -95,7 +95,7 @@ export function SurveyList({ userId, surveys }: { userId: string; surveys: Surve
               ) : null}
             </div>
           ) : done.length > 0 ? (
-            <ul className="flex flex-col">
+            <ul className="grid gap-[21px] min-[651px]:grid-cols-2 min-[901px]:grid-cols-3">
               {done.map((s) => (
                 <SurveyRow key={s.id} survey={s} userId={userId} completed primary={false} />
               ))}

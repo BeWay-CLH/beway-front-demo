@@ -30,7 +30,7 @@ export function SurveyRow({
   const muted = state === 'not-eligible';
 
   return (
-    <li className="grid grid-cols-[auto_1fr] items-center gap-x-4 gap-y-3 border-t border-line-subtle py-4 first:border-t-0 first:pt-0 md:grid-cols-[auto_1fr_11rem_9.5rem] md:gap-x-6">
+    <li className="flex h-full flex-col gap-3 rounded-[12px] border border-line-subtle bg-surface-card p-5">
       <span className="flex size-10 flex-none items-center justify-center overflow-hidden rounded-control border border-line-subtle bg-white">
         {survey.publisher.logo ? (
           <img src={survey.publisher.logo} alt="" className="max-h-[78%] max-w-[78%] object-contain" />
@@ -66,7 +66,7 @@ export function SurveyRow({
         variant={primary && (state === 'open' || state === 'in-progress') ? 'primary' : 'outline'}
         iconAfter="arrow-right"
         aria-label={`${action}: ${survey.title}`}
-        className="col-start-2 self-start md:col-start-auto md:w-full md:self-auto"
+        className="mt-auto w-full"
       >
         {action}
       </NavButton>

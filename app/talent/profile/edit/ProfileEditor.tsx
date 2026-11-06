@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useTransition, type FormEvent } from 'react';
-import { Alert, Button, Field, IconButton, Input, Tag, Textarea } from '@ds';
+import { Alert, Button, Dialog, Field, Icon, IconButton, Input, Tag, Textarea } from '@ds';
 import { NavButton } from '@/components/NavButton';
 import { FormSection } from '@/components/forms/FormSection';
 import { interestOptions } from '@/data/fixtures/profiles';
@@ -70,6 +70,8 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
     });
   };
 
+  const [preview, setPreview] = useState(false);
+
   return (
     <form onSubmit={onSubmit} noValidate className="mx-auto flex w-full max-w-275 flex-col px-4 py-8 md:px-6 md:py-10">
       <header className="flex flex-col gap-6 md:flex-row md:items-start md:justify-between">
@@ -81,9 +83,14 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
               : 'Tu perfil está completo.'}
           </p>
         </div>
-        <NavButton href={`/u/${username}`} variant="ghost" iconAfter="arrow-right" className="self-start">
-          Ver perfil
-        </NavButton>
+        <div className="flex flex-wrap gap-3 self-start">
+          <Button type="button" variant="secondary" icon="eye" onClick={() => setPreview(true)}>
+            Vista para empresas
+          </Button>
+          <NavButton href={`/u/${username}`} variant="ghost" iconAfter="arrow-right">
+            Ver perfil
+          </NavButton>
+        </div>
       </header>
 
       <div className="mt-8 flex flex-col">
@@ -104,6 +111,23 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
             <Input id="pe-location" value={form.location ?? ''} onChange={(e) => update({ location: e.target.value })} />
           </Field>
         </FormSection>
+
+        <section aria-labelledby="pitch-title" className="flex flex-col gap-4 rounded-card border border-line-subtle bg-surface-card p-6">
+          <div className="flex items-center gap-3">
+            <span className="flex size-10 flex-none items-center justify-center rounded-control bg-surface-inverse text-white">
+              <Icon name="video" size={18} />
+            </span>
+            <div className="flex flex-col">
+              <h2 id="pitch-title" className="m-0 font-heading text-[17px] font-[600] text-fg-heading">Mi vídeo pitch.</h2>
+              <span className="text-xs text-fg-muted">Por completar</span>
+            </div>
+          </div>
+          <p className="m-0 text-sm text-fg-body">Haz que te conozcan en un minuto.</p>
+          <div>
+            <Button type="button" variant="secondary" icon="upload" disabled>Subir vídeo</Button>
+          </div>
+          <p className="m-0 text-xs text-fg-muted">Próximamente: la subida de vídeo llega con el backend. La demo no almacena archivos.</p>
+        </section>
 
         <FormSection id="sobre-ti" title="Sobre ti" description="Unas frases: qué estudias o haces y qué buscas.">
           <Field label="Presentación" htmlFor="pe-about" hint={`${(form.about ?? '').length} / ${ABOUT_MAX}`}>
@@ -242,6 +266,21 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
         </FormSection>
       </div>
 
+      <section aria-labelledby="cv-title" className="mt-8 flex flex-col gap-3 rounded-card border border-dashed border-line-control bg-surface-card p-6">
+        <div className="flex items-center gap-3">
+          <span className="flex size-10 flex-none items-center justify-center rounded-control bg-surface-sunken text-fg-body">
+            <Icon name="file-text" size={18} />
+          </span>
+          <div className="flex flex-col">
+            <h2 id="cv-title" className="m-0 font-heading text-[17px] font-[600] text-fg-heading">Adjunta tu CV.</h2>
+            <span className="text-xs text-fg-muted">PDF. Próximamente: la demo no sube archivos.</span>
+          </div>
+        </div>
+        <div>
+          <Button type="button" variant="secondary" icon="upload" disabled>Elegir archivo</Button>
+        </div>
+      </section>
+
       <footer className="flex flex-col gap-4 border-t border-line-subtle pt-8">
         {saved ? (
           <Alert tone="info" title="Simulación">
@@ -254,6 +293,25 @@ export function ProfileEditor({ initial, username }: { initial: ProfileFormVM; u
           </Button>
         </div>
       </footer>
+      <Dialog open={preview} onClose={() => setPreview(false)} width={740} title="Vista para empresas">
+        <div className="flex flex-col gap-5">
+          <p className="m-0 text-xs text-fg-muted">Así verían tu perfil las empresas, con los valores del formulario. No publica nada.</p>
+          <div className="flex flex-col gap-1">
+            <span className="font-heading text-[20px] font-[600] text-fg-heading">{form.displayName || 'Sin nombre'}</span>
+            {form.headline ? <span className="text-sm text-fg-body">{form.headline}</span> : null}
+            {form.location ? <span className="text-xs text-fg-muted">{form.location}</span> : null}
+          </div>
+          {form.about ? <p className="m-0 text-sm leading-[1.6] text-fg-body">{form.about}</p> : null}
+          {form.education.length > 0 ? (
+            <div className="flex flex-col gap-1">
+              <span className="text-xs font-[650] uppercase tracking-[0.04em] text-fg-muted">Formación</span>
+              {form.education.map((e) => (
+                <span key={e.id} className="text-sm text-fg-body">{[e.title, e.institution].filter(Boolean).join(', ')}</span>
+              ))}
+            </div>
+          ) : null}
+        </div>
+      </Dialog>
     </form>
   );
 }

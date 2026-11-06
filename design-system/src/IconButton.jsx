@@ -14,7 +14,7 @@ const BASE = {
 const HOVER = {
   ghost: { background: 'var(--surface-raised)', color: 'var(--text-body)' },
   outline: { background: 'var(--surface-raised)', borderColor: 'var(--text-muted)' },
-  solid: { background: 'var(--action-primary-hover)', glow: true },
+  solid: { background: 'var(--action-primary-hover)' },
 };
 const INVERSE = {
   ghost: { color: 'var(--text-on-inverse)' },

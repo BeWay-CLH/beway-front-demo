@@ -14,7 +14,8 @@ export function AppShell({ space, session, children }: { space: 'talent' | 'admi
   const c = config[space];
   return (
     <div className="flex min-h-screen flex-col">
-      <AppHeader space={space} homeHref={c.homeHref} homeLabel={c.homeLabel} items={c.items} badge={c.badge} session={session} />
+      {/* Buscador global para miembros (ficha 05): Enter lleva al directorio con la consulta. */}
+      <AppHeader space={space} homeHref={c.homeHref} homeLabel={c.homeLabel} items={c.items} badge={c.badge} session={session} search={space === 'talent'} />
       <main className="flex-1">{children}</main>
     </div>
   );

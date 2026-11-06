@@ -1,20 +1,21 @@
 'use client';
 
 import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { Avatar, Badge, Button, IconButton, Logo, NavBar } from '@ds';
+import { usePathname, useRouter } from 'next/navigation';
+import { Badge, Logo, NavBar } from '@ds';
 import { NavButton } from '@/components/NavButton';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { signOut } from '@/lib/auth-actions';
 import type { Session } from '@/lib/models/session';
-import { talentHome, type NavItem, type Space } from '@/lib/routes';
+import { headerItems, type NavItem, type Space } from '@/lib/routes';
+import { NotificationsButton, PersonalMenu } from './AccountMenus';
 import { DemoBar, demoBarEnabled } from './DemoBar';
-import { MobileMenu } from './MobileMenu';
-import { NavList, ShellNav } from './ShellNav';
+import { NavList } from './ShellNav';
 
-/* Cabecera única de todos los espacios (DEC-013): mismo NavBar, misma altura, logo en el mismo sitio.
-   Solo cambian los enlaces y la cuenta. El NavBar del DS no es responsive (DEC-007): por debajo de md se
-   ocultan sus enlaces y su búsqueda (el "!" vence al estilo inline del DS) y la navegación pasa al menú. */
+/* Cabecera única de todos los espacios (DEC-013 y DEC-045; guía de correcciones 01 C y 07): dos filas.
+   Fila 1: logo, buscador (desde md) y cuenta. Fila 2: navegación a la izquierda (side 'start') y a la derecha ('end').
+   Densidad: general 83 + 57 px; directorio 66 + 46 (móvil 60 + 44). En móvil la fila 2 se desplaza en horizontal
+   (ficha 07): no hay menú hamburguesa; la cuenta completa (ajustes y cerrar sesión) está en el menú personal.
+   Las clases responsive llevan "!" porque los estilos en línea del DS vencen a las clases normales. */
 export function AppHeader({
   space,
   homeHref,
@@ -36,53 +37,36 @@ export function AppHeader({
   quiet?: boolean;
 }) {
   const router = useRouter();
+  const pathname = usePathname();
   const guestActions = !session && !quiet && space === 'public';
-  /* "Mi espacio" solo hace falta si la cabecera no trae ya el "Inicio" del espacio (acceso, registro). */
-  const spaceLink = Boolean(session) && space === 'public' && !items.some((i) => i.href === talentHome);
+  const visible = headerItems(items);
+  const startItems = visible.filter((i) => (i.side ?? 'start') === 'start');
+  const endItems = visible.filter((i) => i.side === 'end');
   const username = session?.username;
-  /* Con más de cuatro enlaces (Talent tiene seis) la fila no cabe a 768 px: el menú plegable sube hasta lg. */
-  const bp =
-    items.length > 4
-      ? { bar: 'max-lg:px-4! max-lg:[&>form]:hidden max-lg:[&>nav]:hidden!', account: 'max-lg:hidden', menu: 'lg:hidden' }
-      : { bar: 'max-md:px-4! max-md:[&>form]:hidden max-md:[&>nav]:hidden!', account: 'max-md:hidden', menu: 'md:hidden' };
 
-  const desktopAccount = session ? (
-    <>
-      {spaceLink ? <NavButton href={talentHome} variant="ghost">Mi espacio</NavButton> : null}
-      <NavButton href="/talent/settings" variant="ghost" aria-label="Ajustes de cuenta">
-        <Avatar name={session.displayName} size={32} />
-      </NavButton>
-      <form action={signOut}>
-        <IconButton type="submit" icon="log-out" label="Cerrar sesión" />
-      </form>
-    </>
-  ) : guestActions ? (
-    <>
-      <NavButton href="/login" variant="ghost">Iniciar sesión</NavButton>
-      <NavButton href="/signup" variant="secondary">Crear cuenta</NavButton>
-    </>
-  ) : null;
-
-  const mobileAccount = session ? (
-    <>
-      {spaceLink ? <NavButton href={talentHome} variant="ghost" fullWidth icon="layout-dashboard">Mi espacio</NavButton> : null}
-      <NavButton href="/talent/settings" variant="ghost" fullWidth icon="settings">Ajustes de cuenta</NavButton>
-      <form action={signOut}>
-        <Button type="submit" variant="ghost" fullWidth icon="log-out">Cerrar sesión</Button>
-      </form>
-    </>
-  ) : guestActions ? (
-    <>
-      <NavButton href="/login" variant="secondary" fullWidth>Iniciar sesión</NavButton>
-      <NavButton href="/signup" variant="secondary" fullWidth>Crear cuenta</NavButton>
-    </>
-  ) : null;
+  const directory = pathname === '/companies';
+  /* Ficha de empresa (09): cabecera exterior mínima de 58 px, sin segunda fila; la ficha tiene su propia navegación. */
+  const sheet = pathname.startsWith('/companies/');
+  const bar = sheet
+    ? { height: 58, cls: 'max-md:px-4!' }
+    : directory
+      ? { height: 66, cls: 'max-md:h-[60px]! max-md:px-4!' }
+      : { height: 83, cls: 'max-md:px-4!' };
+  const nav = directory
+    ? { height: 46, cls: 'max-md:h-11! max-md:px-4!' }
+    : { height: 57, cls: 'max-md:h-11! max-md:px-4!' };
+  const rowLinks = sheet ? undefined : startItems.length > 0 ? <NavList items={startItems} username={username} /> : undefined;
+  const rowEndLinks = sheet ? undefined : endItems.length > 0 ? <NavList items={endItems} username={username} /> : undefined;
 
   return (
     <div className="sticky top-0 z-40">
       {demoBarEnabled ? <DemoBar space={space} /> : null}
       <NavBar
-        className={bp.bar}
+        barHeight={bar.height}
+        navHeight={nav.height}
+        barClassName={bar.cls}
+        navClassName={`overflow-x-auto ${nav.cls}`}
+        searchClassName="max-md:hidden!"
         showSearch={search}
         onSearch={(q) => router.push('/companies' + (q ? `?q=${encodeURIComponent(q)}` : ''))}
         logo={
@@ -93,20 +77,21 @@ export function AppHeader({
             {badge ? <Badge tone="navy">{badge}</Badge> : null}
           </span>
         }
-        links={items.length > 0 ? <NavList items={items} username={username} /> : undefined}
+        links={rowLinks}
+        endLinks={rowEndLinks}
         actions={
           <>
             <ThemeToggle />
-            {desktopAccount ? <div className={`flex items-center gap-2 ${bp.account}`}>{desktopAccount}</div> : null}
-            {items.length > 0 || mobileAccount ? (
-              <div className={bp.menu}>
-                <MobileMenu label="Abrir menú">
-                  <div className="flex flex-col gap-4">
-                    {items.length > 0 ? <ShellNav items={items} label="Navegación" orientation="vertical" username={username} /> : null}
-                    {mobileAccount ? <div className="flex flex-col gap-2 border-t border-line-subtle pt-4">{mobileAccount}</div> : null}
-                  </div>
-                </MobileMenu>
-              </div>
+            {session ? (
+              <>
+                <NotificationsButton />
+                <PersonalMenu session={session} />
+              </>
+            ) : guestActions ? (
+              <>
+                <NavButton href="/login" variant="ghost" className="max-sm:hidden!">Iniciar sesión</NavButton>
+                <NavButton href="/signup" variant="secondary">Crear cuenta</NavButton>
+              </>
             ) : null}
           </>
         }

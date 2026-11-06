@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { homeFor } from '@/lib/routes';
 import { getSession } from '@/lib/session';
-import { getCompanies, getCompanyCategories } from '@/lib/services/companies';
+import { getCompanies, getCompanyCategories, getFollowingIds } from '@/lib/services/companies';
 import { CompaniesView } from './CompaniesView';
 
 export const metadata: Metadata = {
@@ -16,7 +16,8 @@ const first = (value: string | string[] | undefined) => (Array.isArray(value) ? 
    aquí, en servidor, como lo hará la API (C-03). Un valor que no existe se ignora. */
 export default async function CompaniesPage({ searchParams }: { searchParams: Promise<Search> }) {
   const search = await searchParams;
-  const [session, categories] = await Promise.all([getSession(), getCompanyCategories()]);
+  const session = await getSession();
+  const [categories, followingIds] = await Promise.all([getCompanyCategories(), getFollowingIds(session?.userId)]);
 
   const q = first(search.q)?.trim() ?? '';
   const requested = first(search.category);
@@ -28,7 +29,9 @@ export default async function CompaniesPage({ searchParams }: { searchParams: Pr
       result={result}
       categories={categories}
       query={{ q, category }}
-      homeHref={homeFor(Boolean(session))}
+      showPanel={Boolean(session)}
+      userId={session?.userId}
+      followingIds={followingIds}
     />
   );
 }

@@ -6,7 +6,7 @@ import { Icon } from './Icon.jsx';
 export function Stat({ value, label, icon, align = 'center', onInverse = false, style, ...rest }) {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', alignItems: align === 'center' ? 'center' : 'flex-start', textAlign: align, gap: 4, ...style }} {...rest}>
-      {icon ? <span style={{ color: onInverse ? 'var(--brand-cyan)' : 'var(--text-accent)' }}><Icon name={icon} size={20} /></span> : null}
+      {icon ? <span style={{ color: onInverse ? 'var(--accent-teal)' : 'var(--text-accent)' }}><Icon name={icon} size={20} /></span> : null}
       <span style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 28, lineHeight: 1.1, letterSpacing: 'var(--tracking-display)', color: onInverse ? 'var(--white)' : 'var(--text-heading)' }}>{value}</span>
       <span style={{ fontSize: 11, fontWeight: 600, letterSpacing: 'var(--tracking-caps)', textTransform: 'uppercase', color: onInverse ? 'var(--text-on-inverse-muted)' : 'var(--text-muted)' }}>{label}</span>
     </div>

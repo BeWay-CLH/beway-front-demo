@@ -34,6 +34,9 @@ L.append('''@utility bg-brand-gradient { background-image: var(--gradient-brand)
 @layer base {
   body { background-color: var(--surface-page); color: var(--text-body); font-family: var(--font-body); }
   h1, h2, h3, h4 { font-family: var(--font-display); color: var(--text-heading); letter-spacing: var(--tracking-tight); }
+  h1 { letter-spacing: var(--tracking-h1); }
+  h2 { letter-spacing: var(--tracking-h2); }
+  h3 { letter-spacing: var(--tracking-h3); }
   :focus-visible { outline: 2px solid var(--focus-ring); outline-offset: 2px; }
 }
 ''')

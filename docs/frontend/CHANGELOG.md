@@ -1,5 +1,21 @@
 # Changelog
 
+## 2026-11-05 · Correcciones visuales, fase 01 (base: tokens, DS, cabecera, cuenta, pie)
+
+### Cambiado
+- **Tokens y DS:** paleta de la referencia (navy, teal, paper, ink), Manrope y DM Sans con `next/font`, radios 7/13/14/12, modal con blur de 5 px, primario navy y acento sin cian. Lista completa en `docs/correcciones-visuales/DS_CAMBIOS.md`.
+- **Cabecera:** dos filas (logo, buscador y cuenta; navegación a izquierda y derecha) con alturas por contexto. Navegación de talento en el orden de la guía. Banda de demo de 28 px.
+- **Cuenta:** campana (notificaciones) y avatar (menú personal) abren ventanas centradas de 740 px. Cerrar sesión pasa a esa ventana, con el mismo formulario.
+- **Pie:** claro, con marca, enlaces reales y frase central vacía hasta tener el copy.
+- **Botones:** medidas de la referencia (42 px, 12 px / 650), secundario blanco con borde, sin brillo en hover.
+
+### Añadido
+- `data/fixtures/notifications.ts` y `lib/services/notifications.ts`: notificaciones ficticias marcadas como ejemplo.
+- `PRODUCT.md` (impeccable) y `docs/correcciones-visuales/` (plan, fichas, DS_CAMBIOS, PENDIENTES).
+
+### Decisiones
+- DEC-037 a DEC-045 en `DECISIONS.md`.
+
 ## 2026-10-23 (2) · Bloque E: encuestas, cursos y credenciales (demo)
 
 ### Añadido

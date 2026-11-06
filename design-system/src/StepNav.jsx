@@ -14,7 +14,7 @@ function Marker({ state, index, size = 28, onInverse }) {
   if (state === 'done') {
     return (
       <span style={shell}>
-        <span style={{ ...hex, background: 'var(--brand-cyan)' }} />
+        <span style={{ ...hex, background: 'var(--accent-teal)' }} />
         <span style={{ position: 'relative', color: 'var(--brand-dark)', display: 'flex' }}>
           <Icon name="check" size={Math.round(size * 0.5)} strokeWidth={3} />
         </span>
@@ -102,7 +102,7 @@ export function StepNav({
               {!last ? (
                 <span style={{
                   position: 'absolute', left: 27, top: 32, bottom: -6, width: 2, borderRadius: 1,
-                  background: s.state === 'done' ? 'var(--brand-cyan)' : (onInverse ? 'var(--border-inverse)' : 'var(--border-subtle)'),
+                  background: s.state === 'done' ? 'var(--accent-teal)' : (onInverse ? 'var(--border-inverse)' : 'var(--border-subtle)'),
                 }} />
               ) : null}
               <StepButton
@@ -114,12 +114,12 @@ export function StepNav({
                   position: 'relative', boxSizing: 'border-box', width: '100%', textAlign: 'left', cursor: onSelect ? 'pointer' : 'default',
                   display: 'flex', alignItems: 'center', gap: 'var(--space-3)',
                   padding: 'var(--space-2) var(--space-3)', border: 'none', borderRadius: 'var(--radius-md)',
-                  background: active ? (onInverse ? 'rgba(0,212,255,.10)' : 'var(--surface-accent-subtle)') : 'transparent',
+                  background: active ? (onInverse ? 'var(--accent-teal-subtle)' : 'var(--surface-accent-subtle)') : 'transparent',
                   transition: 'var(--transition-control)', font: 'inherit',
                 }}
               >
                 {active ? (
-                  <span style={{ position: 'absolute', left: 0, top: 8, bottom: 8, width: 'var(--border-width-accent)', borderRadius: 'var(--radius-pill)', background: 'var(--brand-cyan)' }} />
+                  <span style={{ position: 'absolute', left: 0, top: 8, bottom: 8, width: 'var(--border-width-accent)', borderRadius: 'var(--radius-pill)', background: 'var(--border-accent)' }} />
                 ) : null}
                 <Marker state={s.state} index={i + 1} onInverse={onInverse} />
                 <span style={{ display: 'flex', flexDirection: 'column', gap: 1, minWidth: 0 }}>

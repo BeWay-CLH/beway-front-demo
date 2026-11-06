@@ -18,13 +18,14 @@ const isActive = (pathname: string, item: NavItem, username?: string) =>
     (href) => !href.includes(':me') && matches(pathname, href),
   );
 
-const linkBase = 'transition-control inline-flex items-center gap-2 text-sm font-semibold';
+/* Guía de correcciones (01 A10): texto 12 px peso 550; activo 750 con línea teal de 2 px. */
+const linkBase = 'transition-control inline-flex items-center gap-2 text-xs font-[550]';
 
 const styles = {
   horizontal: {
-    list: 'flex items-center gap-6',
-    link: linkBase,
-    active: 'text-fg-heading underline decoration-line-accent decoration-2 underline-offset-8',
+    list: 'flex h-full items-stretch gap-5 whitespace-nowrap',
+    link: `${linkBase} h-full shrink-0 border-b-2 border-transparent max-md:text-[10px]`,
+    active: 'font-[750] text-fg-heading border-line-accent',
     idle: 'text-fg-muted hover:text-fg-heading',
   },
   vertical: {

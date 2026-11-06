@@ -9,7 +9,7 @@ export const demoBarEnabled = process.env.NEXT_PUBLIC_BEWAY_DEMO_BAR !== 'off';
 export function DemoBar({ space }: { space: Space }) {
   return (
     <div className="border-b border-line-inverse bg-surface-inverse">
-      <div className="flex h-10 items-center gap-4 px-4 text-sm md:px-6">
+      <div className="flex h-7 items-center gap-4 px-4 text-xs md:px-6">
         <span className="flex flex-none items-center gap-2 text-xs font-semibold text-fg-on-inverse-muted">
           <Icon name="presentation" size={14} />
           Demo
