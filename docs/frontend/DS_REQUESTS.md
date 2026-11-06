@@ -92,6 +92,12 @@ Usos del bloque E de los que ya existían: el punto 13 (`Tabs`) lo suple `compon
 nativos (puntos 3 y 4 resueltos en v1.1) y la encuesta los usa tal cual. `StepNav` cuenta como "sección" cada paso: en la encuesta se sobrescriben
 `percent` y `meta` para no contar "Revisar y enviar".
 
+## Petición nueva (2026-11-06, desbordamiento de cifras en el directorio)
+
+| # | Componente | Problema | Qué pedir | Workaround en el proyecto |
+|---|---|---|---|---|
+| 19 | `CompanyCard` | La etiqueta de cada cifra lleva `white-space: nowrap` en línea. En cinco celdas de 48 a 65 px, "CERTIFICACIONES", "MINIPROYECTOS" y "OPORTUNIDADES" se salen de su celda en todas las tarjetas. | Permitir salto de línea y `overflow-wrap: anywhere` en la etiqueta, o una disposición 3 + 2 cuando la tarjeta sea estrecha. | `components/company/CompanyGrid.tsx`: `[&_article_span]` con `whitespace-normal!` y `overflow-wrap: anywhere` sobre la rejilla. Quitar cuando el DS lo resuelva. |
+
 ## Prioridad ya cubierta (no pedir)
 
 - `NavBar` no es responsive ni marca el enlace activo: ya está en X-04 de ROADMAP. El proyecto usa `AppHeader`.

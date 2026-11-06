@@ -17,8 +17,10 @@ export function CompanyGrid({
   userId?: string;
 }) {
   const router = useRouter();
+  /* Las cifras del DS van en celdas estrechas con `white-space: nowrap` en línea: la etiqueta se salía de su celda.
+     Los ajustes de className solo tocan los textos de la tarjeta; la petición al DS está en DS_REQUESTS.md. */
   return (
-    <div className="grid gap-[17px] min-[651px]:grid-cols-2 min-[901px]:grid-cols-3 min-[1151px]:gap-6 min-[1650px]:grid-cols-4">
+    <div className="grid gap-[17px] min-[651px]:grid-cols-2 min-[901px]:grid-cols-3 min-[1151px]:gap-6 min-[1650px]:grid-cols-4 [&_article_span]:whitespace-normal! [&_article_span]:[overflow-wrap:anywhere] [&_article_span]:hyphens-auto">
       {items.map((c) => (
         <CompanyCard
           key={c.id}
