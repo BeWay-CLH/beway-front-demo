@@ -83,7 +83,7 @@ export function AppHeader({
               </>
             ) : guestActions ? (
               <>
-                <NavButton href="/login" variant="ghost" className="max-sm:hidden">Iniciar sesión</NavButton>
+                <NavButton href="/login" variant="ghost" className="max-sm:hidden!">Iniciar sesión</NavButton>
                 <NavButton href="/signup" variant="secondary">Crear cuenta</NavButton>
               </>
             ) : null}

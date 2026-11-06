@@ -25,3 +25,18 @@ Ver `DS_CAMBIOS.md` §4. Valores de la referencia que no cumplen `CLAUDE.md`: mu
 ## Fases siguientes (no empezadas)
 
 Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese orden.
+
+## Fase 02 · Bienvenida y directorio
+
+| # | Pendiente | Causa | Dónde se cierra |
+|---|---|---|---|
+| 02-1 | El directorio tiene 10 empresas; la referencia muestra 19. | El catálogo de datos solo tiene 10 fichas. Las 17 marcas entran en la fase 03. | Fase 03 (registro de las 17 marcas). |
+| 02-2 | Las tarjetas usan degradado de marca en la portada, no fotos por marca. | Sin archivos oficiales (D7). El placeholder es el degradado del DS. | Assets de marca (seed). |
+| 02-3 | Sin insignia de coincidencia ("95 % match · ejemplo"). | No hay dato de coincidencia; no se crea ninguna fórmula (regla de la guía). | No aplica. |
+| 02-4 | Etiqueta de cifras a 7 px (ficha 04). | Es la medida de la referencia. Es muy pequeña para leer en móvil. | Decisión de fundadores: 7 px o 9 px. |
+| 02-5 | Portada sin estadísticas, pilares, carrusel de marcas ni bloque final de CTA. | No aparecen en la referencia (ficha 02 y 40). Se quitaron para seguir su orden. | Si los fundadores quieren conservarlos. |
+| 02-6 | Cierre editorial en la portada, no debajo del directorio de `/companies`. | La referencia lo pone al final de la bienvenida (ficha 40). | No aplica. |
+| 02-7 | Sin escala de la foto al pasar el ratón (ficha 04). | CLAUDE.md prohíbe escalar. Se mantiene la elevación de 4 px. | Decisión de fundadores si quieren la escala. |
+| 02-8 | Los filtros solo funcionan en `/companies`, no en la portada. | La portada no tiene URL de filtros. | Fase 03 o decisión de producto. |
+| 02-9 | Sectores del directorio = categorías del catálogo (ficha 05 pide adaptarlas). | El catálogo no tiene Banca, Editorial, etc. | Catálogo real. |
+| 02-10 | Verificado: columnas 4/3/3/2/1 en 1700/1200/1000/800/500 px; sin desbordamiento a 390 px. | Medido con Playwright (ver `scripts/`). | Cerrado. |
