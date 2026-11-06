@@ -13,9 +13,15 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
   const to = safeNext(next);
 
   return (
-    <div className="mx-auto flex w-full max-w-[28rem] flex-col gap-8 px-4 py-10 md:py-16">
+    <div className="mx-4 my-10 grid overflow-hidden rounded-[15px] border border-line-subtle bg-surface-card md:mx-auto md:my-[50px] md:w-full md:max-w-[1000px] md:grid-cols-2">
+      <aside className="hidden min-h-[500px] flex-col justify-between gap-10 bg-surface-inverse p-[50px] text-white md:flex">
+        <p className="m-0 font-heading text-[36px] leading-[43.2px] font-[700]">Conecta tu potencial con lo que viene.</p>
+        <p className="m-0 text-sm opacity-80">Beway · Ecosistema de talento, innovación y oportunidades</p>
+      </aside>
+      <div className="flex flex-col gap-8 p-6 md:p-[45px]">
       <header className="flex flex-col gap-3">
-        <h1 className="text-h1 font-heading text-fg-heading">Inicia sesión</h1>
+        <p className="eyebrow m-0 text-fg-muted uppercase">Bienvenido</p>
+        <h1 className="m-0 font-heading text-[27px] leading-[1.25] font-[700] text-fg-heading">Qué bueno verte por aquí.</h1>
         <p className="text-fg-muted">En la demo, cualquier correo y contraseña entran como Lucía Martín.</p>
       </header>
 
@@ -65,6 +71,7 @@ export default async function LoginPage({ searchParams }: { searchParams: Promis
           Crear cuenta
         </Link>
       </p>
+      </div>
     </div>
   );
 }

@@ -92,3 +92,18 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 06-6 | Validated Skills y evidencias (ficha 25) sin cambios de presentación. | No hay modelo de validación (DEC-021, OI-009). | Modelo de verificación. |
 | 06-7 | La vista para empresas usa los valores del formulario, no el perfil público (sin visibilidad aplicada en la ventana). | Vista previa del formulario; no publica nada. | Revisar al cerrar la fase. |
 | 06-8 | "Tu semana" mezcla encuestas y cursos sin orden por urgencia. | Datos del panel actual, sin modelo de agenda. | Fase de agenda. |
+
+## Fase 07 · Oportunidades, candidatura, encuestas, acceso, registro y ayuda
+
+| # | Pendiente | Causa | Dónde se cierra |
+|---|---|---|---|
+| 07-1 | Galería de encuestas (ficha 31) y su tarjeta (32–33) sin cambios de composición. | Prioridad a oportunidades, candidatura, acceso y ayuda. | Siguiente iteración de fase 07. |
+| 07-2 | Encuesta por preguntas (ficha 32–33): pregunta, escala y pie sin rediseñar. | Lógica de validación y borrador: se mantienen sin tocar. | Siguiente iteración de fase 07. |
+| 07-3 | Registro en tres pasos visibles (Cuenta / Formación / Intereses): sin cambio de pasos; solo la composición. | Decisión B-01 pendiente: choca con el alta actual (`/talent/onboarding`). | Decisión de producto. |
+| 07-4 | Botones "Entrar como…" visibles en el acceso (ficha 34). | Se mantienen, agrupados y etiquetados como demo (D11), sin tocar `signInAs`. | Decisión de producto. |
+| 07-5 | Privacidad (ficha 37): sin cambio de composición; el texto sigue siendo borrador legal. | Texto pendiente de revisión legal (LEGAL_REQUESTS). | Revisión legal. |
+| 07-6 | Oportunidades: vacantes ficticias de ejemplo, marcadas en la interfaz. | Sin backend de vacantes (ROADMAP G). | Backend de oportunidades. |
+| 07-7 | Candidatura: el envío queda deshabilitado en la demo. CV: no hay CV subido. | Sin endpoint de candidatura ni almacenamiento de CV. | Backend. |
+| 07-8 | Ayuda: preguntas y respuestas provisionales, pendientes de revisión de los fundadores. | Copy (D9). | Copy de fundadores. |
+| 07-9 | Guardadas y candidaturas: solo en la sesión del navegador. | Escritura simulada (DEC-006). | Backend. |
+| 07-10 | Revisión móvil de encuestas (ficha 38) y catálogos (ficha 39) sin verificación con sesión de encuestas. | Encuestas sin rediseño todavía. | Siguiente iteración de fase 07. |
