@@ -45,12 +45,18 @@ export function AppHeader({
   const username = session?.username;
 
   const directory = pathname === '/companies';
-  const bar = directory
-    ? { height: 66, cls: 'max-md:h-[60px]! max-md:px-4!' }
-    : { height: 83, cls: 'max-md:px-4!' };
+  /* Ficha de empresa (09): cabecera exterior mínima de 58 px, sin segunda fila; la ficha tiene su propia navegación. */
+  const sheet = pathname.startsWith('/companies/');
+  const bar = sheet
+    ? { height: 58, cls: 'max-md:px-4!' }
+    : directory
+      ? { height: 66, cls: 'max-md:h-[60px]! max-md:px-4!' }
+      : { height: 83, cls: 'max-md:px-4!' };
   const nav = directory
     ? { height: 46, cls: 'max-md:h-11! max-md:px-4!' }
     : { height: 57, cls: 'max-md:h-11! max-md:px-4!' };
+  const rowLinks = sheet ? undefined : startItems.length > 0 ? <NavList items={startItems} username={username} /> : undefined;
+  const rowEndLinks = sheet ? undefined : endItems.length > 0 ? <NavList items={endItems} username={username} /> : undefined;
 
   return (
     <div className="sticky top-0 z-40">
@@ -71,8 +77,8 @@ export function AppHeader({
             {badge ? <Badge tone="navy">{badge}</Badge> : null}
           </span>
         }
-        links={startItems.length > 0 ? <NavList items={startItems} username={username} /> : undefined}
-        endLinks={endItems.length > 0 ? <NavList items={endItems} username={username} /> : undefined}
+        links={rowLinks}
+        endLinks={rowEndLinks}
         actions={
           <>
             <ThemeToggle />

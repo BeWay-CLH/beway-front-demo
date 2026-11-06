@@ -40,3 +40,18 @@ Ver el plan en `PLAN.md`. Las fases 02 a 07 se ejecutan en sus ramas, en ese ord
 | 02-8 | Los filtros solo funcionan en `/companies`, no en la portada. | La portada no tiene URL de filtros. | Fase 03 o decisión de producto. |
 | 02-9 | Sectores del directorio = categorías del catálogo (ficha 05 pide adaptarlas). | El catálogo no tiene Banca, Editorial, etc. | Catálogo real. |
 | 02-10 | Verificado: columnas 4/3/3/2/1 en 1700/1200/1000/800/500 px; sin desbordamiento a 390 px. | Medido con Playwright (ver `scripts/`). | Cerrado. |
+
+## Fase 03 · Las 17 fichas corporativas
+
+| # | Pendiente | Causa | Dónde se cierra |
+|---|---|---|---|
+| 03-1 | Cuatro arquetipos de hero (photo, plate, tilt, field), no siete. | Las 17 composiciones se agrupan en cuatro bloques con parámetros por marca (color, altura, titular, fuente, orden). Así no hay una ficha genérica con logo cambiado. | Si la revisión pide una composición exacta por marca, se añade un arquetipo nuevo. |
+| 03-2 | Fotos de BME, Garrigues, L'Oréal, SILBON, HEINEKEN y Mapfre: placeholder de color base con degradado. | Sin archivos oficiales (D7, 00). | Assets oficiales (seed). |
+| 03-3 | Logos: inicial sobre el color base. | Sin logos oficiales. No se dibujan a mano. | Assets oficiales (seed). |
+| 03-4 | Titular de L'Oréal en español, no en inglés como en la referencia. | CLAUDE.md exige copy en español de España. | Decisión de fundadores. |
+| 03-5 | Bloques sin contenido (Embajadores, Becas, Servicios, Ecommerce, Tienda, Cierre, Ecosistema, Marcas, Brandstorm, Herramientas) muestran "Próximamente", sin enlace. | No hay datos ni destino. Ecommerce y tiendas no tienen compra ni pago. | Fases de contenido (G) o copy aprobado. |
+| 03-6 | Los destinos de Certificaciones, Challenges, Miniproyectos, Oportunidades y Encuestas enlazan a las pantallas de cada fase (en proceso o en construcción). | Se usan rutas reales para no enlazar a páginas inexistentes. | Fases 04 a 07. |
+| 03-7 | Cifras de las 17 fichas a cero (retos, vacantes…). | No se inventan cifras para igualar la guía (regla de la guía). Las cinco métricas de la tarjeta muestran 0 o "—". | Datos reales (seed). |
+| 03-8 | El directorio muestra las 10 fichas de ejemplo originales además de las 17 marcas (27 en total). | La referencia muestra 19. No se eliminan fichas de prueba. | Decisión de fundadores. |
+| 03-9 | Fichas de empresa sin barra de navegación de la app: cabecera de 58 px. | Ficha 09: cabecera exterior mínima. El visitante vuelve con el logo. | Decisión de producto (si se quiere navegación en la ficha). |
+| 03-10 | Colores de marca en `data/fixtures/brands.ts` (17 paletas). | Excepción documentada: son datos de marca, no tokens del DS (opción A de la fase 03). | Revisar con el equipo de DS. |
