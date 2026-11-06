@@ -2,11 +2,13 @@
 
 import { useState, type KeyboardEvent } from 'react';
 import { Button, Tabs } from '@ds';
-import type { CompanyDetailVM, CompanyModuleKind } from '@/lib/models/company';
+import type { CompanyCollectionKey, CompanyDetailVM, CompanyModuleKind } from '@/lib/models/company';
+import { CollectionView, COLLECTION_LABEL, COLLECTION_ORDER, hasCollection } from './CompanyCollections';
 import { ModuleView, SourcesView } from './CompanyModules';
 
-/* Pestañas de la ficha: un módulo por pestaña y, al final, las fuentes. El estado vive también en ?tab= para poder
-   compartir el enlace a una pestaña; se actualiza con history.replaceState, sin recargar la página. */
+/* Pestañas de la ficha: un módulo por pestaña, las pestañas del paquete de contenido (solo si tienen datos) y, al final,
+   las fuentes. El estado vive también en ?tab= para poder compartir el enlace a una pestaña; se actualiza con
+   history.replaceState, sin recargar la página. */
 
 const TAB_LABEL: Record<CompanyModuleKind | 'sources', string> = {
   summary: 'Resumen',
@@ -20,14 +22,22 @@ const TAB_LABEL: Record<CompanyModuleKind | 'sources', string> = {
 export function CompanyTabs({
   modules,
   sources,
+  collections,
+  sectionHeadings = {},
+  heroActions = [],
   initialTab,
 }: {
   modules: CompanyDetailVM['modules'];
   sources: CompanyDetailVM['sources'];
+  collections?: CompanyDetailVM['collections'];
+  sectionHeadings?: CompanyDetailVM['sectionHeadings'];
+  heroActions?: CompanyDetailVM['heroActions'];
   initialTab?: string;
 }) {
+  const collectionKeys: CompanyCollectionKey[] = collections ? COLLECTION_ORDER.filter((k) => hasCollection(collections, k)) : [];
   const tabs = [
     ...modules.map((m) => ({ value: m.kind as string, label: TAB_LABEL[m.kind] })),
+    ...collectionKeys.map((k) => ({ value: k as string, label: COLLECTION_LABEL[k] })),
     ...(sources.length > 0 ? [{ value: 'sources', label: TAB_LABEL.sources }] : []),
   ];
   const [tab, setTab] = useState(tabs.some((t) => t.value === initialTab) ? (initialTab as string) : tabs[0].value);
@@ -58,8 +68,13 @@ export function CompanyTabs({
   };
 
   const module = modules.find((m) => m.kind === tab);
+  const collectionKey = collectionKeys.find((k) => k === tab);
   const label = tabs.find((t) => t.value === tab)?.label ?? '';
+  /* En el Resumen, el titular de la fuente ("about") sustituye al título del módulo cuando lo hay. */
+  const moduleTitle = module?.kind === 'summary' && sectionHeadings.about ? sectionHeadings.about : module?.title;
   const cited = module?.sourceIds?.map((id) => sources.find((s) => s.id === id)?.label).filter(Boolean) ?? [];
+  /* Un CTA de la cabecera solo lleva a una pestaña que existe. */
+  const actions = heroActions.filter((a) => collectionKeys.includes(a.section));
 
   return (
     <div className="flex flex-col gap-6">
@@ -73,23 +88,38 @@ export function CompanyTabs({
         />
       </div>
 
-      <div role="tabpanel" aria-label={label} tabIndex={0} className="flex flex-col gap-6">
-        {/* Si el título repite la pestaña activa solo se lee con lector de pantalla; si añade algo ("Vacantes destacadas") se ve. */}
-        <h2 className={`text-h3 font-heading text-fg-heading ${module && module.title !== label ? '' : 'sr-only'}`}>
-          {module?.title ?? label}
-        </h2>
-        {module ? <ModuleView module={module} /> : <SourcesView sources={sources} />}
-        {cited.length > 0 ? (
-          <p className="flex flex-wrap items-center gap-x-2 text-sm text-fg-muted">
-            <span>Fuente: {cited.join(', ')}.</span>
-            {sources.length > 0 ? (
-              <Button variant="ghost" size="sm" onClick={() => select('sources')} className="-ml-3">
-                Ver todas las fuentes
-              </Button>
-            ) : null}
-          </p>
-        ) : null}
-      </div>
+      {collections && collectionKey ? (
+        <div role="tabpanel" aria-label={label} tabIndex={0}>
+          <CollectionView kind={collectionKey} collections={collections} heading={sectionHeadings[collectionKey]} label={label} />
+        </div>
+      ) : (
+        <div role="tabpanel" aria-label={label} tabIndex={0} className="flex flex-col gap-6">
+          {/* Si el título repite la pestaña activa solo se lee con lector de pantalla; si añade algo ("Vacantes destacadas") se ve. */}
+          <h2 className={`text-h3 font-heading text-fg-heading ${moduleTitle && moduleTitle !== label ? '' : 'sr-only'}`}>
+            {moduleTitle ?? label}
+          </h2>
+          {module ? <ModuleView module={module} /> : <SourcesView sources={sources} />}
+          {module?.kind === 'summary' && actions.length > 0 ? (
+            <div className="flex flex-wrap gap-3">
+              {actions.map((a) => (
+                <Button key={`${a.section}-${a.label}`} variant="outline" size="sm" iconAfter="arrow-right" onClick={() => select(a.section)}>
+                  {a.label}
+                </Button>
+              ))}
+            </div>
+          ) : null}
+          {cited.length > 0 ? (
+            <p className="flex flex-wrap items-center gap-x-2 text-sm text-fg-muted">
+              <span>Fuente: {cited.join(', ')}.</span>
+              {sources.length > 0 ? (
+                <Button variant="ghost" size="sm" onClick={() => select('sources')} className="-ml-3">
+                  Ver todas las fuentes
+                </Button>
+              ) : null}
+            </p>
+          ) : null}
+        </div>
+      )}
     </div>
   );
 }

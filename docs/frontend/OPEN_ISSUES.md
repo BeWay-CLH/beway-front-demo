@@ -20,6 +20,9 @@ en [LEGAL_REQUESTS.md](LEGAL_REQUESTS.md).
 | OI-022 | Encuestas: ¿puede la persona ver sus respuestas después de enviarlas? | E-03, BE-011 | No: una encuesta completada muestra el resumen sin preguntas ni respuestas ("No se puede editar después de enviarla") | Producto / legal (LQ-05) |
 | OI-023 | Cursos: ¿qué significa "Me interesa"? ¿Lo ve el proveedor, abre una lista de espera, o hay inscripción real con enlace? | E-06, BE-014 | Solo interés interno, sin que lo vea nadie; ningún curso trae URL externa | Producto / legal (LQ-10) |
 | OI-024 | Encuestas de empresas que la persona no sigue y que no le interesan: ¿se listan con su motivo o solo se llega por enlace? | E-02, BE-010 | Se listan aparte, "No son para ti por ahora", máximo 3 y con camino a la ficha de la empresa para animar a seguirla. Si producto prefiere ocultarlas, se quita esa sección | Producto |
+| OI-025 | Logotipos y portadas de las 17 fichas del paquete: ¿qué fuente oficial y qué permiso? Las URLs del paquete apuntan a un prototipo (GitHub Pages), y el CSV del caso de Netflix también | Ficha de las 17 empresas | Inicial sobre el color base y degradado de marca, sin imágenes remotas. El CSV de Netflix se enlaza tal cual (DEC-050) | Producto y legal |
+| OI-026 | Embajadores CLH: ¿cómo se pide y se registra la autorización de cada persona, y qué formato tiene `authorization`? | Pestaña Embajadores (85 apariciones) | Nombres visibles con la etiqueta «Pendiente de autorización» (DEC-059). Falta el consentimiento antes de producción | Producto y legal |
+| OI-027 | Convocatorias, becas, plazos y precios del paquete: ¿quién los revalida, y cada cuánto? Son datos de la fuente del 21 de octubre y del 5 de noviembre de 2026 | Retos, Becas y Formación de las 17 fichas | Aviso "Datos a confirmar" y estados "según la fuente"; nunca "abierta" a secas (DEC-052, DEC-053, DEC-058) | Producto |
 
 ## Estado tras el bloque E (2026-10-23)
 

@@ -1,6 +1,5 @@
 import type { CompanyModuleItemVM, CompanyModuleVM, CompanyRecord, CompanyStatVM, SourceVM } from '@/lib/models/company';
 import { logo } from './logo';
-import { brandCompanyRecords } from './brands';
 
 /* Fichas de empresa de ejemplo (C-01). Todo el contenido, cifras incluidas, es ficticio: la demo lo rotula
    como "Datos de ejemplo". Sin URLs externas inventadas: `website` y `SourceVM.url` se omiten.
@@ -55,7 +54,7 @@ const locations = (items: CompanyModuleItemVM[], sourceIds: string[]): CompanyMo
   sourceIds,
 });
 
-const baseCompanyRecords: CompanyRecord[] = [
+export const companyRecords: CompanyRecord[] = [
   {
     id: 'cmp-metrovia',
     slug: 'metrovia',
@@ -422,6 +421,3 @@ const baseCompanyRecords: CompanyRecord[] = [
     sources: [source('bri-web', 'Sitio web corporativo de Brisa Salud', '2026-10-20')],
   },
 ];
-
-/* Directorio completo: las fichas de ejemplo y las 17 marcas corporativas (guía, 03). */
-export const companyRecords: CompanyRecord[] = [...baseCompanyRecords, ...brandCompanyRecords];

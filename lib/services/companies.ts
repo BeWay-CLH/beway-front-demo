@@ -6,6 +6,7 @@ import type { Simulated } from '@/lib/models/common';
 import type {
   CompanyCardVM,
   CompanyCategoryVM,
+  CompanyCollectionsVM,
   CompanyDetailVM,
   CompanyFilter,
   CompanyMetricVM,
@@ -13,6 +14,8 @@ import type {
   CompanyRecord,
   CompanyRefVM,
 } from '@/lib/models/company';
+import { seedCompanyRecords } from '@/lib/seed/companies';
+import { mergeCompanyRecords } from '@/lib/seed/companies-adapter';
 
 /* Única puerta a los datos de empresa. Hoy lee fixtures; con la API cambia el cuerpo, no la firma (ARCHITECTURE §4).
    Solo las fichas publicadas salen de aquí: un borrador es como si no existiera (C-04, decisión 13). */
@@ -23,7 +26,22 @@ export const CATALOG_PAGE_SIZE = 6;
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
-const published = () => companyRecords.filter((r) => r.status === 'published');
+/* Fichas de ejemplo y fichas del paquete (DEC-046). Sin duplicados por slug o id: repetir el seed no añade empresas (DEC-047). */
+const allRecords = mergeCompanyRecords(companyRecords, seedCompanyRecords()).records;
+
+const published = () => allRecords.filter((r) => r.status === 'published');
+
+/* Colecciones vacías para las fichas de ejemplo: la ficha no tiene pestañas de paquete. */
+const NO_COLLECTIONS: CompanyCollectionsVM = {
+  learning: [],
+  challenges: [],
+  miniprojects: [],
+  ambassadors: [],
+  resources: [],
+  scholarships: [],
+  academicPrograms: [],
+  brands: [],
+};
 
 /* Sin tildes ni mayúsculas: "Datos e IA" → "datos-e-ia", "Educación" → "educacion". */
 const slugify = (label: string) =>
@@ -65,7 +83,8 @@ function metricsFor(r: CompanyRecord): CompanyMetricVM[] {
     { key: 'certificaciones', label: 'Certificaciones', value: courseRecords.filter((c) => c.provider === r.name).length },
     { key: 'challenges', label: 'Challenges', value: stat('retos') },
     { key: 'encuestas', label: 'Encuestas', value: surveyRecords.filter((s) => s.publisherId === r.id).length },
-    { key: 'miniproyectos', label: 'Miniproyectos', value: null },
+    // Solo las fichas del paquete traen miniproyectos; las de ejemplo siguen sin fuente (DEC-057).
+    { key: 'miniproyectos', label: 'Miniproyectos', value: r.collections ? r.collections.miniprojects.length : null },
     { key: 'oportunidades', label: 'Oportunidades', value: stat('vacantes') },
   ];
 }
@@ -124,6 +143,11 @@ export async function getCompanyBySlug(slug: string, viewerId?: string, now = ne
     sources: r.sources,
     lastReviewedAt: r.lastReviewedAt,
     isStale: isStale(r.lastReviewedAt, now),
+    sector: r.sector ?? r.category,
+    heroActions: r.heroActions ?? [],
+    sectionHeadings: r.sectionHeadings ?? {},
+    notices: r.notices ?? [],
+    collections: r.collections ?? NO_COLLECTIONS,
   };
 }
 

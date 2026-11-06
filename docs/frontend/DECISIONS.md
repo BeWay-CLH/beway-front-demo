@@ -423,3 +423,111 @@ con solo dos logros y sin contenido que inventar.
 **Contexto.** La referencia pide dos filas (logo y buscador; navegación), alturas por contexto y la cuenta (menú personal y notificaciones) en ventanas centradas. El DS tenía una fila de 76 px, y `DEC-013` fijaba una sola altura.
 **Decisión.** `NavBar` pasa a dos filas con alturas por contexto (83 y 57 por defecto; 66 y 46 en directorio; 58 en ficha). La cuenta abre dos ventanas de 740 px con el `Dialog` del DS. La navegación de talento sigue el orden de la guía (`lib/routes.ts`). Se mantiene el menú plegable por debajo de lg/md (`DEC-036`) hasta la fase 02, donde la navegación móvil pasa a fila desplazable (ficha 07; cambia `DEC-007`).
 **Consecuencias.** Cambia `DEC-013` (altura única) y se completa `DEC-036`. Pendiente de confirmar la fila móvil en la fase 02.
+
+### DEC-046 · Seed de las 17 fichas: fuente en `data/seed/` y adaptador puro (Tarea 2)
+
+**Contexto.** El paquete de la Tarea 2 trae 17 empresas que no existen en el repo (el fixture tiene 11 fichas de ejemplo, de las que 10 están publicadas). No hay base de datos ni API: los datos son fixtures tipados. El paquete no es parte del código y no debe leerse desde `docs/`.
+**Decisión.** `data/seed/companies.content.v2.json` es una copia íntegra del JSON consolidado del paquete (SHA-256 igual al original). `lib/seed/companies-adapter.ts` lo convierte en `CompanyRecord` con una función pura, sin efectos. `lib/seed/companies.ts` lo carga una vez. `lib/services/companies.ts` sigue siendo la única puerta a los datos. Ver [SEED_EMPRESAS.md](SEED_EMPRESAS.md).
+**Consecuencias.** Actualizar el paquete es reemplazar el JSON y correr `npm run seed:check`. Los tipos de ficha son aditivos (`CompanyPackageVM`, opcional en `CompanyRecord`); las fichas de ejemplo no cambian.
+
+### DEC-047 · Seeding idempotente sin base de datos
+
+**Contexto.** El prompt exige no duplicar empresas al ejecutar el seed dos veces. Aquí no hay almacén que upsert.
+**Decisión.** El seed es una función determinista. La fusión con los fixtures es por `slug` e `id`: gana el primero y las repeticiones se descartan y se cuentan. `npm run seed:check` (script `scripts/check-company-seed.mjs`) comprueba conteos, slugs únicos, idempotencia (dos ejecuciones iguales) y que repetir la fusión deja 17 empresas. La clave estable es `cmp-<slug>`.
+**Consecuencias.** Con un backend real, el upsert se hace por `cmp-<slug>` (BE-026). El check no toca datos ni escribe ficheros.
+
+### DEC-048 · Las fichas de ejemplo se conservan
+
+**Contexto.** El fixture tiene 11 fichas de ejemplo que usan el resto de la demo (seguimientos, encuestas, dashboard).
+**Decisión.** Ninguna se borra ni se modifica. Las 17 nuevas se suman. El catálogo queda con 27 empresas publicadas (10 de ejemplo y 17 del paquete).
+**Consecuencias.** `homeStats` (86 empresas) sigue siendo cifra estática y no se recalcula. Los slugs de las 17 no chocan con ninguno de ejemplo (lo comprueba el check).
+
+### DEC-049 · Categoría del catálogo derivada del sector
+
+**Contexto.** El paquete trae `sector` en texto libre ("Educación jurídica y negocios") pero no categoría. El catálogo filtra por categoría y los intereses del perfil usan las de ejemplo.
+**Decisión.** Tabla explícita en el adaptador: Finanzas, Educación, Tecnología, Consultoría, Consumo, Medios y Seguros, con icono Lucide. El sector completo pasa a la ficha como "Sector".
+**Consecuencias.** Las categorías nuevas aparecen como filtros en `/companies`. `interestOptions` no cambia: los perfiles siguen eligiendo las cinco de siempre.
+
+### DEC-050 · Sin imágenes remotas ni descargas
+
+**Contexto.** Los logotipos, portadas y fotos del paquete son URLs de un prototipo en GitHub Pages. DEC-043 exige placeholders `TODO(seed)` hasta confirmar el origen oficial, y el prompt prohíbe importar fotos sin permiso.
+**Decisión.** La ficha muestra la inicial sobre el color base y el degradado de marca, como las fichas de ejemplo. Ninguna imagen se descarga ni se enlaza. Los programas en PDF/TXT del prototipo tampoco se exponen. **Excepción pedida por el prompt:** el CSV del caso de Netflix se enlaza como "Descargar los datos del caso (CSV ficticio)"; sigue alojado en el prototipo (OI-025).
+**Consecuencias.** Las 17 fichas se ven con inicial y degradado hasta que haya logotipos confirmados. El check cuenta exactamente un enlace a `github.io` en las fichas.
+
+### DEC-051 · Embajadores CLH: sin nombres hasta tener autorización
+
+**Contexto.** Las 85 apariciones de embajadores (5 por empresa) tienen `authorization: null` y la relación dice "propuesta/ejemplo en la demo, no personal de la empresa". La DoD exige que ningún dato privado aparezca en pantallas públicas. Y el nombre llega al cliente en la carga de la página, aunque no se pinte.
+**Decisión.** Solo entra al modelo el perfil con autorización (`AmbassadorVM`). Los demás se cuentan (`ambassadorsPending`) y la pestaña dice cuántos hay y que se publicarán con la autorización. Los nombres no salen del servidor. El render del perfil existe y se activa cuando `authorization` tenga valor. Ninguna foto se importa (`imageUrl`).
+**Consecuencias.** La pestaña "Embajadores" aparece en las 17 fichas con un aviso, sin nombres. Cuando se defina el formato de `authorization` hay que revisar `toAmbassador` (OI-026, LQ-11). **Superada en parte por DEC-059** (2026-11-06): los nombres ya se muestran.
+
+### DEC-052 · Estados sin falsas convocatorias
+
+**Contexto.** El paquete mezcla propuestas BEWAY (19 formaciones, 17 retos, 43 miniproyectos), catálogos externos publicados, concursos oficiales externos e históricos. Ningún dato confirma convocatorias abiertas, inscripciones ni certificaciones verificadas.
+**Decisión.** `beway_proposal` se llama "Propuesta BeWay" y no es una oferta de la empresa. `external_published` es "Catálogo externo" e `external_official` es "Iniciativa oficial externa", sin implicar convenio. Todas las formaciones llevan "Certificación no verificada" (`certificateVerified: false`). Ningún reto tiene `applicationUrl`, así que no hay botón de inscripción. Un reto cerrado o histórico muestra su estado "Cerrado" y, si existe, su enlace oficial informativo. Solo `officialReferenceUrl` aparece como "Ver la convocatoria oficial". La pestaña de cada tipo lleva una nota fija.
+**Consecuencias.** Si la fuente confirma una inscripción, habrá que añadir un CTA con su condición (DEC-052 se reabre). `seed:check` falla si el paquete trae `enrollUrl` o `applicationUrl`.
+
+### DEC-053 · Becas con la fecha de la fuente
+
+**Contexto.** Las becas de Santander son del 21 de octubre de 2026 (`sourceAsOf`). Hoy es 6 de noviembre y el paquete indica "revalidar antes de publicar".
+**Decisión.** Se muestra el estado tal como lo dio la fuente, con su fecha y "Cerrada según la fuente", "Consultar el plazo en la convocatoria" o "Abierta según la fuente; comprobar hoy". Nunca se dice "abierta" a secas. El importe y la bonificación ReBeca salen con su calificador ("hasta", "€ brutos").
+**Consecuencias.** La tabla de becas lleva la fecha de la fuente en su pie. Revalidar antes de publicar (OI-027).
+
+### DEC-054 · Pestañas del paquete en la ficha
+
+**Contexto.** La ficha tenía los módulos Resumen, Cultura, Programas, Vacantes, Sedes y Fuentes (DEC-020). El paquete trae formación, retos, miniproyectos, embajadores, recursos, becas, grados y másteres y marcas.
+**Decisión.** Cada colección es una pestaña que solo aparece si tiene datos (igual que los módulos vacíos). Usan los patrones de la ficha y del DS (`Badge`, `Tag`, `Table`, `Button`, `Card`, `EmptyState`). Sin componentes nuevos en el DS ni cambios de estilo. El titular de la fuente (`sectionHeadings`) es el encabezado de cada pestaña. La cabecera (`heroActions`) lleva a su pestaña.
+**Consecuencias.** Hasta 7 pestañas por ficha (Resumen, hasta cinco del paquete y Fuentes), con desplazamiento horizontal como ya tenía la barra. Ver [SEED_EMPRESAS.md](SEED_EMPRESAS.md).
+
+### DEC-055 · Recursos de marca fuera de "Recursos"
+
+**Contexto.** En L'Oréal, sus 12 marcas se repiten como 12 recursos (`state: brand`).
+**Decisión.** La pestaña Recursos no los muestra; aparecen en Marcas. El dato sigue en `data/seed/`, sin borrar nada.
+**Consecuencias.** Recursos de L'Oréal: 0 en la pestaña. El check lo cuenta así.
+
+### DEC-056 · Destino de los CTA de la cabecera
+
+**Contexto.** `heroActions` apunta a una sección de la fuente (`learning`, `challenges`, `resources`, `scholarships`).
+**Decisión.** Cada CTA lleva a su pestaña, y solo si existe. Excepción documentada: en Garrigues, "Ver grados y másteres" apunta a `resources` en la fuente y el adaptador lo lleva a "Grados y másteres". Es una corrección de destino, no de contenido.
+**Consecuencias.** Un CTA cuyo destino no existe no se muestra.
+
+### DEC-057 · Cifras de la tarjeta del catálogo
+
+**Contexto.** La tarjeta del catálogo tiene cinco cifras (guía de correcciones, ficha 04). Retos y oportunidades salían de `stats`, que el paquete no trae.
+**Decisión.** Miniproyectos cuenta los del paquete (las de ejemplo siguen en "—"). Retos y oportunidades se muestran como "—": el paquete no indica convocatorias abiertas, así que un número en esa cifra sería falso. Certificaciones y encuestas siguen su fórmula de siempre, que da 0 para las 17.
+**Consecuencias.** Las tarjetas nuevas tienen dos cifras de "—". Cuando haya convocatorias vigentes, `metricsFor` cambia por su fuente.
+
+### DEC-058 · Avisos visibles y notas de revisión del paquete
+
+**Contexto.** Cada ficha trae `metadata.importantNotices`. Son notas para el equipo ("no crear un proyecto separado", "revalidar antes de publicar", "no incluir contratación de alcohol en BEWAY"). Algunas se contradicen con la copia pública (la demo y el prototipo). Otras son avisos útiles, pero ya están cubiertos por los campos estructurados (certificación no verificada, presupuesto no es premio, iniciativa oficial externa, cerrado).
+**Decisión.** No se muestran tal cual. La ficha muestra un aviso fijo "Datos a confirmar" con la fecha de revisión y la lista `requiresLiveReview` (convocatorias activas, plazos, precios, certificaciones, licencias de imágenes). Las notas se quedan en `data/seed/` para la revisión editorial de Admin (F) (OI-027).
+**Consecuencias.** Hay que redactar en español público los avisos que el equipo considere imprescindibles antes de publicar.
+
+### DEC-059 · Embajadores CLH con nombre y etiqueta de autorización pendiente (supera en parte DEC-051)
+
+**Contexto.** DEC-051 ocultaba los nombres de los 85 embajadores hasta tener autorización. El responsable de producto decidió mostrarlos (2026-11-06). Ningún embajador tiene `authorization` registrada en el paquete.
+**Decisión.** La pestaña Embajadores lista a todas las personas con nombre, organización y país. Cada una sin autorización lleva la etiqueta «Pendiente de autorización». No se importa ninguna foto (`imageUrl` sigue fuera, DEC-050). La cifra de pendientes sale del modelo: `ambassadorsPending` se elimina y `AmbassadorVM` gana `authorized`.
+**Consecuencias.** Los nombres de personas reales (o de ejemplo del prototipo) salen en la página y en su HTML, sin consentimiento registrado. Antes de publicar en producción hay que resolver el consentimiento (LQ-11, OI-026). Para volver a ocultarlos basta con filtrar en `toCollections` (`companies-adapter.ts`).
+
+### DEC-060 · Las 17 fichas de fase 03 se alimentan con el paquete
+
+**Contexto.** En `origin/main` la fase 03 ya tiene 17 fichas corporativas (`data/fixtures/brands.ts` y `components/brand/BrandPage.tsx`): las mismas empresas, con las composiciones de la guía (arquetipo, colores, altura, fuentes y orden de bloques). Sus textos y cifras son de ejemplo y se sirven por `/companies/<slug>` antes que la ficha genérica. Con dos fuentes para las mismas 17 empresas, el paquete no se veía y Garrigues aparecía dos veces.
+**Decisión.** La composición de `brands.ts` queda solo como diseño. Los datos de cada ficha salen del paquete (`data/seed/`, DEC-046) y `BrandPage` pinta cada bloque con ellos. Se eliminan `brandCompanyRecords` y las cifras a cero de fase 03; `data/fixtures/companies.ts` vuelve a tener solo las 11 fichas de ejemplo. La cabecera dice "Ficha de empresa · {sector}" en lugar de "Ficha de ejemplo".
+**Consecuencias.** Cambian los datos y el contenido de cada bloque. No cambian el arquetipo, los colores, las alturas, las fuentes ni el orden de bloques. DEC-046 deja de crear registros separados para estas 17.
+
+### DEC-061 · Slug y nombre de las 17 fichas
+
+**Contexto.** El prompt pide no reemplazar slugs consolidados, y fase 03 usa `garrigues` (no `centro-garrigues`). Retos, oportunidades y cursos buscan la marca por nombre (`brandBySlug(...).name`, `brands.find(b => b.name === course.provider)`). La guía escribe "McKinsey & Company", "SILBON", "HEINEKEN" y "L'Oréal".
+**Decisión.** El slug del repo es `garrigues` (id `cmp-garrigues`), y `CentroGarriguesxBeway` se asocia a él. Para McKinsey, Silbon, Heineken y L'Oréal se muestra el nombre de la guía (`name` en `PACKAGE_COMPANIES`). El resto de nombres es el del paquete.
+**Consecuencias.** `/companies/centro-garrigues` deja de existir (404) y la ficha vive en `/companies/garrigues`. `seed:check` falla si el nombre de una composición no coincide con el de su registro.
+
+### DEC-062 · Bloques de la ficha alimentados por el paquete
+
+**Contexto.** Las composiciones de fase 03 tienen bloques con los nombres de la guía (Certificaciones, Challenges, Miniproyectos...). No hay bloque para recursos ni para los grados de Garrigues.
+**Decisión.** Mapa de bloques: `sobre` ← resumen (texto, datos y web); `curso` ← formación, renombrado "Formación" porque el paquete no trae certificaciones verificadas; `challenges` y `brandstorm` ← retos; `miniproyectos` ← miniproyectos; `embajadores` ← embajadores (DEC-059); `becas` ← becas (Santander); `grados` ← programas académicos (bloque nuevo, en lugar de `ecommerce` en Garrigues); `marcas` ← marcas (L'Oréal); `herramientas`, `servicios`, `ecosistema` y `tienda` ← recursos de la empresa. Si la composición no tiene ninguno de esos cuatro, se añade `recursos` (Instituto BME, McGraw Hill, Garrigues, IBM, Santander y Netflix).
+**Consecuencias.** Cada recurso aparece una sola vez por página. Las 40 herramientas de Google se agrupan por categoría en `herramientas`.
+
+### DEC-063 · Bloques sin datos y menú local
+
+**Contexto.** Ecommerce y cierre no tienen datos en el paquete. Oportunidades y encuestas tampoco, aunque sí existen en Beway. Algunos menús de fase 03 apuntaban a anclas que no existen (`ecosistema` en IBM).
+**Decisión.** Ecommerce y cierre muestran "Próximamente." sin enlace, como pide la guía. Oportunidades y encuestas siguen enlazando a su sección de Beway. El menú local solo lista bloques que existen en la composición.
+**Consecuencias.** Algunas fichas muestran bloques "Próximamente.": es la señal honesta de lo que el paquete no cubre.
